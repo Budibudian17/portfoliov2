@@ -22,7 +22,7 @@ A beautiful, modern, and fully multilanguage portfolio website built with Next.j
 
 ## 🖼️ Preview
 
-![Portfolio Preview](public/placeholder.jpg)
+![Portfolio Preview](public/img/portfoliomobile.png)
 
 ---
 
