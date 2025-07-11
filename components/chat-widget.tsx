@@ -30,9 +30,6 @@ export default function ChatWidget() {
   const [username, setUsername] = useState<string | null>(null);
   const [showUsernameModal, setShowUsernameModal] = useState(false);
   const [usernameInput, setUsernameInput] = useState("");
-  const [hasNewAdminMessage, setHasNewAdminMessage] = useState(false);
-  const [lastReadAdminMsgId, setLastReadAdminMsgId] = useState<string | null>(null);
-  const audioRef = useRef<HTMLAudioElement>(null);
 
   // Generate or get userId from localStorage
   useEffect(() => {
@@ -58,12 +55,6 @@ export default function ChatWidget() {
     setShowUsernameModal(false);
   }, [usernameInput]);
 
-  // Ambil lastReadAdminMsgId dari localStorage saat mount
-  useEffect(() => {
-    const lastId = localStorage.getItem("lastReadAdminMsgId");
-    if (lastId) setLastReadAdminMsgId(lastId);
-  }, []);
-
   // Listen to Firestore messages (real-time)
   useEffect(() => {
     if (!userId) return;
@@ -72,28 +63,18 @@ export default function ChatWidget() {
       orderBy("createdAt", "asc")
     );
     const unsub = onSnapshot(q, (snapshot) => {
-      const msgs = snapshot.docs
-        .map((doc) => ({
-          id: doc.id,
-          ...(doc.data() as Omit<ChatMessage, "id">),
-        }))
-        .filter((msg) => msg.userId === userId);
-      setMessages(msgs);
-      // Deteksi pesan admin baru
-      if (!open) {
-        const lastAdminMsg = [...msgs].reverse().find((msg) => msg.sender === "admin");
-        if (lastAdminMsg && lastAdminMsg.id !== lastReadAdminMsgId) {
-          setHasNewAdminMessage(true);
-          // Play sound
-          if (audioRef.current) {
-            audioRef.current.currentTime = 0;
-            audioRef.current.play();
-          }
-        }
-      }
+      setMessages(
+        snapshot.docs
+          .map((doc) => ({
+            id: doc.id,
+            ...(doc.data() as Omit<ChatMessage, "id">),
+          }))
+          // Hanya tampilkan pesan untuk userId ini
+          .filter((msg) => msg.userId === userId)
+      );
     });
     return () => unsub();
-  }, [userId, open, lastReadAdminMsgId]);
+  }, [userId]);
 
   // Scroll to bottom on new message
   useEffect(() => {
@@ -101,18 +82,6 @@ export default function ChatWidget() {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages, open]);
-
-  // Reset notif saat chat dibuka
-  useEffect(() => {
-    if (open) {
-      const lastAdminMsg = [...messages].reverse().find((msg) => msg.sender === "admin");
-      if (lastAdminMsg) {
-        setLastReadAdminMsgId(lastAdminMsg.id);
-        localStorage.setItem("lastReadAdminMsgId", lastAdminMsg.id);
-      }
-      setHasNewAdminMessage(false);
-    }
-  }, [open, messages]);
 
   // Send message
   const sendMessage = async () => {
@@ -176,16 +145,12 @@ export default function ChatWidget() {
       {/* Chat Bubble */}
       {!isAdmin && (
         <button
-          className="fixed z-50 bottom-6 right-6 bg-black text-white rounded-full shadow-lg p-4 hover:bg-gray-800 transition-colors flex items-center justify-center focus:outline-none relative"
+          className="fixed z-50 bottom-6 right-6 bg-black text-white rounded-full shadow-lg p-4 hover:bg-gray-800 transition-colors flex items-center justify-center focus:outline-none"
           onClick={() => setOpen(true)}
           aria-label="Open chat"
           style={{ display: open ? "none" : "flex" }}
         >
           <MessageCircle className="w-7 h-7" />
-          {hasNewAdminMessage && (
-            <span className="absolute top-1 right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span>
-          )}
-          <audio ref={audioRef} src="/audio/opening.mp3" preload="auto" />
         </button>
       )}
       {/* Chat Window */}
