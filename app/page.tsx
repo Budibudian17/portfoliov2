@@ -860,27 +860,45 @@ export default function Portfolio() {
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
-            <div className="space-y-3 sm:space-y-4 group">
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=hilmifarrel03@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="space-y-3 sm:space-y-4 group block rounded-xl transition-shadow focus:outline-none"
+              aria-label="Email"
+            >
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
                 <Mail className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-white">{t("contact.email")}</h3>
               <p className="text-sm sm:text-base text-gray-400">hilmifarrel03@gmail.com</p>
-            </div>
-            <div className="space-y-3 sm:space-y-4 group">
+            </a>
+            <a
+              href="https://github.com/Budibudian17"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="space-y-3 sm:space-y-4 group block rounded-xl transition-shadow focus:outline-none"
+              aria-label="GitHub"
+            >
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
                 <Github className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-white">{t("contact.github")}</h3>
               <p className="text-sm sm:text-base text-gray-400">@Budibudian17</p>
-            </div>
-            <div className="space-y-3 sm:space-y-4 group sm:col-span-2 lg:col-span-1">
+            </a>
+            <a
+              href="https://www.linkedin.com/in/hilmifarrel-dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="space-y-3 sm:space-y-4 group sm:col-span-2 lg:col-span-1 block rounded-xl transition-shadow focus:outline-none"
+              aria-label="LinkedIn"
+            >
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
                 <Linkedin className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-white">{t("contact.linkedin")}</h3>
               <p className="text-sm sm:text-base text-gray-400">@Hilmi Farrel Firjatullah</p>
-            </div>
+            </a>
           </div>
 
           <Button className="bg-white text-black hover:bg-gray-200 px-8 sm:px-12 py-4 sm:py-6 text-base sm:text-lg font-bold group w-full sm:w-auto">
