@@ -7,8 +7,9 @@ import {
   FileText,
   MessageCircle,
   FolderKanban,
+  Lock,
 } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 
 const menu = [
   {
@@ -35,6 +36,47 @@ const menu = [
 
 export default function AdminDashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const [authenticated, setAuthenticated] = useState(false);
+  const [password, setPassword] = useState("");
+  const ADMIN_PASSWORD = "budibudian_17";
+
+  const handleAuth = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === ADMIN_PASSWORD) {
+      setAuthenticated(true);
+    } else {
+      alert("Password salah!");
+    }
+  };
+
+  if (!authenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-950">
+        <form
+          onSubmit={handleAuth}
+          className="bg-gray-900 p-8 rounded-2xl shadow-xl flex flex-col items-center gap-4 border border-gray-800 w-full max-w-xs"
+        >
+          <Lock className="w-8 h-8 text-gray-400 mb-2" />
+          <h2 className="text-xl font-bold text-white mb-2">Admin Login</h2>
+          <input
+            type="password"
+            className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white focus:outline-none border border-gray-700"
+            placeholder="Password admin..."
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            autoFocus
+          />
+          <button
+            type="submit"
+            className="w-full bg-black text-white rounded-lg py-2 font-semibold hover:bg-gray-800 transition-colors mt-2"
+          >
+            Masuk
+          </button>
+        </form>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex bg-gray-950">
       {/* Sidebar */}

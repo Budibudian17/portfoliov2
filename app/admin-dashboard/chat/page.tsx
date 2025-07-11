@@ -10,6 +10,8 @@ import {
   addDoc,
   serverTimestamp,
   where,
+  deleteDoc,
+  doc,
 } from "firebase/firestore";
 import { Send, Users, MessageCircle } from "lucide-react";
 
@@ -64,6 +66,28 @@ export default function AdminChatPage() {
     });
     return () => unsub();
   }, [selectedUserId]);
+
+  // Auto-delete chat older than 15 days
+  useEffect(() => {
+    const q = query(collection(db, "chats"));
+    const unsub = onSnapshot(q, async (snapshot) => {
+      const now = Date.now();
+      const FIFTEEN_DAYS = 15 * 24 * 60 * 60 * 1000;
+      for (const docSnap of snapshot.docs) {
+        const data = docSnap.data();
+        let createdAt = data.createdAt;
+        if (createdAt && createdAt.toMillis) {
+          createdAt = createdAt.toMillis();
+        } else if (createdAt && createdAt.seconds) {
+          createdAt = createdAt.seconds * 1000;
+        }
+        if (createdAt && now - createdAt > FIFTEEN_DAYS) {
+          await deleteDoc(doc(db, "chats", docSnap.id));
+        }
+      }
+    });
+    return () => unsub();
+  }, []);
 
   // Scroll to bottom on new message
   useEffect(() => {
