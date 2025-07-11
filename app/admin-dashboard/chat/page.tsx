@@ -22,23 +22,26 @@ interface ChatMessage {
 }
 
 export default function AdminChatPage() {
-  const [userIds, setUserIds] = useState<string[]>([]);
+  const [users, setUsers] = useState<{ userId: string, username?: string }[]>([]);
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Listen to all userIds
+  // Listen to all users (userId + username)
   useEffect(() => {
     const q = query(collection(db, "chats"));
     const unsub = onSnapshot(q, (snapshot) => {
-      const ids = new Set<string>();
+      const userMap = new Map();
       snapshot.docs.forEach((doc) => {
-        const data = doc.data() as ChatMessage;
-        if (data.userId) ids.add(data.userId);
+        const data = doc.data();
+        if (data.userId) {
+          // Simpan username terbaru jika ada
+          userMap.set(data.userId, data.username || data.userId);
+        }
       });
-      setUserIds(Array.from(ids));
+      setUsers(Array.from(userMap, ([userId, username]) => ({ userId, username })));
     });
     return () => unsub();
   }, []);
@@ -96,20 +99,20 @@ export default function AdminChatPage() {
           <span className="text-white font-bold text-lg">User Chat</span>
         </div>
         <div className="flex-1 overflow-y-auto space-y-2">
-          {userIds.length === 0 && (
+          {users.length === 0 && (
             <div className="text-gray-500 text-sm">Belum ada user yang chat.</div>
           )}
-          {userIds.map((id) => (
+          {users.map((user) => (
             <button
-              key={id}
-              onClick={() => setSelectedUserId(id)}
+              key={user.userId}
+              onClick={() => setSelectedUserId(user.userId)}
               className={`w-full text-left px-4 py-2 rounded-lg font-mono text-xs break-all transition-colors border border-gray-800 ${
-                selectedUserId === id
+                selectedUserId === user.userId
                   ? "bg-black text-white border-white"
                   : "bg-gray-800 text-gray-300 hover:bg-gray-700"
               }`}
             >
-              {id}
+              {user.username}
             </button>
           ))}
         </div>
@@ -127,7 +130,7 @@ export default function AdminChatPage() {
             {/* Header */}
             <div className="flex items-center gap-2 px-6 py-4 border-b border-gray-800 bg-black/80 rounded-t-2xl">
               <Users className="w-5 h-5 text-gray-400" />
-              <span className="font-bold text-white text-base font-mono">{selectedUserId}</span>
+              <span className="font-bold text-white text-base font-mono">{users.find(u => u.userId === selectedUserId)?.username || selectedUserId}</span>
             </div>
             {/* Messages */}
             <div className="flex-1 px-6 py-4 space-y-2 overflow-y-auto bg-gray-900">
