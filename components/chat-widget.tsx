@@ -294,13 +294,14 @@ export default function ChatWidget() {
         <div
           className={`
             fixed z-50
+            bg-gray-900 rounded-2xl
             ${isFullscreen 
               ? 'inset-0 flex items-center justify-center bg-black/80' // overlay effect
-              : 'bottom-4 right-2 w-[95vw] min-h-[320px] max-w-[98vw] sm:bottom-6 sm:right-6 sm:w-96 sm:min-h-[320px] rounded-2xl'
+              : 'bottom-4 right-2 w-[95vw] min-h-[320px] max-w-[98vw] sm:bottom-6 sm:right-6 sm:w-96 sm:min-h-[320px]'
             }
-            text-white shadow-2xl flex-col overflow-hidden animate-fade-in-up border border-gray-800
+            text-white shadow-2xl overflow-hidden animate-fade-in-up border border-gray-800
           `}
-          style={{ borderRadius: isFullscreen ? 24 : undefined }}
+          style={{ borderRadius: 24 }}
         >
           <div
             className={
@@ -312,8 +313,8 @@ export default function ChatWidget() {
             <div
               className={
                 isFullscreen
-                  ? 'bg-gray-900 rounded-2xl w-full max-w-2xl h-auto flex flex-col shadow-2xl border border-gray-800 mx-auto'
-                  : 'w-full h-auto flex flex-col'
+                  ? 'w-full max-w-2xl h-[90vh] flex flex-col mx-auto'
+                  : 'w-full h-[320px] flex flex-col'
               }
             >
               {/* Header */}
@@ -340,7 +341,7 @@ export default function ChatWidget() {
               </div>
 
               {/* Messages */}
-              <div className={`px-4 py-3 space-y-2 overflow-y-auto bg-gray-900 ${isFullscreen ? 'max-h-[70vh]' : 'max-h-[40vh]'}`} style={{ minHeight: '80px' }}>
+              <div className={`flex-1 px-4 py-3 space-y-2 overflow-y-auto ${isFullscreen ? 'max-h-[70vh]' : 'max-h-[320px]'}`} style={{ minHeight: '80px' }}>
                 {messages.length === 0 && (
                   <div className="text-gray-500 text-sm text-center mt-8">Mulai chat, pesanmu akan muncul di sini.</div>
                 )}
@@ -459,7 +460,7 @@ export default function ChatWidget() {
               )}
 
               {/* Input */}
-              <div className="flex items-center gap-2 px-4 py-3 bg-gray-900 border-t border-gray-800">
+              <div className="flex items-center gap-2 px-4 py-3 border-t border-gray-800 bg-gray-900">
                 <input
                   type="text"
                   className="flex-1 bg-gray-800 text-white rounded-xl px-3 py-2 text-sm focus:outline-none placeholder-gray-400"
