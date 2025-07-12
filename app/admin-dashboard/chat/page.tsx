@@ -13,6 +13,7 @@ import {
   deleteDoc,
   doc,
   updateDoc,
+  getDocs,
 } from "firebase/firestore";
 import { Send, Users, MessageCircle, Reply, Edit, Trash2, X } from "lucide-react";
 
@@ -27,10 +28,16 @@ interface ChatMessage {
     text: string;
     username?: string;
   };
+  read?: boolean; // Added read field
 }
 
 export default function AdminChatPage() {
-  const [users, setUsers] = useState<{ userId: string, username?: string }[]>([]);
+  const [users, setUsers] = useState<{
+    userId: string,
+    username?: string,
+    lastMessageAt?: number,
+    unreadCount?: number
+  }[]>([]);
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
@@ -41,23 +48,64 @@ export default function AdminChatPage() {
   const [editingMessage, setEditingMessage] = useState<string | null>(null);
   const [editText, setEditText] = useState("");
   const [showMenu, setShowMenu] = useState<string | null>(null);
+  const [selectingUser, setSelectingUser] = useState(false);
 
-  // Listen to all users (userId + username)
+  // Listen to all users (userId + username + lastMessageAt + unreadCount)
   useEffect(() => {
     const q = query(collection(db, "chats"));
     const unsub = onSnapshot(q, (snapshot) => {
       const userMap = new Map();
+      const lastMsgMap = new Map();
+      const unreadMap = new Map();
       snapshot.docs.forEach((doc) => {
         const data = doc.data();
         if (data.userId) {
           // Simpan username terbaru jika ada
           userMap.set(data.userId, data.username || data.userId);
+          // Simpan waktu pesan terakhir
+          const createdAt = data.createdAt && data.createdAt.toMillis ? data.createdAt.toMillis() : (data.createdAt?.seconds ? data.createdAt.seconds * 1000 : 0);
+          if (!lastMsgMap.has(data.userId) || createdAt > lastMsgMap.get(data.userId)) {
+            lastMsgMap.set(data.userId, createdAt);
+          }
+          // Hanya hitung pesan dari user yang belum dibaca admin (read === false atau read === undefined)
+          if (data.sender === "user" && (data.read === false || data.read === undefined)) {
+            unreadMap.set(data.userId, (unreadMap.get(data.userId) || 0) + 1);
+          }
         }
       });
-      setUsers(Array.from(userMap, ([userId, username]) => ({ userId, username })));
+      // Gabungkan dan urutkan user
+      const userArr = Array.from(userMap, ([userId, username]) => ({
+        userId,
+        username,
+        lastMessageAt: lastMsgMap.get(userId) || 0,
+        unreadCount: unreadMap.get(userId) || 0
+      }));
+      userArr.sort((a, b) => b.lastMessageAt - a.lastMessageAt);
+      setUsers(userArr);
+      setSelectingUser(false); // reset loading setelah snapshot update
     });
     return () => unsub();
   }, []);
+
+  // Saat klik user, tandai semua pesan user yang belum dibaca sebagai read sebelum setSelectedUserId
+  const handleSelectUser = async (userId: string) => {
+    setSelectingUser(true);
+    // Ambil semua pesan dari user (sender: 'user')
+    const allUserMsgQ = query(
+      collection(db, "chats"),
+      where("userId", "==", userId),
+      where("sender", "==", "user")
+    );
+    const allUserMsgSnap = await getDocs(allUserMsgQ);
+    for (const docSnap of allUserMsgSnap.docs) {
+      const data = docSnap.data();
+      if (data.read !== true) {
+        await updateDoc(doc(db, "chats", docSnap.id), { read: true });
+      }
+    }
+    setSelectedUserId(userId);
+    // setSelectingUser(false) akan otomatis direset oleh snapshot onSnapshot
+  };
 
   // Listen to messages for selected user
   useEffect(() => {
@@ -75,6 +123,20 @@ export default function AdminChatPage() {
         }))
       );
     });
+    // Tandai semua pesan user yang belum dibaca sebagai read
+    const markRead = async () => {
+      const unreadQ = query(
+        collection(db, "chats"),
+        where("userId", "==", selectedUserId),
+        where("sender", "==", "user"),
+        where("read", "==", false)
+      );
+      const unreadSnap = await getDocs(unreadQ);
+      for (const docSnap of unreadSnap.docs) {
+        await updateDoc(doc(db, "chats", docSnap.id), { read: true });
+      }
+    };
+    markRead();
     return () => unsub();
   }, [selectedUserId]);
 
@@ -225,6 +287,17 @@ export default function AdminChatPage() {
     if (e.key === "Enter") sendMessage();
   };
 
+  // Tambah fungsi hapus semua chat user
+  const handleDeleteUserChat = async (userId: string) => {
+    if (!window.confirm("Hapus semua chat user ini?")) return;
+    const q = query(collection(db, "chats"), where("userId", "==", userId));
+    const snap = await getDocs(q);
+    for (const docSnap of snap.docs) {
+      await deleteDoc(doc(db, "chats", docSnap.id));
+    }
+    if (selectedUserId === userId) setSelectedUserId(null);
+  };
+
   return (
     <div className="min-h-[70vh] flex flex-col md:flex-row">
       {/* Sidebar user list */}
@@ -238,17 +311,29 @@ export default function AdminChatPage() {
             <div className="text-gray-500 text-sm">Belum ada user yang chat.</div>
           )}
           {users.map((user) => (
-            <button
-              key={user.userId}
-              onClick={() => setSelectedUserId(user.userId)}
-              className={`w-full text-left px-4 py-2 rounded-lg font-mono text-xs break-all transition-colors border border-gray-800 ${
-                selectedUserId === user.userId
-                  ? "bg-black text-white border-white"
-                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-              }`}
-            >
-              {user.username}
-            </button>
+            <div key={user.userId} className="relative group flex items-center">
+              <button
+                onClick={() => !selectingUser && handleSelectUser(user.userId)}
+                disabled={selectingUser}
+                className={`w-full text-left px-4 py-2 rounded-lg font-mono text-xs break-all transition-colors border border-gray-800 flex items-center gap-2 pr-10
+                  ${selectedUserId === user.userId
+                    ? "bg-black text-white border-white"
+                    : "bg-gray-800 text-gray-300 hover:bg-gray-700"}
+                `}
+              >
+                <span className="flex-1 truncate">{user.username}</span>
+                {typeof user.unreadCount === 'number' && user.unreadCount > 0 && (
+                  <span className="ml-2 bg-red-600 text-white text-xs font-bold rounded-full px-2 py-0.5">{user.unreadCount}</span>
+                )}
+              </button>
+              <button
+                onClick={() => handleDeleteUserChat(user.userId)}
+                className="absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-gray-400 hover:text-red-500"
+                title="Hapus semua chat user"
+              >
+                <Trash2 className="w-4 h-4" />
+              </button>
+            </div>
           ))}
         </div>
       </div>
