@@ -155,7 +155,15 @@ export default function ChatWidget() {
       )}
       {/* Chat Window */}
       {!isAdmin && open && (
-        <div className="fixed z-50 bottom-6 right-6 w-80 max-w-[95vw] bg-gray-900 text-white rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-fade-in-up border border-gray-800">
+        <div
+          className="
+            fixed z-50 bottom-4 right-2
+            w-[95vw] min-h-[320px] max-w-[98vw]
+            sm:bottom-6 sm:right-6
+            sm:w-96 sm:min-h-[480px]
+            bg-gray-900 text-white rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-fade-in-up border border-gray-800
+          "
+        >
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 bg-black/80 border-b border-gray-800">
             <div className="font-bold text-lg flex items-center gap-2">
@@ -171,7 +179,7 @@ export default function ChatWidget() {
           </div>
 
           {/* Messages */}
-          <div className="flex-1 px-4 py-3 space-y-2 overflow-y-auto bg-gray-900" style={{ maxHeight: 320 }}>
+          <div className="flex-1 px-4 py-3 space-y-2 overflow-y-auto bg-gray-900" style={{ maxHeight: 520 }}>
             {messages.length === 0 && (
               <div className="text-gray-500 text-sm text-center mt-8">Mulai chat, pesanmu akan muncul di sini.</div>
             )}

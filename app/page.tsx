@@ -27,6 +27,7 @@ import { LanguageSwitcher } from "@/components/language-switcher"
 import { GitHubContributions } from "@/components/github-contributions"
 import dynamic from "next/dynamic"
 import type { LoadingScreenProps } from "@/components/loading-screen"
+import Navbar from "@/components/navbar";
 const LoadingScreen = dynamic<LoadingScreenProps>(
   () => import("@/components/loading-screen").then(mod => mod.LoadingScreen),
   { ssr: false }
@@ -103,6 +104,7 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      <Navbar />
       {/* Audio Player & Control - Bottom Left */}
       <audio
         ref={audioRef}
@@ -124,35 +126,6 @@ export default function Portfolio() {
           {isMuted ? <VolumeX className="h-5 w-5 text-white" /> : <Volume2 className="h-5 w-5 text-white" />}
         </button>
       )}
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-black/80 backdrop-blur-md border-b border-gray-800 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="text-lg sm:text-xl font-bold text-white">HILMI PORTFOLIO</div>
-            <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-              <Link href="/" className="hover:text-gray-300 transition-colors text-sm uppercase tracking-wider">
-                {t("nav.home")}
-              </Link>
-              <Link href="/projects" className="hover:text-gray-300 transition-colors text-sm uppercase tracking-wider">
-                {t("nav.project")}
-              </Link>
-              <Link href="/blog" className="hover:text-gray-300 transition-colors text-sm uppercase tracking-wider">
-                {t("nav.blog")}
-              </Link>
-              <LanguageSwitcher />
-            </div>
-            {/* Mobile menu */}
-            <div className="md:hidden flex items-center space-x-2">
-              <LanguageSwitcher />
-              <Button variant="ghost" size="sm" className="text-white">
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </nav>
 
       {/* Hero Section with Parallax */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
