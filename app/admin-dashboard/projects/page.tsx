@@ -20,14 +20,17 @@ interface Project {
   title: string;
   description: string;
   image?: string;
-  projectLink: string;
+  projectLink?: string;
   githubLink?: string;
+  status: "published" | "in-progress" | "planned";
   createdAt?: any;
 }
 
 export default function AdminProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
-  const [form, setForm] = useState<Partial<Project>>({});
+  const [form, setForm] = useState<Partial<Project>>({
+    status: "published"
+  });
   const [editingId, setEditingId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -44,7 +47,7 @@ export default function AdminProjectsPage() {
   }, []);
 
   // Handle form change
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   };
 
@@ -52,8 +55,12 @@ export default function AdminProjectsPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    if (!form.title || !form.description || !form.projectLink) {
-      setError("Judul, deskripsi, dan link project wajib diisi.");
+    if (!form.title || !form.description) {
+      setError("Judul dan deskripsi wajib diisi.");
+      return;
+    }
+    if (form.status === "published" && !form.projectLink) {
+      setError("Link project wajib diisi untuk project yang sudah publish.");
       return;
     }
     setLoading(true);
@@ -83,8 +90,9 @@ export default function AdminProjectsPage() {
       title: project.title,
       description: project.description,
       image: project.image || "",
-      projectLink: project.projectLink,
+      projectLink: project.projectLink || "",
       githubLink: project.githubLink || "",
+      status: project.status || "published",
     });
   };
 
@@ -103,7 +111,7 @@ export default function AdminProjectsPage() {
   // Handle cancel
   const handleCancel = () => {
     setEditingId(null);
-    setForm({});
+    setForm({ status: "published" });
     setError(null);
   };
 
@@ -154,15 +162,30 @@ export default function AdminProjectsPage() {
           )}
         </div>
         <div className="flex flex-col gap-2">
-          <label className="text-sm font-bold text-gray-200">Link Project (wajib)</label>
+          <label className="text-sm font-bold text-gray-200">Status Project</label>
+          <select
+            name="status"
+            className="bg-gray-800 rounded-lg px-4 py-2 text-white focus:outline-none"
+            value={form.status || "published"}
+            onChange={handleChange}
+          >
+            <option value="published">Published (Sudah Live)</option>
+            <option value="in-progress">In Progress (Sedang Dikerjakan)</option>
+            <option value="planned">Planned (Rencana)</option>
+          </select>
+        </div>
+        <div className="flex flex-col gap-2">
+          <label className="text-sm font-bold text-gray-200">
+            Link Project {form.status === "published" ? "(wajib)" : "(opsional)"}
+          </label>
           <input
             type="url"
             name="projectLink"
             className="bg-gray-800 rounded-lg px-4 py-2 text-white focus:outline-none"
-            placeholder="https://project-demo.com"
+            placeholder={form.status === "published" ? "https://project-demo.com" : "https://project-demo.com (opsional)"}
             value={form.projectLink || ""}
             onChange={handleChange}
-            required
+            required={form.status === "published"}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -211,20 +234,35 @@ export default function AdminProjectsPage() {
                 className="flex flex-col sm:flex-row sm:items-center gap-4 bg-gray-800 rounded-xl p-4 border border-gray-700"
               >
                 <div className="flex-1">
-                  <div className="font-bold text-lg text-white mb-1">{project.title}</div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <div className="font-bold text-lg text-white">{project.title}</div>
+                    <span className={`px-2 py-1 text-xs rounded-full font-bold ${
+                      project.status === "published" ? "bg-green-600 text-white" :
+                      project.status === "in-progress" ? "bg-yellow-600 text-white" :
+                      "bg-gray-600 text-white"
+                    }`}>
+                      {project.status === "published" ? "Published" :
+                       project.status === "in-progress" ? "In Progress" :
+                       "Planned"}
+                    </span>
+                  </div>
                   <div className="text-gray-300 mb-2 text-sm whitespace-pre-line">{project.description}</div>
                   {project.image && (
                     <img src={project.image} alt={project.title} className="w-full max-w-xs rounded-lg mb-2 border border-gray-700" />
                   )}
                   <div className="flex flex-wrap gap-2 mt-2">
-                    <a
-                      href={project.projectLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-400 underline font-bold"
-                    >
-                      Lihat Project
-                    </a>
+                    {project.projectLink ? (
+                      <a
+                        href={project.projectLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 underline font-bold"
+                      >
+                        Lihat Project
+                      </a>
+                    ) : (
+                      <span className="text-gray-500 font-bold">Belum ada link</span>
+                    )}
                     {project.githubLink && (
                       <a
                         href={project.githubLink}

@@ -14,8 +14,9 @@ interface Project {
   title: string;
   description: string;
   image?: string;
-  projectLink: string;
+  projectLink?: string;
   githubLink?: string;
+  status?: "published" | "in-progress" | "planned";
   createdAt?: any;
   content?: string;
 }
@@ -35,6 +36,18 @@ export default function ProjectsPage() {
     });
     return () => unsub();
   }, [])
+
+  // Sort projects by status priority and createdAt
+  const statusPriority = { published: 0, "in-progress": 1, planned: 2 };
+  const sortedProjects = [...projects].sort((a, b) => {
+    const aPriority = statusPriority[a.status || "planned"];
+    const bPriority = statusPriority[b.status || "planned"];
+    if (aPriority !== bPriority) return aPriority - bPriority;
+    // If same status, sort by createdAt desc
+    const aDate = a.createdAt && typeof a.createdAt.toDate === "function" ? a.createdAt.toDate() : 0;
+    const bDate = b.createdAt && typeof b.createdAt.toDate === "function" ? b.createdAt.toDate() : 0;
+    return bDate - aDate;
+  });
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
@@ -67,13 +80,24 @@ export default function ProjectsPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {loading && <div className="text-gray-400 text-center col-span-full">{t("projects.page.loading")}</div>}
           {!loading && projects.length === 0 && <div className="text-gray-500 text-center col-span-full">{t("projects.page.noProjects")}</div>}
-          {!loading && projects.map((project) => (
+          {!loading && sortedProjects.map((project) => (
             <div key={project.id} className="bg-gray-900 border border-gray-800 rounded-2xl shadow-lg overflow-hidden group flex flex-col focus:outline-none transition-all hover:border-blue-500 hover:shadow-blue-900/30">
               <div className="relative h-48 overflow-hidden">
                 {project.image ? (
                   <Image src={project.image} alt={project.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300 opacity-90" />
                 ) : (
                   <div className="w-full h-full bg-gray-800 flex items-center justify-center text-gray-500 text-xs">No Image</div>
+                )}
+                {project.status && (
+                  <span className={`absolute top-3 right-3 px-3 py-1 text-xs font-semibold rounded-full shadow-md z-10 ${
+                    project.status === "published" ? "bg-green-600" :
+                    project.status === "in-progress" ? "bg-yellow-600" :
+                    "bg-gray-600"
+                  } text-white bg-opacity-90`}>
+                    {project.status === "published" ? "Live" :
+                     project.status === "in-progress" ? "Development" :
+                     "Idea"}
+                  </span>
                 )}
               </div>
               <div className="p-5 flex-1 flex flex-col justify-between">

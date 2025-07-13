@@ -14,8 +14,9 @@ interface Project {
   title: string;
   description: string;
   image?: string;
-  projectLink: string;
+  projectLink?: string;
   githubLink?: string;
+  status?: "published" | "in-progress" | "planned";
   createdAt?: any;
   content?: string;
 }
@@ -101,7 +102,21 @@ export default function ProjectDetailPage() {
         </div>
 
         <div className="flex flex-wrap gap-4">
-          {project.projectLink && (
+          {project.status && (
+            <div className="w-full mb-4">
+              <span className={`px-3 py-1 text-sm rounded-full font-bold ${
+                project.status === "published" ? "bg-green-600 text-white" :
+                project.status === "in-progress" ? "bg-yellow-600 text-white" :
+                "bg-gray-600 text-white"
+              }`}>
+                {project.status === "published" ? "Published" :
+                 project.status === "in-progress" ? "In Progress" :
+                 "Planned"}
+              </span>
+            </div>
+          )}
+          
+          {project.projectLink ? (
             <Link
               href={project.projectLink}
               target="_blank"
@@ -111,6 +126,11 @@ export default function ProjectDetailPage() {
               <ExternalLink className="w-4 h-4" />
               {t("projects.page.viewLiveProject")}
             </Link>
+          ) : (
+            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gray-600 text-gray-400 bg-gray-800 cursor-not-allowed">
+              <ExternalLink className="w-4 h-4" />
+              Coming Soon
+            </div>
           )}
           
           {project.githubLink && (
