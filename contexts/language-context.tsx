@@ -95,7 +95,7 @@ const translations = {
     "projects.title": "FEATURED",
     "projects.title2": "PROJECTS",
     "projects.subtitle": "Here are some of my recent projects that showcase my skills and creativity",
-    "projects.demo": "Live Demo",
+    "projects.demo": "Website",
     "projects.code": "View Code",
     "projects.viewMore": "View More",
 
@@ -326,7 +326,7 @@ const translations = {
     "projects.title": "PROYEK",
     "projects.title2": "UNGGULAN",
     "projects.subtitle": "Berikut adalah beberapa proyek terbaru saya yang menunjukkan keahlian dan kreativitas",
-    "projects.demo": "Demo Langsung",
+    "projects.demo": "Website",
     "projects.code": "Lihat Kode",
     "projects.viewMore": "Lihat Selengkapnya",
 
@@ -556,7 +556,7 @@ const translations = {
     "projects.title": "注目の",
     "projects.title2": "プロジェクト",
     "projects.subtitle": "私のスキルと創造性を示す最近のプロジェクトをご紹介します",
-    "projects.demo": "ライブデモ",
+    "projects.demo": "ウェブサイト",
     "projects.code": "コードを見る",
     "projects.viewMore": "もっと見る",
 

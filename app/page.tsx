@@ -299,16 +299,11 @@ export default function Portfolio() {
                   </Badge>
                 </div>
                 <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
-                  <Button className="bg-black text-white hover:bg-gray-800 w-full sm:w-auto">
-                    <ExternalLink className="h-4 w-4 mr-2" />
-                    {t("projects.demo")}
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="border-black text-black hover:bg-black hover:text-white bg-transparent w-full sm:w-auto"
-                  >
-                    <Github className="h-4 w-4 mr-2" />
-                    {t("projects.code")}
+                  <Button asChild className="bg-black text-white hover:bg-gray-800 w-full sm:w-auto">
+                    <a href="https://ciptalife.id/" target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="h-4 w-4 mr-2" />
+                      {t("projects.demo")}
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -377,16 +372,11 @@ export default function Portfolio() {
                   </Badge>
                 </div>
                 <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
-                  <Button className="bg-black text-white hover:bg-gray-800 w-full sm:w-auto">
-                    <ExternalLink className="h-4 w-4 mr-2" />
-                    {t("projects.demo")}
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="border-black text-black hover:bg-black hover:text-white bg-transparent w-full sm:w-auto"
-                  >
-                    <Github className="h-4 w-4 mr-2" />
-                    {t("projects.code")}
+                  <Button asChild className="bg-black text-white hover:bg-gray-800 w-full sm:w-auto">
+                    <a href="https://onebox.co.id/" target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="h-4 w-4 mr-2" />
+                      {t("projects.demo")}
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -419,16 +409,20 @@ export default function Portfolio() {
                   </Badge>
                 </div>
                 <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
-                  <Button className="bg-black text-white hover:bg-gray-800 w-full sm:w-auto">
-                    <ExternalLink className="h-4 w-4 mr-2" />
-                    {t("projects.demo")}
+                  <Button asChild className="bg-black text-white hover:bg-gray-800 w-full sm:w-auto">
+                    <a href="https://hilmiportfoliodev.vercel.app/" target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="h-4 w-4 mr-2" />
+                      {t("projects.demo")}
+                    </a>
                   </Button>
-                  <Button
+                  <Button asChild
                     variant="outline"
                     className="border-black text-black hover:bg-black hover:text-white bg-transparent w-full sm:w-auto"
                   >
-                    <Github className="h-4 w-4 mr-2" />
-                    {t("projects.code")}
+                    <a href="https://github.com/Budibudian17/portfoliov2" target="_blank" rel="noopener noreferrer">
+                      <Github className="h-4 w-4 mr-2" />
+                      {t("projects.code")}
+                    </a>
                   </Button>
                 </div>
               </div>

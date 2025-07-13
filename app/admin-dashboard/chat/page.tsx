@@ -312,12 +312,12 @@ export default function AdminChatPage() {
           )}
           {users.map((user) => (
             <div key={user.userId} className="relative group flex items-center">
-              <button
+            <button
                 onClick={() => !selectingUser && handleSelectUser(user.userId)}
                 disabled={selectingUser}
                 className={`w-full text-left px-4 py-2 rounded-lg font-mono text-xs break-all transition-colors border border-gray-800 flex items-center gap-2 pr-10
                   ${selectedUserId === user.userId
-                    ? "bg-black text-white border-white"
+                  ? "bg-black text-white border-white"
                     : "bg-gray-800 text-gray-300 hover:bg-gray-700"}
                 `}
               >
@@ -332,7 +332,7 @@ export default function AdminChatPage() {
                 title="Hapus semua chat user"
               >
                 <Trash2 className="w-4 h-4" />
-              </button>
+            </button>
             </div>
           ))}
         </div>

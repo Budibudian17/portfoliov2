@@ -144,8 +144,8 @@ export default function BlogPage() {
                   <p className="text-sm text-gray-300 mb-4 line-clamp-3">{post.summary}</p>
                 </div>
                 <div className="flex items-center gap-2 mt-auto">
-                  <Image src={"/img/avatar.png"} alt={post.author} width={28} height={28} className="w-7 h-7 rounded-full border border-gray-700" />
-                  <span className="text-xs text-gray-400">{post.author} &bull; {new Date(post.date).toLocaleDateString()}</span>
+                  <Image src={"/img/avatar.png"} alt="Hilmi" width={28} height={28} className="w-7 h-7 rounded-full border border-gray-700" />
+                  <span className="text-xs text-gray-400">Hilmi &bull; {new Date(post.date).toLocaleDateString()}</span>
                 </div>
                 <Link
                   href={`/blog/${post.id}`}

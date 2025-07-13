@@ -73,19 +73,21 @@ export default function BlogDetailPage() {
                 </Link>
         <h1 className="text-3xl sm:text-4xl font-black mb-4">{blog.title}</h1>
         <div className="flex items-center gap-3 text-xs text-gray-400 mb-6">
-          <Image src={"/img/avatar.png"} alt={blog.author} width={28} height={28} className="w-7 h-7 rounded-full border border-gray-700" />
-          <span>{blog.author}</span>
+          <Image src={"/img/avatar.png"} alt="Hilmi" width={28} height={28} className="w-7 h-7 rounded-full border border-gray-700" />
+          <span>Hilmi</span>
           <span>•</span>
           <span>{new Date(blog.date).toLocaleDateString()}</span>
           <span>•</span>
           <span>{blog.category}</span>
-              </div>
+        </div>
         {blog.thumbnail && (
           <div className="relative w-full h-64 mb-8 rounded-2xl overflow-hidden">
             <Image src={blog.thumbnail} alt={blog.title} fill className="object-cover" />
               </div>
         )}
-        <div className="prose prose-invert max-w-none text-lg mt-8" dangerouslySetInnerHTML={{ __html: blog.content }} />
+        <div className="prose prose-invert max-w-none text-lg mt-8">
+          <div className="text-gray-300 whitespace-pre-line leading-relaxed">{blog.content}</div>
+        </div>
               </div>
               </div>
   );
