@@ -7,6 +7,7 @@ import { doc, getDoc } from "firebase/firestore";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { useLanguage } from "@/contexts/language-context";
 
 interface BlogPost {
   id: string;
@@ -20,6 +21,7 @@ interface BlogPost {
 }
 
 export default function BlogDetailPage() {
+  const { t } = useLanguage();
   const params = useParams();
   const router = useRouter();
   const id = params.slug as string;
@@ -69,8 +71,8 @@ export default function BlogDetailPage() {
           style={{ width: 'fit-content' }}
         >
           <ArrowLeft className="w-4 h-4" />
-          Kembali ke Blog
-                </Link>
+          {t("blog.page.backToBlog")}
+        </Link>
         <h1 className="text-3xl sm:text-4xl font-black mb-4">{blog.title}</h1>
         <div className="flex items-center gap-3 text-xs text-gray-400 mb-6">
           <Image src={"/img/avatar.png"} alt="Hilmi" width={28} height={28} className="w-7 h-7 rounded-full border border-gray-700" />

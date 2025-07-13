@@ -3,8 +3,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useEffect } from "react";
+import { useLanguage } from "@/contexts/language-context";
 
 export default function Navbar() {
+  const { t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
 
@@ -26,9 +28,9 @@ export default function Navbar() {
           <Link href="/" className="text-lg sm:text-xl font-bold text-white">HILMI PORTFOLIO</Link>
           {/* Desktop menu */}
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-            <Link href="/" className="hover:text-gray-300 transition-colors text-sm uppercase tracking-wider">HOME</Link>
-            <Link href="/projects" className="hover:text-gray-300 transition-colors text-sm uppercase tracking-wider">PROJECT</Link>
-            <Link href="/blog" className="hover:text-gray-300 transition-colors text-sm uppercase tracking-wider">BLOG</Link>
+            <Link href="/" className="hover:text-gray-300 transition-colors text-sm uppercase tracking-wider">{t("nav.home")}</Link>
+            <Link href="/projects" className="hover:text-gray-300 transition-colors text-sm uppercase tracking-wider">{t("nav.project")}</Link>
+            <Link href="/blog" className="hover:text-gray-300 transition-colors text-sm uppercase tracking-wider">{t("nav.blog")}</Link>
             <LanguageSwitcher />
           </div>
           {/* Mobile menu button */}
@@ -70,9 +72,9 @@ export default function Navbar() {
               </svg>
             </button>
             <nav className="flex flex-col items-end gap-8 w-full mt-8">
-              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-bold text-white">HOME</Link>
-              <Link href="/projects" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-bold text-white">PROJECT</Link>
-              <Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-bold text-white">BLOG</Link>
+              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-bold text-white">{t("nav.home")}</Link>
+              <Link href="/projects" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-bold text-white">{t("nav.project")}</Link>
+              <Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-bold text-white">{t("nav.blog")}</Link>
             </nav>
           </div>
         </>

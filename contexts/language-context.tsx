@@ -242,6 +242,27 @@ const translations = {
     "blog.latestPosts": "Latest Posts",
     "blog.categories": "Categories",
     "blog.popularTags": "Popular Tags",
+    
+    // Project Page
+    "projects.page.title": "My Projects",
+    "projects.page.subtitle": "A collection of my featured and personal projects. Explore more of my work below!",
+    "projects.page.allProjects": "All Projects",
+    "projects.page.readMore": "Read More",
+    "projects.page.backToProjects": "Back to Projects",
+    "projects.page.projectDescription": "Project Description",
+    "projects.page.viewLiveProject": "View Live Project",
+    "projects.page.viewOnGitHub": "View on GitHub",
+    "projects.page.noProjects": "No projects yet.",
+    "projects.page.loading": "Loading projects...",
+    
+    // Blog Page
+    "blog.page.title": "Blog",
+    "blog.page.subtitle": "Latest articles, tips, and coding notes",
+    "blog.page.allArticles": "All Articles",
+    "blog.page.readMore": "Read More",
+    "blog.page.backToBlog": "Back to Blog",
+    "blog.page.noPosts": "No blog posts yet.",
+    "blog.page.loading": "Loading blog posts...",
   },
 
   id: {
@@ -472,6 +493,27 @@ const translations = {
     "blog.latestPosts": "Artikel Terbaru",
     "blog.categories": "Kategori",
     "blog.popularTags": "Tag Populer",
+    
+    // Project Page
+    "projects.page.title": "Proyek Saya",
+    "projects.page.subtitle": "Kumpulan proyek unggulan dan pribadi saya. Jelajahi lebih banyak karya saya di bawah!",
+    "projects.page.allProjects": "Semua Proyek",
+    "projects.page.readMore": "Baca Selengkapnya",
+    "projects.page.backToProjects": "Kembali ke Proyek",
+    "projects.page.projectDescription": "Deskripsi Proyek",
+    "projects.page.viewLiveProject": "Lihat Proyek Live",
+    "projects.page.viewOnGitHub": "Lihat di GitHub",
+    "projects.page.noProjects": "Belum ada proyek.",
+    "projects.page.loading": "Memuat proyek...",
+    
+    // Blog Page
+    "blog.page.title": "Blog",
+    "blog.page.subtitle": "Artikel terbaru, tips, dan catatan coding",
+    "blog.page.allArticles": "Semua Artikel",
+    "blog.page.readMore": "Baca Selengkapnya",
+    "blog.page.backToBlog": "Kembali ke Blog",
+    "blog.page.noPosts": "Belum ada blog post.",
+    "blog.page.loading": "Memuat blog posts...",
   },
 
   jp: {
@@ -703,6 +745,27 @@ const translations = {
     "blog.latestPosts": "最新記事",
     "blog.categories": "カテゴリー",
     "blog.popularTags": "人気タグ",
+    
+    // Project Page
+    "projects.page.title": "私のプロジェクト",
+    "projects.page.subtitle": "私の注目のプロジェクトと個人プロジェクトのコレクション。下記でより多くの作品をご覧ください！",
+    "projects.page.allProjects": "すべてのプロジェクト",
+    "projects.page.readMore": "続きを読む",
+    "projects.page.backToProjects": "プロジェクトに戻る",
+    "projects.page.projectDescription": "プロジェクトの説明",
+    "projects.page.viewLiveProject": "ライブプロジェクトを見る",
+    "projects.page.viewOnGitHub": "GitHubで見る",
+    "projects.page.noProjects": "まだプロジェクトがありません。",
+    "projects.page.loading": "プロジェクトを読み込み中...",
+    
+    // Blog Page
+    "blog.page.title": "ブログ",
+    "blog.page.subtitle": "最新の記事、ヒント、コーディングノート",
+    "blog.page.allArticles": "すべての記事",
+    "blog.page.readMore": "続きを読む",
+    "blog.page.backToBlog": "ブログに戻る",
+    "blog.page.noPosts": "まだブログ投稿がありません。",
+    "blog.page.loading": "ブログ投稿を読み込み中...",
   },
 }
 

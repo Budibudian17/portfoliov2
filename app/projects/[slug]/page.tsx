@@ -7,6 +7,7 @@ import { doc, getDoc } from "firebase/firestore";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Github, ExternalLink } from "lucide-react";
+import { useLanguage } from "@/contexts/language-context";
 
 interface Project {
   id: string;
@@ -20,6 +21,7 @@ interface Project {
 }
 
 export default function ProjectDetailPage() {
+  const { t } = useLanguage();
   const params = useParams();
   const router = useRouter();
   const id = params.slug as string;
@@ -69,7 +71,7 @@ export default function ProjectDetailPage() {
           style={{ width: 'fit-content' }}
         >
           <ArrowLeft className="w-4 h-4" />
-          Kembali ke Projects
+          {t("projects.page.backToProjects")}
         </Link>
         
         <h1 className="text-3xl sm:text-4xl font-black mb-4">{project.title}</h1>
@@ -88,7 +90,7 @@ export default function ProjectDetailPage() {
         )}
 
         <div className="mb-8">
-          <h2 className="text-xl font-bold mb-4 text-white">Project Description</h2>
+          <h2 className="text-xl font-bold mb-4 text-white">{t("projects.page.projectDescription")}</h2>
           <div className="prose prose-invert max-w-none text-lg leading-relaxed">
             {project.content ? (
               <div dangerouslySetInnerHTML={{ __html: project.content }} />
@@ -107,7 +109,7 @@ export default function ProjectDetailPage() {
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-blue-700 text-blue-400 hover:bg-blue-700 hover:text-white transition-colors text-sm font-semibold shadow-sm focus:outline-none"
             >
               <ExternalLink className="w-4 h-4" />
-              View Live Project
+              {t("projects.page.viewLiveProject")}
             </Link>
           )}
           
@@ -119,7 +121,7 @@ export default function ProjectDetailPage() {
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gray-700 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors text-sm font-semibold shadow-sm focus:outline-none"
             >
               <Github className="w-4 h-4" />
-              View on GitHub
+              {t("projects.page.viewOnGitHub")}
             </Link>
           )}
         </div>

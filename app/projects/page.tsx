@@ -5,7 +5,9 @@ import { db } from "@/lib/firebase"
 import { collection, query, orderBy, onSnapshot } from "firebase/firestore"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image";
+import Image from "next/image"
+import { useLanguage } from "@/contexts/language-context"
+import Navbar from "@/components/navbar"
 
 interface Project {
   id: string;
@@ -19,6 +21,7 @@ interface Project {
 }
 
 export default function ProjectsPage() {
+  const { t } = useLanguage();
   const [projects, setProjects] = useState<Project[]>([])
   const [loading, setLoading] = useState(true);
 
@@ -35,32 +38,7 @@ export default function ProjectsPage() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      {/* Navbar */}
-      <nav className="fixed top-0 w-full bg-black/80 backdrop-blur-md border-b border-gray-800 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="text-lg sm:text-xl font-bold text-white">HILMI PORTFOLIO</div>
-            <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-              <Link href="/" className="hover:text-gray-300 transition-colors text-sm uppercase tracking-wider">
-                Home
-              </Link>
-              <Link href="/projects" className="hover:text-gray-300 transition-colors text-sm uppercase tracking-wider font-bold">
-                Projects
-              </Link>
-              <Link href="/blog" className="hover:text-gray-300 transition-colors text-sm uppercase tracking-wider">
-                Blog
-              </Link>
-            </div>
-            <div className="md:hidden flex items-center space-x-2">
-              <button className="text-white">
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
       <section className="relative min-h-[60vh] lg:min-h-[70vh] flex items-center justify-center overflow-hidden w-full">
@@ -72,12 +50,12 @@ export default function ProjectsPage() {
           <div className="space-y-6 sm:space-y-8 animate-fade-in-up">
             <div className="overflow-hidden">
               <h1 className="text-4xl sm:text-6xl md:text-7xl font-black leading-tight animate-slide-up">
-                My Projects
+                {t("projects.page.title")}
               </h1>
             </div>
             <div className="overflow-hidden">
               <p className="text-lg sm:text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed animate-slide-up-delay px-4">
-                A collection of my featured and personal projects. Explore more of my work below!
+                {t("projects.page.subtitle")}
               </p>
             </div>
           </div>
@@ -85,10 +63,10 @@ export default function ProjectsPage() {
       </section>
 
       <main className="pt-8 pb-16 px-4 min-h-screen max-w-7xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-black text-center mb-8">All Projects</h2>
+        <h2 className="text-3xl sm:text-4xl font-black text-center mb-8">{t("projects.page.allProjects")}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {loading && <div className="text-gray-400 text-center col-span-full">Loading projects...</div>}
-          {!loading && projects.length === 0 && <div className="text-gray-500 text-center col-span-full">Belum ada project.</div>}
+          {loading && <div className="text-gray-400 text-center col-span-full">{t("projects.page.loading")}</div>}
+          {!loading && projects.length === 0 && <div className="text-gray-500 text-center col-span-full">{t("projects.page.noProjects")}</div>}
           {!loading && projects.map((project) => (
             <div key={project.id} className="bg-gray-900 border border-gray-800 rounded-2xl shadow-lg overflow-hidden group flex flex-col focus:outline-none transition-all hover:border-blue-500 hover:shadow-blue-900/30">
               <div className="relative h-48 overflow-hidden">
@@ -118,7 +96,7 @@ export default function ProjectsPage() {
                   className="mt-4 inline-flex w-auto items-center gap-2 px-4 py-2 rounded-full border border-blue-700 text-blue-400 hover:bg-blue-700 hover:text-white transition-colors text-sm font-semibold shadow-sm focus:outline-none"
                   style={{ width: 'fit-content' }}
                 >
-                  Read More
+                  {t("projects.page.readMore")}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
