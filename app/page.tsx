@@ -35,7 +35,7 @@ const LoadingScreen = dynamic<LoadingScreenProps>(
 
 export default function Portfolio() {
   const [scrollY, setScrollY] = useState(0)
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const audioRef = useRef<HTMLAudioElement>(null)
   const [isMuted, setIsMuted] = useState(true)
   const [audioReady, setAudioReady] = useState(false)
@@ -53,6 +53,13 @@ export default function Portfolio() {
     { src: "/img/sertifpublik.png", alt: "Public Speaking" },
     { src: "/img/sertifikasikelasindustri.jpg", alt: "Industry Class" },
   ]
+
+  // Fungsi untuk menentukan file CV sesuai bahasa
+  const getCVUrl = () => {
+    if (language === "en") return "/cv-en.pdf"
+    if (language === "jp") return "/cv-jp.pdf"
+    return "/cv.pdf"
+  }
 
   useEffect(() => {
     // IMPROVED Scroll reveal animation - More responsive!
@@ -169,7 +176,7 @@ export default function Portfolio() {
                 variant="outline"
                 className="border-white text-white hover:bg-white hover:text-black px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold bg-transparent w-full sm:w-auto"
               >
-                <a href="/CV.pdf" download>
+                <a href={getCVUrl()} download>
                   <Download className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                   {t("hero.cta.cv")}
                 </a>
@@ -211,10 +218,20 @@ export default function Portfolio() {
                   <span className="text-sm sm:text-base">{t("about.location")}</span>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <Link href="#" className="text-gray-600 hover:text-black transition-colors">
+                  <Link
+                    href="https://github.com/Budibudian17"
+                    className="text-gray-600 hover:text-black transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Github className="h-5 w-5 sm:h-6 sm:w-6" />
                   </Link>
-                  <Link href="#" className="text-gray-600 hover:text-black transition-colors">
+                  <Link
+                    href="https://www.linkedin.com/in/hilmifarrel-dev/"
+                    className="text-gray-600 hover:text-black transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Linkedin className="h-5 w-5 sm:h-6 sm:w-6" />
                   </Link>
                 </div>
