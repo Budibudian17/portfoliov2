@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { db } from "@/lib/firebase"
 import { collection, query, orderBy, onSnapshot } from "firebase/firestore"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Pin } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { useLanguage } from "@/contexts/language-context"
@@ -19,6 +19,7 @@ interface Project {
   status?: "published" | "in-progress" | "planned";
   createdAt?: any;
   content?: string;
+  pinned?: boolean;
 }
 
 export default function ProjectsPage() {
@@ -39,11 +40,14 @@ export default function ProjectsPage() {
 
   // Sort projects by status priority and createdAt
   const statusPriority = { published: 0, "in-progress": 1, planned: 2 };
+  // Urutkan: pinned dulu, lalu status, lalu tanggal
   const sortedProjects = [...projects].sort((a, b) => {
+    const aPinned = a.pinned ? 1 : 0;
+    const bPinned = b.pinned ? 1 : 0;
+    if (bPinned !== aPinned) return bPinned - aPinned;
     const aPriority = statusPriority[a.status || "planned"];
     const bPriority = statusPriority[b.status || "planned"];
     if (aPriority !== bPriority) return aPriority - bPriority;
-    // If same status, sort by createdAt desc
     const aDate = a.createdAt && typeof a.createdAt.toDate === "function" ? a.createdAt.toDate() : 0;
     const bDate = b.createdAt && typeof b.createdAt.toDate === "function" ? b.createdAt.toDate() : 0;
     return bDate - aDate;
@@ -87,6 +91,11 @@ export default function ProjectsPage() {
                   <Image src={project.image} alt={project.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300 opacity-90" />
                 ) : (
                   <div className="w-full h-full bg-gray-800 flex items-center justify-center text-gray-500 text-xs">No Image</div>
+                )}
+                {project.pinned && (
+                  <span className="absolute top-3 left-3 z-10 bg-black/80 p-1 rounded-full border border-white/20 backdrop-blur-sm">
+                    <Pin className="w-4 h-4 text-yellow-400 fill-yellow-400" fill="#facc15" />
+                  </span>
                 )}
                 {project.status && (
                   <span className={`absolute top-3 right-3 px-3 py-1 text-xs font-semibold rounded-full shadow-md z-10 ${

@@ -4,6 +4,7 @@
 import { useState, useEffect } from "react";
 import { db } from "@/lib/firebase";
 import { collection, getDocs, query, orderBy, addDoc, serverTimestamp, doc, deleteDoc, updateDoc, onSnapshot } from "firebase/firestore";
+import { Pin } from "lucide-react";
 
 interface BlogPost {
   id: string;
@@ -14,6 +15,7 @@ interface BlogPost {
   content: string;
   author: string;
   category: string;
+  pinned?: boolean;
 }
 
 export default function AdminBlogPage() {
@@ -156,6 +158,17 @@ export default function AdminBlogPage() {
     setFormSuccess(null);
   };
 
+  // Tambah handler untuk pin/unpin
+  const handleTogglePin = async (id: string, pinned: boolean) => {
+    setFormLoading(true);
+    try {
+      await updateDoc(doc(db, "blogs", id), { pinned: !pinned });
+    } catch (err) {
+      setFormError("Gagal update pin.");
+    }
+    setFormLoading(false);
+  };
+
   // On mount, set default tanggal & kategori
   useEffect(() => {
     resetForm();
@@ -247,7 +260,17 @@ export default function AdminBlogPage() {
             <tbody>
               {blogs.map((blog) => (
                 <tr key={blog.id} className="border-b border-gray-800 hover:bg-gray-800/50">
-                  <td className="py-2 font-semibold text-white">{blog.title}</td>
+                  <td className="py-2 font-semibold text-white flex items-center gap-2">
+                    <button
+                      className="p-1 rounded-full hover:bg-gray-700 transition-colors"
+                      title={blog.pinned ? "Unpin" : "Pin"}
+                      onClick={() => handleTogglePin(blog.id, !!blog.pinned)}
+                      disabled={formLoading}
+                    >
+                      <Pin className={`w-5 h-5 ${blog.pinned ? "text-yellow-400 fill-yellow-400" : "text-gray-400"}`} fill={blog.pinned ? "#facc15" : "none"} />
+                    </button>
+                    {blog.title}
+                  </td>
                   <td className="py-2">{new Date(blog.date).toLocaleDateString()}</td>
                   <td className="py-2 flex gap-2">
                     <button onClick={() => handleEditBlog(blog)} className="px-3 py-1 rounded bg-gray-800 text-gray-300 hover:bg-gray-700">Edit</button>

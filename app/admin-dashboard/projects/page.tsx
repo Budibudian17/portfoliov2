@@ -13,7 +13,7 @@ import {
   doc,
   serverTimestamp,
 } from "firebase/firestore";
-import { Edit, Trash2, Plus, Save, X } from "lucide-react";
+import { Edit, Trash2, Plus, Save, X, Pin } from "lucide-react";
 
 interface Project {
   id: string;
@@ -24,6 +24,7 @@ interface Project {
   githubLink?: string;
   status: "published" | "in-progress" | "planned";
   createdAt?: any;
+  pinned?: boolean;
 }
 
 export default function AdminProjectsPage() {
@@ -113,6 +114,17 @@ export default function AdminProjectsPage() {
     setEditingId(null);
     setForm({ status: "published" });
     setError(null);
+  };
+
+  // Tambah handler untuk pin/unpin
+  const handleTogglePin = async (id: string, pinned: boolean) => {
+    setLoading(true);
+    try {
+      await updateDoc(doc(db, "projects", id), { pinned: !pinned });
+    } catch (err) {
+      setError("Gagal update pin.");
+    }
+    setLoading(false);
   };
 
   return (
@@ -236,6 +248,14 @@ export default function AdminProjectsPage() {
               >
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
+                    <button
+                      className="p-1 rounded-full hover:bg-gray-700 transition-colors"
+                      title={project.pinned ? "Unpin" : "Pin"}
+                      onClick={() => handleTogglePin(project.id, !!project.pinned)}
+                      disabled={loading}
+                    >
+                      <Pin className={`w-5 h-5 ${project.pinned ? "text-yellow-400 fill-yellow-400" : "text-gray-400"}`} fill={project.pinned ? "#facc15" : "none"} />
+                    </button>
                     <div className="font-bold text-lg text-white">{project.title}</div>
                     <span className={`px-2 py-1 text-xs rounded-full font-bold ${
                       project.status === "published" ? "bg-green-600 text-white" :

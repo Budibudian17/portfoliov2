@@ -19,6 +19,7 @@ interface BlogPost {
   content: string;
   author: string;
   category: string;
+  pinned?: boolean; // Added pinned property
 }
 
 export default function BlogPage() {
@@ -57,6 +58,16 @@ export default function BlogPage() {
   const otherPosts = blogs.filter((post) => post.title !== PINNED_TITLE);
   const allArticles = pinnedPost ? [pinnedPost, ...otherPosts] : blogs;
 
+  // Urutkan: pinned dulu, lalu tanggal
+  const sortedBlogs = [...blogs].sort((a, b) => {
+    const aPinned = a.pinned ? 1 : 0;
+    const bPinned = b.pinned ? 1 : 0;
+    if (bPinned !== aPinned) return bPinned - aPinned;
+    const aDate = new Date(a.date).getTime();
+    const bDate = new Date(b.date).getTime();
+    return bDate - aDate;
+  });
+
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <Navbar />
@@ -91,15 +102,14 @@ export default function BlogPage() {
           {loading && <div className="text-gray-400 text-center col-span-full">{t("blog.page.loading")}</div>}
           {error && <div className="text-red-400 text-center col-span-full">{error}</div>}
           {!loading && blogs.length === 0 && <div className="text-gray-500 text-center col-span-full">{t("blog.page.noPosts")}</div>}
-          {!loading && allArticles.map((post, idx) => (
+          {!loading && sortedBlogs.map((post, idx) => (
             <div key={post.id} className="bg-gray-900 border border-gray-800 rounded-2xl shadow-lg overflow-hidden group flex flex-col focus:outline-none">
               <div className="relative h-48 overflow-hidden">
                 {/* Pin icon jika post di-pin */}
-                {post.title === PINNED_TITLE && (
-                  <div className="absolute top-3 left-3 z-10 flex items-center gap-1 bg-black/80 px-2 py-1 rounded-full border border-white/20 backdrop-blur-sm">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8h2a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8a2 2 0 012-2h2m4-6v6m0 0l-2-2m2 2l2-2" /></svg>
-                    <span className="text-xs text-white font-semibold">Pinned</span>
-                  </div>
+                {post.pinned && (
+                  <span className="absolute top-3 left-3 z-10 bg-black/80 p-1 rounded-full border border-white/20 backdrop-blur-sm">
+                    <Pin className="w-4 h-4 text-yellow-400 fill-yellow-400" fill="#facc15" />
+                  </span>
                 )}
                 {post.thumbnail ? (
                   <Image src={post.thumbnail} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300 opacity-80" />
