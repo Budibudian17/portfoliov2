@@ -111,7 +111,7 @@ export default function ProjectsPage() {
                   {project.createdAt && (
                     <>
                       <span className="text-xs text-gray-400">•</span>
-                      <span className="text-xs text-gray-400">{typeof project.createdAt.toDate === "function" ? new Date(project.createdAt.toDate()).toLocaleDateString() : ""}</span>
+                    <span className="text-xs text-gray-400">{typeof project.createdAt.toDate === "function" ? new Date(project.createdAt.toDate()).toLocaleDateString() : ""}</span>
                     </>
                   )}
                 </div>

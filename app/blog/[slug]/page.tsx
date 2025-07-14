@@ -72,7 +72,7 @@ export default function BlogDetailPage() {
         >
           <ArrowLeft className="w-4 h-4" />
           {t("blog.page.backToBlog")}
-        </Link>
+                </Link>
         <h1 className="text-3xl sm:text-4xl font-black mb-4">{blog.title}</h1>
         <div className="flex items-center gap-3 text-xs text-gray-400 mb-6">
           <Image src={"/img/avatar.png"} alt="Hilmi" width={28} height={28} className="w-7 h-7 rounded-full border border-gray-700" />
@@ -81,7 +81,7 @@ export default function BlogDetailPage() {
           <span>{new Date(blog.date).toLocaleDateString()}</span>
           <span>•</span>
           <span>{blog.category}</span>
-        </div>
+              </div>
         {blog.thumbnail && (
           <div className="relative w-full h-64 mb-8 rounded-2xl overflow-hidden">
             <Image src={blog.thumbnail} alt={blog.title} fill className="object-cover" />

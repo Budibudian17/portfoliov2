@@ -311,7 +311,7 @@ export default function Portfolio() {
                 <div className="absolute inset-0 bg-black rounded-lg sm:rounded-xl transform rotate-1 sm:rotate-2 group-hover:rotate-2 sm:group-hover:rotate-3 transition-transform duration-300"></div>
                 {/* Mobile image */}
                 <Image
-                  src="/img/cipta2mobile.png"
+                  src="https://i.imgur.com/g605c6S.png"
                   alt="CiptaLife Healthcare Platform Mobile"
                   width={350}
                   height={200}
@@ -319,7 +319,7 @@ export default function Portfolio() {
                 />
                 {/* Desktop image */}
                 <Image
-                  src="/img/cipta2.jpg"
+                  src="https://i.imgur.com/e7xm0Si.png"
                   alt="CiptaLife Healthcare Platform"
                   width={350}
                   height={200}
@@ -334,7 +334,7 @@ export default function Portfolio() {
                 <div className="absolute inset-0 bg-black rounded-lg sm:rounded-xl transform -rotate-1 sm:-rotate-2 group-hover:-rotate-2 sm:group-hover:-rotate-3 transition-transform duration-300"></div>
                 {/* Mobile image */}
                 <Image
-                  src="/img/erpmobile.png"
+                  src="https://i.imgur.com/gPUbjsn.png"
                   alt="ERP System Mobile"
                   width={350}
                   height={200}
@@ -342,7 +342,7 @@ export default function Portfolio() {
                 />
                 {/* Desktop image */}
                 <Image
-                  src="/img/erp.jpg"
+                  src="https://i.imgur.com/4IyEJuN.jpeg"
                   alt="ERP System"
                   width={350}
                   height={200}
@@ -430,7 +430,7 @@ export default function Portfolio() {
                 <div className="absolute inset-0 bg-black rounded-lg sm:rounded-xl transform rotate-1 sm:rotate-2 group-hover:rotate-2 sm:group-hover:rotate-3 transition-transform duration-300"></div>
                 {/* Mobile image */}
                 <Image
-                  src="/img/portfoliomobile.png"
+                  src="https://i.imgur.com/3XEuJR3.png"
                   alt="Personal Portfolio Website Mobile"
                   width={350}
                   height={200}
@@ -438,7 +438,7 @@ export default function Portfolio() {
                 />
                 {/* Desktop image */}
                 <Image
-                  src="/img/portfolio.jpg"
+                  src="https://i.imgur.com/1syNMQl.jpeg"
                   alt="Personal Portfolio Website"
                   width={350}
                   height={200}

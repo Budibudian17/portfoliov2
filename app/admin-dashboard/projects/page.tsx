@@ -148,15 +148,16 @@ export default function AdminProjectsPage() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label className="text-sm font-bold text-gray-200">Gambar (opsional, URL)</label>
+          <label className="text-sm font-bold text-gray-200">Link Gambar (URL Imgur, Google Drive, dll)</label>
           <input
             type="text"
             name="image"
             className="bg-gray-800 rounded-lg px-4 py-2 text-white focus:outline-none"
-            placeholder="URL gambar project..."
+            placeholder="https://i.imgur.com/namafile.png"
             value={form.image || ""}
             onChange={handleChange}
           />
+          <div className="text-xs text-gray-500 mt-1">Gunakan link dari Imgur, Google Drive (public), dsb.</div>
           {form.image && (
             <img src={form.image} alt="preview" className="w-full max-w-xs rounded-lg mt-2 border border-gray-700" />
           )}
@@ -252,14 +253,14 @@ export default function AdminProjectsPage() {
                   )}
                   <div className="flex flex-wrap gap-2 mt-2">
                     {project.projectLink ? (
-                      <a
-                        href={project.projectLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-400 underline font-bold"
-                      >
-                        Lihat Project
-                      </a>
+                    <a
+                      href={project.projectLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-400 underline font-bold"
+                    >
+                      Lihat Project
+                    </a>
                     ) : (
                       <span className="text-gray-500 font-bold">Belum ada link</span>
                     )}

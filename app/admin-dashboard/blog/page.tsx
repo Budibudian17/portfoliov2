@@ -194,9 +194,9 @@ export default function AdminBlogPage() {
             <input name="author" value={form.author} onChange={handleFormChange} className="w-full px-3 py-2 rounded bg-gray-800 text-white focus:outline-none" />
           </div>
           <div className="sm:col-span-2">
-            <label className="block text-gray-300 mb-1">Thumbnail (URL gambar)</label>
-            <input name="thumbnail" value={form.thumbnail} onChange={handleFormChange} className="w-full px-3 py-2 rounded bg-gray-800 text-white focus:outline-none" />
-            <div className="text-xs text-gray-500 mt-1">Contoh: /img/blog1.png</div>
+            <label className="block text-gray-300 mb-1">Thumbnail (URL gambar, Imgur, Google Drive, dll)</label>
+            <input name="thumbnail" value={form.thumbnail} onChange={handleFormChange} className="w-full px-3 py-2 rounded bg-gray-800 text-white focus:outline-none" placeholder="https://i.imgur.com/namafile.png" />
+            <div className="text-xs text-gray-500 mt-1">Gunakan link dari Imgur, Google Drive (public), dsb.</div>
           </div>
           <div className="sm:col-span-2">
             <label className="block text-gray-300 mb-1">Summary</label>
