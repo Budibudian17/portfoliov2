@@ -194,6 +194,8 @@ const translations = {
     "certificates.publicspeaking.desc": "Galeria Potensi Indonesia",
     "certificates.industryclass.title": "Industry Class Certificate",
     "certificates.industryclass.desc": "PT. Ciptadra SoftIndo",
+    "certificates.japanese.title": "INPEX Scholarship Webinar Certificate",
+    "certificates.japanese.desc": "GoldNation & YLEC - Japan University Scholarship Tips",
 
     // Blog Section
     "blog.title": "Blog",
@@ -445,6 +447,8 @@ const translations = {
     "certificates.publicspeaking.desc": "Galeria Potensi Indonesia",
     "certificates.industryclass.title": "Sertifikat Kelas Industri",
     "certificates.industryclass.desc": "PT. Ciptadra SoftIndo",
+    "certificates.japanese.title": "Sertifikat Webinar Beasiswa INPEX",
+    "certificates.japanese.desc": "GoldNation & YLEC - Tips Beasiswa Universitas Jepang",
 
     // Blog Section
     "blog.title": "Blog",
@@ -697,6 +701,8 @@ const translations = {
     "certificates.publicspeaking.desc": "Galeria Potensi Indonesia",
     "certificates.industryclass.title": "インダストリークラス証明書",
     "certificates.industryclass.desc": "PT. Ciptadra SoftIndo",
+    "certificates.japanese.title": "INPEX奨学金ウェビナー証明書",
+    "certificates.japanese.desc": "GoldNation & YLEC - 日本の大学奨学金のヒント",
 
     // Blog Section
     "blog.title": "ブログ",

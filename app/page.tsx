@@ -52,6 +52,7 @@ export default function Portfolio() {
     { src: "/img/setifgame.jpg", alt: "Game Dev" },
     { src: "/img/sertifpublik.png", alt: "Public Speaking" },
     { src: "/img/sertifikasikelasindustri.jpg", alt: "Industry Class" },
+    { src: "/img/sertifjepang.png", alt: "Japanese Certificate" },
   ]
 
   // Fungsi untuk menentukan file CV sesuai bahasa
@@ -693,6 +694,7 @@ export default function Portfolio() {
                           {idx === 3 && <><h4 className="font-semibold text-sm text-gray-800 mb-1">{t("certificates.gamedev.title")}</h4><p className="text-xs text-gray-600">{t("certificates.gamedev.desc")}</p></>}
                           {idx === 4 && <><h4 className="font-semibold text-sm text-gray-800 mb-1">{t("certificates.publicspeaking.title")}</h4><p className="text-xs text-gray-600">{t("certificates.publicspeaking.desc")}</p></>}
                           {idx === 5 && <><h4 className="font-semibold text-sm text-gray-800 mb-1">{t("certificates.industryclass.title")}</h4><p className="text-xs text-gray-600">{t("certificates.industryclass.desc")}</p></>}
+                          {idx === 6 && <><h4 className="font-semibold text-sm text-gray-800 mb-1">{t("certificates.japanese.title")}</h4><p className="text-xs text-gray-600">{t("certificates.japanese.desc")}</p></>}
                         </div>
                       </button>
                     ))}
