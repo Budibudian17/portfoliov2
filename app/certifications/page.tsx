@@ -148,7 +148,7 @@ export default function CertificationsPage() {
                 
                 <div className="flex items-center gap-2 mt-auto">
                   <OptimizedImage src="/img/avatar.webp" fallback="/img/avatar.png" alt="Admin" width={28} height={28} className="w-7 h-7 rounded-full border border-gray-700" />
-                  <span className="text-xs text-gray-400">Hilmi &bull; {cert.createdAt && (typeof cert.createdAt.toDate === "function" ? new Date(cert.createdAt.toDate()).toLocaleDateString() : new Date(cert.createdAt).toLocaleDateString())}</span>
+                  <span className="text-xs text-gray-400">Hilmi &bull; {cert.issueDate ? new Date(cert.issueDate).toLocaleDateString() : "No date"}</span>
                 </div>
                 
                 <Link
