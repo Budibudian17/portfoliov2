@@ -113,6 +113,49 @@ export default function AdminBlogPage() {
     setFormSuccess(null);
   };
 
+  // Function to convert Imgur URL to WebP
+  const convertImgurToWebP = async (imageUrl: string) => {
+    if (!imageUrl || !imageUrl.includes('imgur.com')) {
+      console.log(`ℹ️ Non-Imgur URL, keeping as is: ${imageUrl}`);
+      return imageUrl;
+    }
+    
+    console.log(`🖼️ Converting Imgur URL: ${imageUrl}`);
+    
+    try {
+      const response = await fetch('/api/convert-imgur', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ imageUrl }),
+      });
+      
+      console.log(`📡 API Response status: ${response.status}`);
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error(`❌ API Error: ${response.status} - ${errorText}`);
+        throw new Error(`API Error: ${response.status} - ${errorText}`);
+      }
+      
+      const result = await response.json();
+      console.log(`📦 API Response:`, result);
+      
+      if (result.success) {
+        console.log(`✅ Image converted: ${result.data.webpPath}`);
+        return result.data.webpPath;
+      } else {
+        console.error(`❌ API returned success: false`, result);
+        throw new Error(result.error || 'Unknown API error');
+      }
+    } catch (error) {
+      console.error('❌ Error converting image:', error);
+      // Return original URL if conversion fails
+      return imageUrl;
+    }
+  };
+
   // Submit form: tambah atau edit
   const handleAddOrEditBlog = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -125,18 +168,31 @@ export default function AdminBlogPage() {
         setFormLoading(false);
         return;
       }
+      
+      // Convert thumbnail URL to WebP if it's Imgur
+      const processedThumbnail = form.thumbnail ? await convertImgurToWebP(form.thumbnail) : form.thumbnail;
+      
+      // Ensure thumbnail is always a valid string
+      if (!processedThumbnail || typeof processedThumbnail !== 'string') {
+        setFormError("Thumbnail URL tidak valid!");
+        setFormLoading(false);
+        return;
+      }
+      
+      const blogData = {
+        ...form,
+        thumbnail: processedThumbnail,
+        date: new Date(form.date).toISOString(),
+      };
+      
       if (editId) {
         // Edit mode
-        await updateDoc(doc(db, "blogs", editId), {
-          ...form,
-          date: new Date(form.date).toISOString(),
-        });
+        await updateDoc(doc(db, "blogs", editId), blogData);
         setFormSuccess("Blog berhasil diupdate!");
       } else {
         // Tambah mode
         await addDoc(collection(db, "blogs"), {
-          ...form,
-          date: new Date(form.date).toISOString(),
+          ...blogData,
           createdAt: serverTimestamp(),
         });
         setFormSuccess("Blog berhasil ditambahkan!");

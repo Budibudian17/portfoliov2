@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow read access to public collections
+    match /blogs/{document} {
+      allow read: if true;
+      allow write: if true; // Temporary: allow all writes for development
+    }
+    
+    match /projects/{document} {
+      allow read: if true;
+      allow write: if true; // Temporary: allow all writes for development
+    }
+    
+    // Allow read/write access to certifications
+    match /certifications/{document} {
+      allow read: if true;
+      allow write: if true; // Temporary: allow all writes for development
+    }
+    
+    // Allow read/write access to chats for user interaction
+    match /chats/{document} {
+      allow read, write: if true;
+    }
+  }
+}

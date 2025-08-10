@@ -8,6 +8,7 @@ import {
   MessageCircle,
   FolderKanban,
   Lock,
+  Award,
 } from "lucide-react";
 import React, { useState } from "react";
 
@@ -31,6 +32,11 @@ const menu = [
     label: "Projects",
     href: "/admin-dashboard/projects",
     icon: <FolderKanban className="w-5 h-5" />,
+  },
+  {
+    label: "Certifications",
+    href: "/admin-dashboard/certifications",
+    icon: <Award className="w-5 h-5" />,
   },
 ];
 

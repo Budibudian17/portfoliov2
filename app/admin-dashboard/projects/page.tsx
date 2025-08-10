@@ -52,6 +52,49 @@ export default function AdminProjectsPage() {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   };
 
+  // Function to convert Imgur URL to WebP
+  const convertImgurToWebP = async (imageUrl: string) => {
+    if (!imageUrl || !imageUrl.includes('imgur.com')) {
+      console.log(`ℹ️ Non-Imgur URL, keeping as is: ${imageUrl}`);
+      return imageUrl;
+    }
+    
+    console.log(`🖼️ Converting Imgur URL: ${imageUrl}`);
+    
+    try {
+      const response = await fetch('/api/convert-imgur', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ imageUrl }),
+      });
+      
+      console.log(`📡 API Response status: ${response.status}`);
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error(`❌ API Error: ${response.status} - ${errorText}`);
+        throw new Error(`API Error: ${response.status} - ${errorText}`);
+      }
+      
+      const result = await response.json();
+      console.log(`📦 API Response:`, result);
+      
+      if (result.success) {
+        console.log(`✅ Image converted: ${result.data.webpPath}`);
+        return result.data.webpPath;
+      } else {
+        console.error(`❌ API returned success: false`, result);
+        throw new Error(result.error || 'Unknown API error');
+      }
+    } catch (error) {
+      console.error('❌ Error converting image:', error);
+      // Return original URL if conversion fails
+      return imageUrl;
+    }
+  };
+
   // Handle add/edit submit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -66,14 +109,20 @@ export default function AdminProjectsPage() {
     }
     setLoading(true);
     try {
+      // Convert image URL to WebP if it's Imgur
+      const processedImage = form.image ? await convertImgurToWebP(form.image) : form.image;
+      
+      const projectData = {
+        ...form,
+        image: processedImage,
+      };
+      
       if (editingId) {
-        await updateDoc(doc(db, "projects", editingId), {
-          ...form,
-        });
+        await updateDoc(doc(db, "projects", editingId), projectData);
         setEditingId(null);
       } else {
         await addDoc(collection(db, "projects"), {
-          ...form,
+          ...projectData,
           createdAt: serverTimestamp(),
         });
       }

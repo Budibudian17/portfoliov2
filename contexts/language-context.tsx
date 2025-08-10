@@ -24,6 +24,7 @@ const translations = {
     "nav.home": "Home",
     "nav.project": "Project",
     "nav.blog": "Blog",
+    "nav.certifications": "Certifications",
 
     // Hero Section
     "hero.title1": "CREATIVE",
@@ -196,6 +197,8 @@ const translations = {
     "certificates.industryclass.desc": "PT. Ciptadra SoftIndo",
     "certificates.japanese.title": "INPEX Scholarship Webinar Certificate",
     "certificates.japanese.desc": "GoldNation & YLEC - Japan University Scholarship Tips",
+    "certificates.dibimbing.title": "Dibimbing Certificate",
+    "certificates.dibimbing.desc": "Dibimbing - UI/UX Design Bootcamp",
 
     // Blog Section
     "blog.title": "Blog",
@@ -256,6 +259,22 @@ const translations = {
     "projects.page.viewOnGitHub": "View on GitHub",
     "projects.page.noProjects": "No projects yet.",
     "projects.page.loading": "Loading projects...",
+
+    // Certifications Page
+    "certifications.page.title": "Certifications",
+    "certifications.page.subtitle": "Professional certifications and achievements that showcase my expertise and continuous learning journey",
+    "certifications.page.allCertifications": "All Certifications",
+    "certifications.page.viewDetails": "View Details",
+    "certifications.page.backToCertifications": "Back to Certifications",
+    "certifications.page.description": "Description",
+    "certifications.page.verifyCredential": "Verify Credential",
+    "certifications.page.viewAllCertifications": "View All Certifications",
+    "certifications.page.noCertifications": "No certifications found.",
+    "certifications.page.loading": "Loading certifications...",
+    "certifications.page.searchPlaceholder": "Search certifications...",
+    "certifications.page.selectCategory": "Select category",
+    "certifications.page.showingResults": "Showing {count} of {total} certifications",
+    "certifications.page.noMatch": "No certifications match your search criteria.",
     
     // Blog Page
     "blog.page.title": "Blog",
@@ -278,6 +297,7 @@ const translations = {
     "nav.home": "Beranda",
     "nav.project": "Proyek",
     "nav.blog": "Blog",
+    "nav.certifications": "Sertifikasi",
 
     // Hero Section
     "hero.title1": "DEVELOPER",
@@ -449,6 +469,8 @@ const translations = {
     "certificates.industryclass.desc": "PT. Ciptadra SoftIndo",
     "certificates.japanese.title": "Sertifikat Webinar Beasiswa INPEX",
     "certificates.japanese.desc": "GoldNation & YLEC - Tips Beasiswa Universitas Jepang",
+    "certificates.dibimbing.title": "Sertifikat Dibimbing",
+    "certificates.dibimbing.desc": "Dibimbing - Bootcamp UI/UX Design",
 
     // Blog Section
     "blog.title": "Blog",
@@ -509,6 +531,22 @@ const translations = {
     "projects.page.viewOnGitHub": "Lihat di GitHub",
     "projects.page.noProjects": "Belum ada proyek.",
     "projects.page.loading": "Memuat proyek...",
+
+    // Certifications Page
+    "certifications.page.title": "Sertifikasi",
+    "certifications.page.subtitle": "Sertifikasi profesional dan pencapaian yang menunjukkan keahlian dan perjalanan pembelajaran berkelanjutan saya",
+    "certifications.page.allCertifications": "Semua Sertifikasi",
+    "certifications.page.viewDetails": "Lihat Detail",
+    "certifications.page.backToCertifications": "Kembali ke Sertifikasi",
+    "certifications.page.description": "Deskripsi",
+    "certifications.page.verifyCredential": "Verifikasi Kredensial",
+    "certifications.page.viewAllCertifications": "Lihat Semua Sertifikasi",
+    "certifications.page.noCertifications": "Belum ada sertifikasi.",
+    "certifications.page.loading": "Memuat sertifikasi...",
+    "certifications.page.searchPlaceholder": "Cari sertifikasi...",
+    "certifications.page.selectCategory": "Pilih kategori",
+    "certifications.page.showingResults": "Menampilkan {count} dari {total} sertifikasi",
+    "certifications.page.noMatch": "Tidak ada sertifikasi yang sesuai dengan kriteria pencarian.",
     
     // Blog Page
     "blog.page.title": "Blog",
@@ -531,6 +569,7 @@ const translations = {
     "nav.home": "ホーム",
     "nav.project": "プロジェクト",
     "nav.blog": "ブログ",
+    "nav.certifications": "認定",
 
     // Hero Section
     "hero.title1": "クリエイティブ",
@@ -703,6 +742,8 @@ const translations = {
     "certificates.industryclass.desc": "PT. Ciptadra SoftIndo",
     "certificates.japanese.title": "INPEX奨学金ウェビナー証明書",
     "certificates.japanese.desc": "GoldNation & YLEC - 日本の大学奨学金のヒント",
+    "certificates.dibimbing.title": "Dibimbing証明書",
+    "certificates.dibimbing.desc": "Dibimbing - UI/UXデザインブートキャンプ",
 
     // Blog Section
     "blog.title": "ブログ",
@@ -763,6 +804,22 @@ const translations = {
     "projects.page.viewOnGitHub": "GitHubで見る",
     "projects.page.noProjects": "まだプロジェクトがありません。",
     "projects.page.loading": "プロジェクトを読み込み中...",
+
+    // Certifications Page
+    "certifications.page.title": "認定",
+    "certifications.page.subtitle": "私の専門知識と継続的な学習の旅を示す専門認定と成果",
+    "certifications.page.allCertifications": "すべての認定",
+    "certifications.page.viewDetails": "詳細を見る",
+    "certifications.page.backToCertifications": "認定に戻る",
+    "certifications.page.description": "説明",
+    "certifications.page.verifyCredential": "資格を確認",
+    "certifications.page.viewAllCertifications": "すべての認定を見る",
+    "certifications.page.noCertifications": "まだ認定がありません。",
+    "certifications.page.loading": "認定を読み込み中...",
+    "certifications.page.searchPlaceholder": "認定を検索...",
+    "certifications.page.selectCategory": "カテゴリを選択",
+    "certifications.page.showingResults": "{total}件中{count}件の認定を表示",
+    "certifications.page.noMatch": "検索条件に一致する認定がありません。",
     
     // Blog Page
     "blog.page.title": "ブログ",

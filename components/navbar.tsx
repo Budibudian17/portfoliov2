@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -31,6 +33,7 @@ export default function Navbar() {
             <Link href="/" className="hover:text-gray-300 transition-colors text-sm uppercase tracking-wider">{t("nav.home")}</Link>
             <Link href="/projects" className="hover:text-gray-300 transition-colors text-sm uppercase tracking-wider">{t("nav.project")}</Link>
             <Link href="/blog" className="hover:text-gray-300 transition-colors text-sm uppercase tracking-wider">{t("nav.blog")}</Link>
+            <Link href="/certifications" className="hover:text-gray-300 transition-colors text-sm uppercase tracking-wider">{t("nav.certifications")}</Link>
             <LanguageSwitcher />
           </div>
           {/* Mobile menu button */}
@@ -75,6 +78,7 @@ export default function Navbar() {
               <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-bold text-white">{t("nav.home")}</Link>
               <Link href="/projects" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-bold text-white">{t("nav.project")}</Link>
               <Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-bold text-white">{t("nav.blog")}</Link>
+              <Link href="/certifications" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-bold text-white">{t("nav.certifications")}</Link>
             </nav>
           </div>
         </>

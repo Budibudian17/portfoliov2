@@ -161,15 +161,15 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
           {/* Loading Stats */}
           <div className="grid grid-cols-3 gap-6 text-center mt-8">
             <div className="space-y-1">
-              <div className="text-lg font-bold text-white">3+</div>
+              <div className="text-lg font-bold text-white">4+</div>
               <div className="text-xs text-gray-500 uppercase tracking-wider">Projects</div>
             </div>
             <div className="space-y-1">
-              <div className="text-lg font-bold text-white">3+</div>
+              <div className="text-lg font-bold text-white">2+</div>
               <div className="text-xs text-gray-500 uppercase tracking-wider">Years</div>
             </div>
             <div className="space-y-1">
-              <div className="text-lg font-bold text-white">15+</div>
+              <div className="text-lg font-bold text-white">20+</div>
               <div className="text-xs text-gray-500 uppercase tracking-wider">People Collaborated</div>
             </div>
           </div>

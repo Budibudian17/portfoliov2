@@ -18,6 +18,7 @@ import {
   Building,
   Volume2,
   VolumeX,
+  Award,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -25,6 +26,7 @@ import { useEffect, useState, useRef } from "react"
 import { useLanguage } from "@/contexts/language-context"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { GitHubContributions } from "@/components/github-contributions"
+import OptimizedImage from "@/components/optimized-image"
 import dynamic from "next/dynamic"
 import type { LoadingScreenProps } from "@/components/loading-screen"
 import Navbar from "@/components/navbar";
@@ -40,20 +42,9 @@ export default function Portfolio() {
   const [isMuted, setIsMuted] = useState(true)
   const [audioReady, setAudioReady] = useState(false)
 
-  // Sertifikat modal state
-  const [openCertModal, setOpenCertModal] = useState(false)
-  const [selectedCert, setSelectedCert] = useState<{ src: string; alt: string } | null>(null)
-
-  // Sertifikat data (biar DRY)
-  const certificates = [
-    { src: "/img/sertiflsp.jpeg", alt: "BNSP" },
-    { src: "/img/skorttoeic.jpeg", alt: "TOEIC" },
-    { src: "/img/sertifpkl.jpeg", alt: "Internship" },
-    { src: "/img/setifgame.jpg", alt: "Game Dev" },
-    { src: "/img/sertifpublik.png", alt: "Public Speaking" },
-    { src: "/img/sertifikasikelasindustri.jpg", alt: "Industry Class" },
-    { src: "/img/sertifjepang.png", alt: "Japanese Certificate" },
-  ]
+  // Certifications state
+  const [certifications, setCertifications] = useState<any[]>([])
+  const [certificationsLoading, setCertificationsLoading] = useState(true)
 
   // Fungsi untuk menentukan file CV sesuai bahasa
   const getCVUrl = () => {
@@ -95,6 +86,29 @@ export default function Portfolio() {
       audioRef.current.play().catch(() => {})
     }
   }, [isMuted, audioReady])
+
+  // Fetch certifications from Firestore
+  useEffect(() => {
+    const fetchCertifications = async () => {
+      try {
+        console.log("🔄 Fetching certifications from Firestore...")
+        const { collection, query, orderBy, getDocs } = await import('firebase/firestore')
+        const { db } = await import('@/lib/firebase')
+        
+        const q = query(collection(db, "certifications"), orderBy("createdAt", "desc"))
+        const querySnapshot = await getDocs(q)
+        const certs = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+        console.log("✅ Certifications loaded from Firestore:", certs)
+        setCertifications(certs)
+      } catch (error) {
+        console.error("❌ Error fetching certifications:", error)
+      } finally {
+        setCertificationsLoading(false)
+      }
+    }
+
+    fetchCertifications()
+  }, [])
 
   const toggleMute = () => {
     if (audioRef.current) {
@@ -248,13 +262,13 @@ export default function Portfolio() {
                   </div>
                 </div>
                 <div className="space-y-3 sm:space-y-4 text-center p-4 sm:p-6 lg:p-8 bg-gray-50 rounded-xl sm:rounded-2xl hover:bg-gray-100 transition-colors">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-black">3+</div>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-black">2+</div>
                   <div className="text-xs sm:text-sm lg:text-base text-gray-600 font-medium">
                     {t("about.stats.experience")}
                   </div>
                 </div>
                 <div className="space-y-3 sm:space-y-4 text-center p-4 sm:p-6 lg:p-8 bg-gray-50 rounded-xl sm:rounded-2xl hover:bg-gray-100 transition-colors">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-black">10+</div>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-black">20+</div>
                   <div className="text-xs sm:text-sm lg:text-base text-gray-600 font-medium">
                     {t("about.stats.clients")}
                   </div>
@@ -328,16 +342,18 @@ export default function Portfolio() {
               <div className="lg:col-span-2 relative group order-1 lg:order-2">
                 <div className="absolute inset-0 bg-black rounded-lg sm:rounded-xl transform rotate-1 sm:rotate-2 group-hover:rotate-2 sm:group-hover:rotate-3 transition-transform duration-300"></div>
                 {/* Mobile image */}
-                <Image
-                  src="https://i.imgur.com/g605c6S.png"
+                <OptimizedImage
+                  src="/img/ciptalife-mobile.webp"
+                  fallback="/img/ciptalife-mobile.png"
                   alt="CiptaLife Healthcare Platform Mobile"
                   width={350}
                   height={200}
                   className="relative rounded-lg sm:rounded-xl shadow-xl group-hover:scale-105 transition-transform duration-300 w-full h-32 sm:h-40 md:h-48 lg:h-auto object-cover block sm:hidden"
                 />
                 {/* Desktop image */}
-                <Image
-                  src="https://i.imgur.com/e7xm0Si.png"
+                <OptimizedImage
+                  src="/img/ciptalife-desktop.webp"
+                  fallback="/img/ciptalife-desktop.png"
                   alt="CiptaLife Healthcare Platform"
                   width={350}
                   height={200}
@@ -351,16 +367,18 @@ export default function Portfolio() {
               <div className="lg:col-span-2 relative group order-1">
                 <div className="absolute inset-0 bg-black rounded-lg sm:rounded-xl transform -rotate-1 sm:-rotate-2 group-hover:-rotate-2 sm:group-hover:-rotate-3 transition-transform duration-300"></div>
                 {/* Mobile image */}
-                <Image
-                  src="https://i.imgur.com/gPUbjsn.png"
+                <OptimizedImage
+                  src="/img/erp-mobile.webp"
+                  fallback="/img/erp-mobile.png"
                   alt="ERP System Mobile"
                   width={350}
                   height={200}
                   className="relative rounded-lg sm:rounded-xl shadow-xl group-hover:scale-105 transition-transform duration-300 w-full h-32 sm:h-40 md:h-48 lg:h-auto object-cover block sm:hidden"
                 />
                 {/* Desktop image */}
-                <Image
-                  src="https://i.imgur.com/4IyEJuN.jpeg"
+                <OptimizedImage
+                  src="/img/erp-desktop.webp"
+                  fallback="/img/erp-desktop.jpeg"
                   alt="ERP System"
                   width={350}
                   height={200}
@@ -447,16 +465,18 @@ export default function Portfolio() {
               <div className="lg:col-span-2 relative group order-1 lg:order-2">
                 <div className="absolute inset-0 bg-black rounded-lg sm:rounded-xl transform rotate-1 sm:rotate-2 group-hover:rotate-2 sm:group-hover:rotate-3 transition-transform duration-300"></div>
                 {/* Mobile image */}
-                <Image
-                  src="https://i.imgur.com/3XEuJR3.png"
+                <OptimizedImage
+                  src="/img/portfolio-mobile.webp"
+                  fallback="/img/portfolio-mobile.png"
                   alt="Personal Portfolio Website Mobile"
                   width={350}
                   height={200}
                   className="relative rounded-lg sm:rounded-xl shadow-xl group-hover:scale-105 transition-transform duration-300 w-full h-32 sm:h-40 md:h-48 lg:h-auto object-cover block sm:hidden"
                 />
                 {/* Desktop image */}
-                <Image
-                  src="https://i.imgur.com/1syNMQl.jpeg"
+                <OptimizedImage
+                  src="/img/portfolio-desktop.webp"
+                  fallback="/img/portfolio-desktop.jpeg"
                   alt="Personal Portfolio Website"
                   width={350}
                   height={200}
@@ -496,7 +516,7 @@ export default function Portfolio() {
                 <div className="lg:w-1/3">
                   <div className="flex items-center space-x-3 mb-4">
                     <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center overflow-hidden">
-                      <Image src="/img/ciptadra.jpg" alt="PT. Ciptadra SoftIndo" width={48} height={48} className="w-full h-full object-cover rounded-full" />
+                      <OptimizedImage src="/img/ciptadra.webp" fallback="/img/ciptadra.jpg" alt="PT. Ciptadra SoftIndo" width={48} height={48} className="w-full h-full object-cover rounded-full" />
                     </div>
                     <div>
                       <h3 className="text-xl sm:text-2xl font-black">{t("experience.ciptalife.title")}</h3>
@@ -530,7 +550,7 @@ export default function Portfolio() {
                 <div className="lg:w-1/3">
                   <div className="flex items-center space-x-3 mb-4">
                     <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center overflow-hidden">
-                    <Image src="/img/ciptadra.jpg" alt="PT. Ciptadra SoftIndo" width={48} height={48} className="w-full h-full object-cover rounded-full" />
+                    <OptimizedImage src="/img/ciptadra.webp" fallback="/img/ciptadra.jpg" alt="PT. Ciptadra SoftIndo" width={48} height={48} className="w-full h-full object-cover rounded-full" />
                     </div>
                     <div>
                       <h3 className="text-xl sm:text-2xl font-black">{t("experience.ciptalifeintern.title")}</h3>
@@ -586,7 +606,7 @@ export default function Portfolio() {
                 <div className="lg:w-1/3">
                   <div className="flex items-center space-x-3 mb-4">
                     <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center overflow-hidden">
-                      <Image src="/img/smkn1depok.jpg" alt="SMKN 01 Depok" width={48} height={48} className="w-full h-full object-cover rounded-full" />
+                      <OptimizedImage src="/img/smkn1depok.webp" fallback="/img/smkn1depok.jpg" alt="SMKN 01 Depok" width={48} height={48} className="w-full h-full object-cover rounded-full" />
                     </div>
                     <div>
                       <h3 className="text-xl sm:text-2xl font-black">{t("education.university.degree")}</h3>
@@ -621,7 +641,7 @@ export default function Portfolio() {
                 <div className="lg:w-1/3">
                   <div className="flex items-center space-x-3 mb-4">
                     <div className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center overflow-hidden">
-                      <Image src="/img/smpn3depok.jpg" alt="SMPN 03 Depok" width={48} height={48} className="w-full h-full object-cover rounded-full" />
+                      <OptimizedImage src="/img/smpn3depok.webp" fallback="/img/smpn3depok.jpg" alt="SMPN 03 Depok" width={48} height={48} className="w-full h-full object-cover rounded-full" />
                     </div>
                     <div>
                       <h3 className="text-xl sm:text-2xl font-black">{t("education.highschool.degree")}</h3>
@@ -664,6 +684,7 @@ export default function Portfolio() {
                     <div>
                       <h3 className="text-xl sm:text-2xl font-black">{t("education.certifications.title")}</h3>
                       <p className="text-gray-600 font-medium">{t("education.certifications.subtitle")}</p>
+                      <div className="text-xs text-blue-600 font-medium mt-1">🔄 Dynamic from Database</div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2 text-gray-500 mb-4 lg:mb-0">
@@ -676,28 +697,68 @@ export default function Portfolio() {
                     {t("education.certifications.description")}
                   </p>
                   <div className="grid sm:grid-cols-2 gap-3 mb-4">
-                    {/* Sertifikat cards, clickable */}
-                    {certificates.map((cert, idx) => (
-                      <button
-                        key={cert.alt}
-                        type="button"
-                        className="p-3 bg-white rounded-lg border border-gray-200 flex items-center gap-3 focus:outline-none shadow-lg hover:shadow-2xl transition-shadow min-h-[90px] h-full w-full"
-                        onClick={() => { setSelectedCert(cert); setOpenCertModal(true) }}
-                        tabIndex={0}
-                        aria-label={`View certificate: ${cert.alt}`}
-                      >
-                        <Image src={cert.src} alt={cert.alt} width={32} height={32} className="rounded" />
-                        <div className="flex flex-col items-start justify-center h-full">
-                          {idx === 0 && <><h4 className="font-semibold text-sm text-gray-800 mb-1">{t("certificates.competence.title")}</h4><p className="text-xs text-gray-600">{t("certificates.competence.desc")}</p></>}
-                          {idx === 1 && <><h4 className="font-semibold text-sm text-gray-800 mb-1">{t("certificates.toeic.title")}</h4><p className="text-xs text-gray-600">{t("certificates.toeic.desc")}</p></>}
-                          {idx === 2 && <><h4 className="font-semibold text-sm text-gray-800 mb-1">{t("certificates.internship.title")}</h4><p className="text-xs text-gray-600">{t("certificates.internship.desc")}</p></>}
-                          {idx === 3 && <><h4 className="font-semibold text-sm text-gray-800 mb-1">{t("certificates.gamedev.title")}</h4><p className="text-xs text-gray-600">{t("certificates.gamedev.desc")}</p></>}
-                          {idx === 4 && <><h4 className="font-semibold text-sm text-gray-800 mb-1">{t("certificates.publicspeaking.title")}</h4><p className="text-xs text-gray-600">{t("certificates.publicspeaking.desc")}</p></>}
-                          {idx === 5 && <><h4 className="font-semibold text-sm text-gray-800 mb-1">{t("certificates.industryclass.title")}</h4><p className="text-xs text-gray-600">{t("certificates.industryclass.desc")}</p></>}
-                          {idx === 6 && <><h4 className="font-semibold text-sm text-gray-800 mb-1">{t("certificates.japanese.title")}</h4><p className="text-xs text-gray-600">{t("certificates.japanese.desc")}</p></>}
+                    {/* Dynamic certifications from Firestore */}
+                    {certificationsLoading ? (
+                      <div className="col-span-2 text-center py-8">
+                        <div className="text-gray-500">Loading certifications from database...</div>
+                      </div>
+                    ) : certifications.length > 0 ? (
+                      <>
+                        <div className="col-span-2 text-xs text-gray-500 mb-2">
+                          Showing {certifications.length} certifications from database
                         </div>
-                      </button>
-                    ))}
+                        {certifications.slice(0, 4).map((cert) => (
+                          <div
+                            key={cert.id}
+                            className="p-3 bg-white rounded-lg border border-gray-200 flex items-center gap-3 shadow-lg min-h-[90px] h-full w-full"
+                          >
+                            {cert.image ? (
+                              <div className="w-8 h-8 rounded overflow-hidden flex-shrink-0">
+                                <img 
+                                  src={cert.image} 
+                                  alt={cert.title}
+                                  className="w-full h-full object-cover"
+                                  onError={(e) => {
+                                    // Fallback to default if image fails to load
+                                    const target = e.target as HTMLImageElement;
+                                    target.style.display = 'none';
+                                    target.nextElementSibling?.classList.remove('hidden');
+                                  }}
+                                />
+                                {/* Fallback default icon */}
+                                <div className="w-full h-full bg-blue-600 flex items-center justify-center hidden">
+                                  <Award className="w-5 h-5 text-white" />
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                                <Award className="w-5 h-5 text-white" />
+                              </div>
+                            )}
+                            <div className="flex flex-col items-start justify-center h-full">
+                              <h4 className="font-semibold text-sm text-gray-800 mb-1">{cert.title}</h4>
+                              <p className="text-xs text-gray-600">{cert.issuer}</p>
+                              <p className="text-xs text-gray-500">{new Date(cert.issueDate).toLocaleDateString()}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </>
+                    ) : (
+                      <div className="col-span-2 text-center py-8">
+                        <div className="text-gray-500">No certifications available in database</div>
+                        <div className="text-xs text-gray-400 mt-2">Add certifications through admin panel</div>
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* View All Certifications Button */}
+                  <div className="text-center">
+                    <Link href="/certifications">
+                      <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                        View All Certifications
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -901,35 +962,7 @@ export default function Portfolio() {
         </div>
       </footer>
 
-      {/* Modal Sertifikat */}
-      {openCertModal && selectedCert && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm"
-          onClick={() => { setOpenCertModal(false); setSelectedCert(null) }}
-        >
-          <div
-            className="relative bg-white rounded-lg shadow-xl p-4 max-w-full max-h-full flex flex-col items-center"
-            style={{ minWidth: 320, minHeight: 200 }}
-            onClick={e => e.stopPropagation()}
-          >
-            <button
-              className="absolute top-2 right-2 text-gray-700 hover:text-black text-2xl font-bold focus:outline-none"
-              onClick={() => { setOpenCertModal(false); setSelectedCert(null) }}
-              aria-label="Close"
-            >
-              ×
-            </button>
-            <Image
-              src={selectedCert.src}
-              alt={selectedCert.alt}
-              width={480}
-              height={340}
-              className="rounded max-h-[70vh] w-auto h-auto object-contain"
-            />
-            <div className="mt-2 text-center text-gray-800 text-sm font-medium">{selectedCert.alt}</div>
-          </div>
-        </div>
-      )}
+
     </div>
   )
 }

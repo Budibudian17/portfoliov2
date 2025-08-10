@@ -6,6 +6,7 @@ import { collection, query, orderBy, onSnapshot } from "firebase/firestore"
 import { ArrowRight, Pin } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import OptimizedImage from "@/components/optimized-image"
 import { useLanguage } from "@/contexts/language-context"
 import Navbar from "@/components/navbar"
 
@@ -115,7 +116,7 @@ export default function ProjectsPage() {
                   <p className="text-sm text-gray-300 mb-4 line-clamp-3">{project.description?.slice(0, 120)}{project.description && project.description.length > 120 ? '...' : ''}</p>
                 </div>
                 <div className="flex items-center gap-2 mt-auto mb-2">
-                  <Image src="/img/avatar.png" alt="Admin" width={28} height={28} className="w-7 h-7 rounded-full border border-gray-700" />
+                  <OptimizedImage src="/img/avatar.webp" fallback="/img/avatar.png" alt="Admin" width={28} height={28} className="w-7 h-7 rounded-full border border-gray-700" />
                   <span className="text-xs text-gray-400">Hilmi</span>
                   {project.createdAt && (
                     <>

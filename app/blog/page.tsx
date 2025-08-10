@@ -4,6 +4,7 @@ import { useLanguage } from "@/contexts/language-context"
 import Image from "next/image"
 import Link from "next/link"
 import Navbar from "@/components/navbar"
+import OptimizedImage from "@/components/optimized-image"
 import { Pin } from "lucide-react"
 import { useState, useEffect } from "react"
 import { db } from "@/lib/firebase";
@@ -126,7 +127,7 @@ export default function BlogPage() {
                   <p className="text-sm text-gray-300 mb-4 line-clamp-3">{post.summary}</p>
                 </div>
                 <div className="flex items-center gap-2 mt-auto">
-                  <Image src={"/img/avatar.png"} alt="Hilmi" width={28} height={28} className="w-7 h-7 rounded-full border border-gray-700" />
+                  <OptimizedImage src="/img/avatar.webp" fallback="/img/avatar.png" alt="Hilmi" width={28} height={28} className="w-7 h-7 rounded-full border border-gray-700" />
                   <span className="text-xs text-gray-400">Hilmi &bull; {new Date(post.date).toLocaleDateString()}</span>
                 </div>
                 <Link

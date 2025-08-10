@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Github, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
+import OptimizedImage from "@/components/optimized-image";
 
 interface Project {
   id: string;
@@ -78,7 +79,7 @@ export default function ProjectDetailPage() {
         <h1 className="text-3xl sm:text-4xl font-black mb-4">{project.title}</h1>
         
         <div className="flex items-center gap-3 text-xs text-gray-400 mb-6">
-          <Image src={"/img/avatar.png"} alt="Hilmi" width={28} height={28} className="w-7 h-7 rounded-full border border-gray-700" />
+          <OptimizedImage src="/img/avatar.webp" fallback="/img/avatar.png" alt="Hilmi" width={28} height={28} className="w-7 h-7 rounded-full border border-gray-700" />
           <span>Hilmi</span>
           <span>•</span>
           <span>{project.createdAt && typeof project.createdAt.toDate === "function" ? new Date(project.createdAt.toDate()).toLocaleDateString() : "No date"}</span>
@@ -86,7 +87,17 @@ export default function ProjectDetailPage() {
 
         {project.image && (
           <div className="relative w-full h-64 mb-8 rounded-2xl overflow-hidden">
-            <Image src={project.image} alt={project.title} fill className="object-cover" />
+            {project.image.startsWith('/img/') ? (
+              <OptimizedImage 
+                src={project.image} 
+                fallback={project.image.replace('.webp', '.png')} 
+                alt={project.title} 
+                fill 
+                className="object-cover" 
+              />
+            ) : (
+              <Image src={project.image} alt={project.title} fill className="object-cover" />
+            )}
           </div>
         )}
 
