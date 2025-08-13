@@ -161,6 +161,93 @@ export default function Portfolio() {
           <div className="grid-background"></div>
         </div>
 
+        {/* Random Profile Photos Background */}
+        <div className="absolute inset-0">
+          {/* Top Left Photo - Rotated slightly counter-clockwise */}
+          <div className="absolute top-32 left-24 w-36 h-36 opacity-20 hover:opacity-60 hover:scale-110 transition-all duration-500 cursor-pointer group">
+            <Image
+              src="/img/bg1.webp"
+              alt="Hilmi Profile"
+              fill
+              className="object-cover rounded-lg group-hover:shadow-2xl group-hover:shadow-white/20"
+              style={{ 
+                transform: `translateY(${scrollY * 0.1}px) rotateY(-15deg) rotateZ(-5deg)`,
+                transformStyle: 'preserve-3d'
+              }}
+            />
+          </div>
+          
+          {/* Top Right Photo - Rotated slightly clockwise */}
+          <div className="absolute top-36 right-28 w-32 h-32 opacity-25 hover:opacity-65 hover:scale-110 transition-all duration-500 cursor-pointer group">
+            <Image
+              src="/img/bg2.webp"
+              alt="Hilmi Profile"
+              fill
+              className="object-cover rounded-lg group-hover:shadow-2xl group-hover:shadow-white/20"
+              style={{ 
+                transform: `translateY(${scrollY * 0.15}px) rotateY(20deg) rotateZ(8deg)`,
+                transformStyle: 'preserve-3d'
+              }}
+            />
+          </div>
+          
+          {/* Center Left Photo - New addition */}
+          <div className="absolute top-[50%] left-16 w-28 h-28 opacity-15 hover:opacity-55 hover:scale-125 transition-all duration-500 cursor-pointer group">
+            <Image
+              src="/img/bg5.webp"
+              alt="Hilmi Profile"
+              fill
+              className="object-cover rounded-lg group-hover:shadow-2xl group-hover:shadow-white/20"
+              style={{ 
+                transform: `translateY(${scrollY * 0.08 - 32}px) translateX(24px) rotateY(-8deg) rotateZ(-2deg)`,
+                transformStyle: 'preserve-3d'
+              }}
+            />
+          </div>
+          
+          {/* Center Right Photo */}
+          <div className="absolute top-1/2 right-20 w-24 h-24 opacity-20 hover:opacity-60 hover:scale-125 transition-all duration-500 cursor-pointer group">
+            <Image
+              src="/img/bg6.webp"
+              alt="Hilmi Profile"
+              fill
+              className="object-cover rounded-lg group-hover:shadow-2xl group-hover:shadow-white/20"
+              style={{ 
+                transform: `translateY(${scrollY * 0.06}px) rotateY(12deg) rotateZ(4deg)`,
+                transformStyle: 'preserve-3d'
+              }}
+            />
+          </div>
+          
+          {/* Bottom Left Photo */}
+          <div className="absolute bottom-24 left-28 w-40 h-40 opacity-30 hover:opacity-70 hover:scale-110 transition-all duration-500 cursor-pointer group">
+            <Image
+              src="/img/bg3.webp"
+              alt="Hilmi Profile"
+              fill
+              className="object-cover rounded-lg group-hover:shadow-2xl group-hover:shadow-white/20"
+              style={{ 
+                transform: `translateY(${scrollY * 0.22 + 16}px) translateX(12px) rotateY(-25deg) rotateZ(-12deg)`,
+                transformStyle: 'preserve-3d'
+              }}
+            />
+          </div>
+          
+          {/* Bottom Right Photo */}
+          <div className="absolute bottom-28 right-24 w-28 h-28 opacity-20 hover:opacity-60 hover:scale-110 transition-all duration-500 cursor-pointer group">
+            <Image
+              src="/img/bg4.webp"
+              alt="Hilmi Profile"
+              fill
+              className="object-cover rounded-lg group-hover:shadow-2xl group-hover:shadow-white/20"
+              style={{ 
+                transform: `translateY(${scrollY * 0.12}px) rotateY(10deg) rotateZ(3deg)`,
+                transformStyle: 'preserve-3d'
+              }}
+            />
+          </div>
+        </div>
+
         <div className="relative z-10 text-center max-w-6xl mx-auto px-4 sm:px-6">
           <div className="space-y-6 sm:space-y-8 animate-fade-in-up">
             <div className="overflow-hidden">
@@ -684,7 +771,6 @@ export default function Portfolio() {
                     <div>
                       <h3 className="text-xl sm:text-2xl font-black">{t("education.certifications.title")}</h3>
                       <p className="text-gray-600 font-medium">{t("education.certifications.subtitle")}</p>
-                      <div className="text-xs text-blue-600 font-medium mt-1">🔄 Dynamic from Database</div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2 text-gray-500 mb-4 lg:mb-0">
@@ -754,7 +840,7 @@ export default function Portfolio() {
                   {/* View All Certifications Button */}
                   <div className="text-center">
                     <Link href="/certifications">
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                      <Button className="bg-black hover:bg-gray-600 text-white">
                         View All Certifications
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>

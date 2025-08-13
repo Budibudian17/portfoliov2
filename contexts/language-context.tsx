@@ -38,9 +38,9 @@ const translations = {
     "about.title": "ABOUT",
     "about.title2": "ME",
     "about.description1":
-      "Hi! I'm Hilmi Farrel Firjatullah, a fresh graduate from SMKN 01 Depok, majoring in Software and Game Development. I love building web apps and making 3D games.",
+      "Hi! I'm Hilmi Farrel Firjatullah, a fresh graduate from SMKN 01 Depok, majoring in Software and Game Development. I enjoy creating web applications and exploring game development.",
     "about.description2":
-      "I've worked on projects like CiptaLife for the Depok Health Department, which helped me grow my web dev and teamwork skills.",
+      "I've worked on projects like CiptaLife for the Depok Health Department, which helped me enhance my web development and teamwork skills.",
     "about.location": "Depok, IDN",
     "about.stats.projects": "Projects Completed",
     "about.stats.experience": "Years Experience",
@@ -311,9 +311,9 @@ const translations = {
     "about.title": "TENTANG",
     "about.title2": "SAYA",
     "about.description1":
-      "Halo! Saya Hilmi Farrel Firjatullah, fresh graduate dari SMKN 01 Depok, jurusan Pengembangan Perangkat Lunak dan Gim. Saya suka membangun web app dan membuat game 3D.",
+      "Halo! Saya Hilmi Farrel Firjatullah, fresh graduate dari SMKN 01 Depok, jurusan Pengembangan Perangkat Lunak dan Gim. Saya menikmati membuat aplikasi web dan mengeksplorasi pengembangan game.",
     "about.description2":
-      "Saya pernah mengerjakan proyek seperti CiptaLife untuk Dinas Kesehatan Depok, yang sangat mengasah skill web dev dan kerja tim saya.",
+      "Saya pernah mengerjakan proyek seperti CiptaLife untuk Dinas Kesehatan Depok, yang sangat mengasah skill pengembangan web dan kerja tim saya.",
     "about.location": "Depok, IDN",
     "about.stats.projects": "Proyek Selesai",
     "about.stats.experience": "Tahun Pengalaman",
@@ -583,9 +583,9 @@ const translations = {
     "about.title": "私に",
     "about.title2": "ついて",
     "about.description1":
-      "こんにちは！私はHilmi Farrel Firjatullahです。SMKN 01 Depokのソフトウェア＆ゲーム開発専攻を卒業したばかりです。Webアプリの構築や3Dゲーム制作が大好きです。",
+      "こんにちは！私はHilmi Farrel Firjatullahです。SMKN 01 Depokのソフトウェア＆ゲーム開発専攻を卒業したばかりです。Webアプリケーションの作成やゲーム開発の探求を楽しんでいます。",
     "about.description2":
-      "Depok保健局向けのCiptaLifeなどのプロジェクトに携わり、Web開発やチームワークのスキルを磨きました。",
+      "Depok保健局向けのCiptaLifeなどのプロジェクトに携わり、Web開発やチームワークのスキルを向上させました。",
     "about.location": "Depok, IDN",
     "about.stats.projects": "完了プロジェクト",
     "about.stats.experience": "年の経験",

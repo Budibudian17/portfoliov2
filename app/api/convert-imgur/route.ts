@@ -108,7 +108,7 @@ function isImgurUrl(url: string): boolean {
   return Boolean(url && (url.includes('imgur.com') || url.includes('i.imgur.com')));
 }
 
-// Function to process Imgur URL
+// Function to process Imgur URL with better deployment handling
 async function processImgurUrl(imgurUrl: string) {
   try {
     // Extract image ID from Imgur URL
@@ -120,41 +120,59 @@ async function processImgurUrl(imgurUrl: string) {
     // Create direct image URL (high quality)
     const directUrl = `https://i.imgur.com/${imgurId}.png`;
     
-    // Create filenames
-    const timestamp = Date.now();
-    const originalFilename = `imgur-${imgurId}-${timestamp}.png`;
-    const webpFilename = `imgur-${imgurId}-${timestamp}.webp`;
+    // For deployment compatibility, we'll use the direct Imgur URL
+    // This ensures images work both locally and in production
+    const webpUrl = `https://i.imgur.com/${imgurId}.webp`;
     
-    const imgDir = path.join(process.cwd(), 'public/img');
-    const originalPath = path.join(imgDir, originalFilename);
-    const webpPath = path.join(imgDir, webpFilename);
-    
-    // Ensure img directory exists
-    if (!fs.existsSync(imgDir)) {
-      fs.mkdirSync(imgDir, { recursive: true });
+    // Try to verify if WebP version exists
+    try {
+      const response = await fetch(webpUrl, { method: 'HEAD' });
+      if (response.ok) {
+        console.log(`✅ WebP version available: ${webpUrl}`);
+        return {
+          originalUrl: imgurUrl,
+          webpUrl: webpUrl,
+          fallbackUrl: directUrl,
+          savings: 0, // We can't calculate without downloading
+          originalSize: 0,
+          webpSize: 0,
+          isExternal: true
+        };
+      }
+    } catch (error) {
+      console.log(`⚠️ WebP version not available, using original: ${directUrl}`);
     }
     
-    // Download image
-    await downloadImage(directUrl, originalPath);
-    
-    // Convert to WebP
-    const result = await convertToWebP(originalPath, webpPath, 85);
-    
-    // Clean up original file
-    fs.unlinkSync(originalPath);
-    
-    // Return the paths for database storage
+    // If WebP not available, return the original high-quality URL
     return {
       originalUrl: imgurUrl,
-      localWebpPath: `/img/${webpFilename}`,
-      localFallbackPath: `/img/${originalFilename}`,
-      ...result
+      webpUrl: directUrl, // Use original as "WebP" for consistency
+      fallbackUrl: directUrl,
+      savings: 0,
+      originalSize: 0,
+      webpSize: 0,
+      isExternal: true
     };
     
   } catch (error) {
     console.error(`Error processing Imgur URL ${imgurUrl}:`, error);
     throw error;
   }
+}
+
+// Function to process other image URLs
+async function processOtherImageUrl(imageUrl: string) {
+  // For non-Imgur URLs, we'll return them as-is
+  // This ensures compatibility with various image hosting services
+  return {
+    originalUrl: imageUrl,
+    webpUrl: imageUrl,
+    fallbackUrl: imageUrl,
+    savings: 0,
+    originalSize: 0,
+    webpSize: 0,
+    isExternal: true
+  };
 }
 
 // Main function to process image URLs
@@ -166,14 +184,7 @@ async function processImageUrl(imageUrl: string) {
   if (isImgurUrl(imageUrl)) {
     return await processImgurUrl(imageUrl);
   } else {
-    return {
-      originalUrl: imageUrl,
-      localWebpPath: imageUrl,
-      localFallbackPath: imageUrl,
-      savings: 0,
-      originalSize: 0,
-      webpSize: 0
-    };
+    return await processOtherImageUrl(imageUrl);
   }
 }
 
@@ -203,18 +214,19 @@ export async function POST(request: NextRequest) {
       }
 
       console.log(`✅ Successfully processed: ${imageUrl}`);
-      console.log(`📊 WebP saved: ${result.localWebpPath}`);
-      console.log(`💾 Size savings: ${result.savings}%`);
+      console.log(`📊 WebP URL: ${result.webpUrl}`);
+      console.log(`🔄 Fallback URL: ${result.fallbackUrl}`);
 
       return NextResponse.json({
         success: true,
         data: {
           originalUrl: result.originalUrl,
-          webpPath: result.localWebpPath,
-          fallbackPath: result.localFallbackPath,
+          webpPath: result.webpUrl, // This will be the external URL
+          fallbackPath: result.fallbackUrl,
           savings: result.savings,
           originalSize: result.originalSize,
-          webpSize: result.webpSize
+          webpSize: result.webpSize,
+          isExternal: result.isExternal
         }
       });
     } catch (processError: any) {
