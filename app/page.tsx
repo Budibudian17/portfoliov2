@@ -164,7 +164,7 @@ export default function Portfolio() {
         {/* Random Profile Photos Background */}
         <div className="absolute inset-0">
           {/* Top Left Photo - Rotated slightly counter-clockwise */}
-          <div className="absolute top-32 left-24 w-36 h-36 opacity-20 hover:opacity-60 hover:scale-110 transition-all duration-500 cursor-pointer group">
+          <div className="absolute top-16 sm:top-24 md:top-32 left-4 sm:left-8 md:left-24 w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 opacity-20 hover:opacity-60 hover:scale-110 transition-all duration-500 cursor-pointer group">
             <Image
               src="/img/bg1.webp"
               alt="Hilmi Profile"
@@ -178,7 +178,7 @@ export default function Portfolio() {
           </div>
           
           {/* Top Right Photo - Rotated slightly clockwise */}
-          <div className="absolute top-36 right-28 w-32 h-32 opacity-25 hover:opacity-65 hover:scale-110 transition-all duration-500 cursor-pointer group">
+          <div className="absolute top-20 sm:top-28 md:top-36 right-4 sm:right-12 md:right-28 w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 opacity-25 hover:opacity-65 hover:scale-110 transition-all duration-500 cursor-pointer group">
             <Image
               src="/img/bg2.webp"
               alt="Hilmi Profile"
@@ -191,8 +191,8 @@ export default function Portfolio() {
             />
           </div>
           
-          {/* Center Left Photo - New addition */}
-          <div className="absolute top-[50%] left-16 w-28 h-28 opacity-15 hover:opacity-55 hover:scale-125 transition-all duration-500 cursor-pointer group">
+          {/* Center Left Photo - Hidden on mobile, visible on larger screens */}
+          <div className="hidden sm:block absolute top-[50%] left-4 sm:left-8 md:left-16 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 opacity-15 hover:opacity-55 hover:scale-125 transition-all duration-500 cursor-pointer group">
             <Image
               src="/img/bg5.webp"
               alt="Hilmi Profile"
@@ -205,8 +205,8 @@ export default function Portfolio() {
             />
           </div>
           
-          {/* Center Right Photo */}
-          <div className="absolute top-1/2 right-20 w-24 h-24 opacity-20 hover:opacity-60 hover:scale-125 transition-all duration-500 cursor-pointer group">
+          {/* Center Right Photo - Hidden on mobile, visible on larger screens */}
+          <div className="hidden sm:block absolute top-1/2 right-4 sm:right-8 md:right-20 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 opacity-20 hover:opacity-60 hover:scale-125 transition-all duration-500 cursor-pointer group">
             <Image
               src="/img/bg6.webp"
               alt="Hilmi Profile"
@@ -220,7 +220,7 @@ export default function Portfolio() {
           </div>
           
           {/* Bottom Left Photo */}
-          <div className="absolute bottom-24 left-28 w-40 h-40 opacity-30 hover:opacity-70 hover:scale-110 transition-all duration-500 cursor-pointer group">
+          <div className="absolute bottom-8 sm:bottom-16 md:bottom-24 left-4 sm:left-12 md:left-28 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 opacity-30 hover:opacity-70 hover:scale-110 transition-all duration-500 cursor-pointer group">
             <Image
               src="/img/bg3.webp"
               alt="Hilmi Profile"
@@ -234,7 +234,7 @@ export default function Portfolio() {
           </div>
           
           {/* Bottom Right Photo */}
-          <div className="absolute bottom-28 right-24 w-28 h-28 opacity-20 hover:opacity-60 hover:scale-110 transition-all duration-500 cursor-pointer group">
+          <div className="absolute bottom-12 sm:bottom-20 md:bottom-28 right-4 sm:right-8 md:right-24 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 opacity-20 hover:opacity-60 hover:scale-110 transition-all duration-500 cursor-pointer group">
             <Image
               src="/img/bg4.webp"
               alt="Hilmi Profile"
