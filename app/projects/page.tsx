@@ -21,12 +21,14 @@ interface Project {
   createdAt?: any;
   content?: string;
   pinned?: boolean;
+  projectType?: "individual" | "collaboration";
 }
 
 export default function ProjectsPage() {
   const { t } = useLanguage();
   const [projects, setProjects] = useState<Project[]>([])
   const [loading, setLoading] = useState(true);
+  const [activeFilter, setActiveFilter] = useState<"all" | "individual" | "collaboration">("all");
 
   useEffect(() => {
     const q = query(collection(db, "projects"), orderBy("createdAt", "desc"));
@@ -52,6 +54,12 @@ export default function ProjectsPage() {
     const aDate = a.createdAt && typeof a.createdAt.toDate === "function" ? a.createdAt.toDate() : 0;
     const bDate = b.createdAt && typeof b.createdAt.toDate === "function" ? b.createdAt.toDate() : 0;
     return bDate - aDate;
+  });
+
+  // Filter projects based on active filter
+  const filteredProjects = sortedProjects.filter(project => {
+    if (activeFilter === "all") return true;
+    return project.projectType === activeFilter;
   });
 
   return (
@@ -82,10 +90,54 @@ export default function ProjectsPage() {
 
       <main className="pt-8 pb-16 px-4 min-h-screen max-w-7xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-black text-center mb-8">{t("projects.page.allProjects")}</h2>
+        
+        {/* Filter Buttons */}
+        <div className="flex justify-center mb-8">
+          <div className="flex bg-gray-900 border border-gray-800 rounded-full p-1">
+            <button
+              onClick={() => setActiveFilter("all")}
+              className={`px-6 py-2 rounded-full text-sm font-semibold transition-all ${
+                activeFilter === "all"
+                  ? "bg-blue-600 text-white shadow-lg"
+                  : "text-gray-400 hover:text-white hover:bg-gray-800"
+              }`}
+            >
+              {t("projects.filter.all")}
+            </button>
+            <button
+              onClick={() => setActiveFilter("individual")}
+              className={`px-6 py-2 rounded-full text-sm font-semibold transition-all ${
+                activeFilter === "individual"
+                  ? "bg-blue-600 text-white shadow-lg"
+                  : "text-gray-400 hover:text-white hover:bg-gray-800"
+              }`}
+            >
+              {t("projects.filter.individual")}
+            </button>
+            <button
+              onClick={() => setActiveFilter("collaboration")}
+              className={`px-6 py-2 rounded-full text-sm font-semibold transition-all ${
+                activeFilter === "collaboration"
+                  ? "bg-blue-600 text-white shadow-lg"
+                  : "text-gray-400 hover:text-white hover:bg-gray-800"
+              }`}
+            >
+              {t("projects.filter.collaboration")}
+            </button>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {loading && <div className="text-gray-400 text-center col-span-full">{t("projects.page.loading")}</div>}
-          {!loading && projects.length === 0 && <div className="text-gray-500 text-center col-span-full">{t("projects.page.noProjects")}</div>}
-          {!loading && sortedProjects.map((project) => (
+          {!loading && filteredProjects.length === 0 && (
+            <div className="text-gray-500 text-center col-span-full">
+              {activeFilter === "all" 
+                ? t("projects.page.noProjects")
+                : t("projects.page.noProjectsInCategory")
+              }
+            </div>
+          )}
+          {!loading && filteredProjects.map((project) => (
             <div key={project.id} className="bg-gray-900 border border-gray-800 rounded-2xl shadow-lg overflow-hidden group flex flex-col focus:outline-none transition-all hover:border-blue-500 hover:shadow-blue-900/30">
               <div className="relative h-48 overflow-hidden">
                 {project.image ? (
@@ -107,6 +159,14 @@ export default function ProjectsPage() {
                     {project.status === "published" ? "Live" :
                      project.status === "in-progress" ? "Development" :
                      "Idea"}
+                  </span>
+                )}
+                {/* Project Type Badge */}
+                {project.projectType && (
+                  <span className={`absolute bottom-3 left-3 px-3 py-1 text-xs font-semibold rounded-full shadow-md z-10 ${
+                    project.projectType === "individual" ? "bg-purple-600" : "bg-orange-600"
+                  } text-white bg-opacity-90`}>
+                    {project.projectType === "individual" ? t("projects.type.individual") : t("projects.type.collaboration")}
                   </span>
                 )}
               </div>

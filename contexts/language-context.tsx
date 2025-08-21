@@ -259,6 +259,16 @@ const translations = {
     "projects.page.viewOnGitHub": "View on GitHub",
     "projects.page.noProjects": "No projects yet.",
     "projects.page.loading": "Loading projects...",
+    "projects.page.noProjectsInCategory": "No projects in this category yet.",
+    
+    // Project Filters
+    "projects.filter.all": "All",
+    "projects.filter.individual": "Individual",
+    "projects.filter.collaboration": "Collaboration",
+    
+    // Project Types
+    "projects.type.individual": "Individual",
+    "projects.type.collaboration": "Collaboration",
 
     // Certifications Page
     "certifications.page.title": "Certifications",
@@ -531,6 +541,16 @@ const translations = {
     "projects.page.viewOnGitHub": "Lihat di GitHub",
     "projects.page.noProjects": "Belum ada proyek.",
     "projects.page.loading": "Memuat proyek...",
+    "projects.page.noProjectsInCategory": "Belum ada proyek di kategori ini.",
+    
+    // Project Filters
+    "projects.filter.all": "Semua",
+    "projects.filter.individual": "Individu",
+    "projects.filter.collaboration": "Kolaborasi",
+    
+    // Project Types
+    "projects.type.individual": "Individu",
+    "projects.type.collaboration": "Kolaborasi",
 
     // Certifications Page
     "certifications.page.title": "Sertifikasi",
@@ -804,6 +824,16 @@ const translations = {
     "projects.page.viewOnGitHub": "GitHubで見る",
     "projects.page.noProjects": "まだプロジェクトがありません。",
     "projects.page.loading": "プロジェクトを読み込み中...",
+    "projects.page.noProjectsInCategory": "まだこのカテゴリーのプロジェクトがありません。",
+    
+    // Project Filters
+    "projects.filter.all": "すべて",
+    "projects.filter.individual": "個人",
+    "projects.filter.collaboration": "コラボレーション",
+    
+    // Project Types
+    "projects.type.individual": "個人",
+    "projects.type.collaboration": "コラボレーション",
 
     // Certifications Page
     "certifications.page.title": "認定",

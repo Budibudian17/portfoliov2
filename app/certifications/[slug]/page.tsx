@@ -206,12 +206,6 @@ export default function CertificationDetail() {
                  {t("certifications.page.verifyCredential")}
                </a>
             )}
-            
-                         <Link href="/certifications">
-               <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800">
-                 {t("certifications.page.viewAllCertifications")}
-               </Button>
-             </Link>
           </div>
         </div>
       </div>

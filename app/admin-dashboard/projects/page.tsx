@@ -14,6 +14,7 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import { Edit, Trash2, Plus, Save, X, Pin } from "lucide-react";
+import ProjectStats from "@/components/project-stats";
 
 interface Project {
   id: string;
@@ -25,12 +26,14 @@ interface Project {
   status: "published" | "in-progress" | "planned";
   createdAt?: any;
   pinned?: boolean;
+  projectType?: "individual" | "collaboration";
 }
 
 export default function AdminProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [form, setForm] = useState<Partial<Project>>({
-    status: "published"
+    status: "published",
+    projectType: "individual"
   });
   const [editingId, setEditingId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -126,7 +129,7 @@ export default function AdminProjectsPage() {
           createdAt: serverTimestamp(),
         });
       }
-      setForm({});
+      setForm({ status: "published", projectType: "individual" });
     } catch (err) {
       setError("Gagal menyimpan project.");
     }
@@ -143,6 +146,7 @@ export default function AdminProjectsPage() {
       projectLink: project.projectLink || "",
       githubLink: project.githubLink || "",
       status: project.status || "published",
+      projectType: project.projectType || "individual",
     });
   };
 
@@ -154,14 +158,14 @@ export default function AdminProjectsPage() {
     setLoading(false);
     if (editingId === id) {
       setEditingId(null);
-      setForm({});
+      setForm({ status: "published", projectType: "individual" });
     }
   };
 
   // Handle cancel
   const handleCancel = () => {
     setEditingId(null);
-    setForm({ status: "published" });
+    setForm({ status: "published", projectType: "individual" });
     setError(null);
   };
 
@@ -180,6 +184,9 @@ export default function AdminProjectsPage() {
     <div className="w-full max-w-4xl mx-auto">
       <h1 className="text-2xl sm:text-3xl font-black mb-4 text-white">Project Management</h1>
       <p className="text-gray-400 mb-8">Kelola project portfolio kamu di sini.</p>
+      
+      {/* Project Statistics */}
+      <ProjectStats />
       {/* Form */}
       <form
         onSubmit={handleSubmit}
@@ -223,18 +230,32 @@ export default function AdminProjectsPage() {
             <img src={form.image} alt="preview" className="w-full max-w-xs rounded-lg mt-2 border border-gray-700" />
           )}
         </div>
-        <div className="flex flex-col gap-2">
-          <label className="text-sm font-bold text-gray-200">Status Project</label>
-          <select
-            name="status"
-            className="bg-gray-800 rounded-lg px-4 py-2 text-white focus:outline-none"
-            value={form.status || "published"}
-            onChange={handleChange}
-          >
-            <option value="published">Published (Sudah Live)</option>
-            <option value="in-progress">In Progress (Sedang Dikerjakan)</option>
-            <option value="planned">Planned (Rencana)</option>
-          </select>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-bold text-gray-200">Status Project</label>
+            <select
+              name="status"
+              className="bg-gray-800 rounded-lg px-4 py-2 text-white focus:outline-none"
+              value={form.status || "published"}
+              onChange={handleChange}
+            >
+              <option value="published">Published (Sudah Live)</option>
+              <option value="in-progress">In Progress (Sedang Dikerjakan)</option>
+              <option value="planned">Planned (Rencana)</option>
+            </select>
+          </div>
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-bold text-gray-200">Tipe Project</label>
+            <select
+              name="projectType"
+              className="bg-gray-800 rounded-lg px-4 py-2 text-white focus:outline-none"
+              value={form.projectType || "individual"}
+              onChange={handleChange}
+            >
+              <option value="individual">Individual (Proyek Sendiri)</option>
+              <option value="collaboration">Collaboration (Kolaborasi)</option>
+            </select>
+          </div>
         </div>
         <div className="flex flex-col gap-2">
           <label className="text-sm font-bold text-gray-200">
@@ -315,6 +336,13 @@ export default function AdminProjectsPage() {
                        project.status === "in-progress" ? "In Progress" :
                        "Planned"}
                     </span>
+                    {project.projectType && (
+                      <span className={`px-2 py-1 text-xs rounded-full font-bold ${
+                        project.projectType === "individual" ? "bg-purple-600 text-white" : "bg-orange-600 text-white"
+                      }`}>
+                        {project.projectType === "individual" ? "Individual" : "Collaboration"}
+                      </span>
+                    )}
                   </div>
                   <div className="text-gray-300 mb-2 text-sm whitespace-pre-line">{project.description}</div>
                   {project.image && (

@@ -20,6 +20,7 @@ interface Project {
   status?: "published" | "in-progress" | "planned";
   createdAt?: any;
   content?: string;
+  projectType?: "individual" | "collaboration";
 }
 
 export default function ProjectDetailPage() {
@@ -113,8 +114,8 @@ export default function ProjectDetailPage() {
         </div>
 
         <div className="flex flex-wrap gap-4">
-          {project.status && (
-            <div className="w-full mb-4">
+          <div className="w-full mb-4 flex flex-wrap gap-3">
+            {project.status && (
               <span className={`px-3 py-1 text-sm rounded-full font-bold ${
                 project.status === "published" ? "bg-green-600 text-white" :
                 project.status === "in-progress" ? "bg-yellow-600 text-white" :
@@ -124,8 +125,15 @@ export default function ProjectDetailPage() {
                  project.status === "in-progress" ? "In Progress" :
                  "Planned"}
               </span>
-            </div>
-          )}
+            )}
+            {project.projectType && (
+              <span className={`px-3 py-1 text-sm rounded-full font-bold ${
+                project.projectType === "individual" ? "bg-purple-600 text-white" : "bg-orange-600 text-white"
+              }`}>
+                {project.projectType === "individual" ? t("projects.type.individual") : t("projects.type.collaboration")}
+              </span>
+            )}
+          </div>
           
           {project.projectLink ? (
             <Link
