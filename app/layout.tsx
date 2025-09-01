@@ -4,7 +4,8 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { LanguageProvider } from "@/contexts/language-context"
 import AppLoadingGate from "@/components/app-loading-gate"
-import ChatWidget from "@/components/chat-widget";
+import ChatWidget from "@/components/chat-widget"
+import AudioPlayer from "@/components/audio-player"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -25,6 +26,7 @@ export default function RootLayout({
         <LanguageProvider>
           <AppLoadingGate>
             {children}
+            <AudioPlayer />
             <ChatWidget />
           </AppLoadingGate>
         </LanguageProvider>

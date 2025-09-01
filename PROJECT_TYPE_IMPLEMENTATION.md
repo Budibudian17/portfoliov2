@@ -1,12 +1,12 @@
 # Project Type Implementation
 
 ## Overview
-Fitur ini menambahkan kemampuan untuk membedakan project berdasarkan tipe: **Individual** dan **Collaboration**.
+Fitur ini menambahkan kemampuan untuk membedakan project berdasarkan tipe: **Individual** dan **Contributions**.
 
 ## Fitur yang Ditambahkan
 
 ### 1. User View (Halaman Projects)
-- **Filter Buttons**: Tombol filter untuk All, Individual, dan Collaboration
+- **Filter Buttons**: Tombol filter untuk All, Individual, dan Contributions
 - **Project Type Badge**: Badge yang menampilkan tipe project di setiap card
 - **Filtered Display**: Hanya menampilkan project sesuai filter yang dipilih
 
@@ -39,21 +39,21 @@ interface Project {
 
 ### Project Type Values
 - `"individual"`: Project yang dikerjakan sendiri
-- `"collaboration"`: Project yang dikerjakan bersama tim/orang lain
+- `"collaboration"`: Project yang dikerjakan bersama tim/orang lain (Contributions)
 
 ## Multi-Language Support
 
 ### English
-- All, Individual, Collaboration
-- Individual, Collaboration
+- All, Individual, Contributions
+- Individual, Contributions
 
 ### Indonesian
-- Semua, Individu, Kolaborasi
-- Individu, Kolaborasi
+- Semua, Individu, Kontribusi
+- Individu, Kontribusi
 
 ### Japanese
-- すべて, 個人, コラボレーション
-- 個人, コラボレーション
+- すべて, 個人, 貢献
+- 個人, 貢献
 
 ## Komponen yang Dibuat/Diupdate
 
@@ -100,15 +100,15 @@ node scripts/update-project-types.js
 **Note**: Pastikan untuk mengisi konfigurasi Firebase di script terlebih dahulu.
 
 ### Mapping Default
-- CiptaLife Healthcare Platform → Collaboration
-- ERP System → Collaboration  
+- CiptaLife Healthcare Platform → Contributions
+- ERP System → Contributions  
 - Personal Portfolio → Individual
 
 ## Styling
 
 ### Color Scheme
 - **Individual**: Purple (`bg-purple-600`)
-- **Collaboration**: Orange (`bg-orange-600`)
+- **Contributions**: Orange (`bg-orange-600`)
 - **Status Badges**: Green (Published), Yellow (In Progress), Gray (Planned)
 
 ### Filter Buttons
@@ -127,7 +127,7 @@ node scripts/update-project-types.js
 - Timeline view berdasarkan tipe
 - Export functionality
 
-### 3. Collaboration Details
+### 3. Contribution Details
 - Team member information
 - Role dalam project
 - Contribution metrics
@@ -138,7 +138,7 @@ node scripts/update-project-types.js
 1. **Filter Functionality**
    - Filter "All" menampilkan semua project
    - Filter "Individual" hanya menampilkan project individual
-   - Filter "Collaboration" hanya menampilkan project collaboration
+   - Filter "Contributions" hanya menampilkan project contributions
 
 2. **Admin Functionality**
    - Add project dengan project type

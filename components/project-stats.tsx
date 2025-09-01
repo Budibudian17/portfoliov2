@@ -50,7 +50,7 @@ export default function ProjectStats() {
 
   const totalProjects = projects.length;
   const individualProjects = projects.filter(p => p.projectType === "individual").length;
-  const collaborationProjects = projects.filter(p => p.projectType === "collaboration").length;
+  const contributionProjects = projects.filter(p => p.projectType === "collaboration").length;
   const publishedProjects = projects.filter(p => p.status === "published").length;
   const inProgressProjects = projects.filter(p => p.status === "in-progress").length;
   const plannedProjects = projects.filter(p => p.status === "planned").length;
@@ -106,24 +106,24 @@ export default function ProjectStats() {
         </div>
       </div>
 
-      {/* Collaboration Projects */}
+      {/* Contribution Projects */}
       <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center">
             <Users className="w-6 h-6 text-white" />
           </div>
           <div>
-            <p className="text-sm text-gray-400">Collaboration</p>
-            <p className="text-2xl font-bold text-white">{collaborationProjects}</p>
+            <p className="text-sm text-gray-400">Contributions</p>
+            <p className="text-2xl font-bold text-white">{contributionProjects}</p>
           </div>
         </div>
         <div className="text-sm text-gray-400">
-          {collaborationProjects > 0 ? (
+          {contributionProjects > 0 ? (
             <span className="text-orange-400">
-              {((collaborationProjects / totalProjects) * 100).toFixed(1)}% of total
+              {((contributionProjects / totalProjects) * 100).toFixed(1)}% of total
             </span>
           ) : (
-            <span>No collaboration projects yet</span>
+            <span>No contribution projects yet</span>
           )}
         </div>
       </div>

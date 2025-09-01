@@ -253,7 +253,7 @@ export default function AdminProjectsPage() {
               onChange={handleChange}
             >
               <option value="individual">Individual (Proyek Sendiri)</option>
-              <option value="collaboration">Collaboration (Kolaborasi)</option>
+              <option value="collaboration">Contributions (Kontribusi)</option>
             </select>
           </div>
         </div>
@@ -340,7 +340,7 @@ export default function AdminProjectsPage() {
                       <span className={`px-2 py-1 text-xs rounded-full font-bold ${
                         project.projectType === "individual" ? "bg-purple-600 text-white" : "bg-orange-600 text-white"
                       }`}>
-                        {project.projectType === "individual" ? "Individual" : "Collaboration"}
+                        {project.projectType === "individual" ? "Individual" : "Contributions"}
                       </span>
                     )}
                   </div>

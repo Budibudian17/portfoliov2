@@ -264,11 +264,11 @@ const translations = {
     // Project Filters
     "projects.filter.all": "All",
     "projects.filter.individual": "Individual",
-    "projects.filter.collaboration": "Collaboration",
+    "projects.filter.collaboration": "Contributions",
     
     // Project Types
     "projects.type.individual": "Individual",
-    "projects.type.collaboration": "Collaboration",
+    "projects.type.collaboration": "Contributions",
 
     // Certifications Page
     "certifications.page.title": "Certifications",
@@ -546,11 +546,11 @@ const translations = {
     // Project Filters
     "projects.filter.all": "Semua",
     "projects.filter.individual": "Individu",
-    "projects.filter.collaboration": "Kolaborasi",
+    "projects.filter.collaboration": "Kontribusi",
     
     // Project Types
     "projects.type.individual": "Individu",
-    "projects.type.collaboration": "Kolaborasi",
+    "projects.type.collaboration": "Kontribusi",
 
     // Certifications Page
     "certifications.page.title": "Sertifikasi",
@@ -829,11 +829,11 @@ const translations = {
     // Project Filters
     "projects.filter.all": "すべて",
     "projects.filter.individual": "個人",
-    "projects.filter.collaboration": "コラボレーション",
+    "projects.filter.collaboration": "貢献",
     
     // Project Types
     "projects.type.individual": "個人",
-    "projects.type.collaboration": "コラボレーション",
+    "projects.type.collaboration": "貢献",
 
     // Certifications Page
     "certifications.page.title": "認定",
