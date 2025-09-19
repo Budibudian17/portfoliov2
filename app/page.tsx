@@ -458,35 +458,26 @@ export default function Portfolio() {
               </div>
             </div>
 
-            {/* Project 3 - Portfolio */}
+            {/* Project 3 - MuslimTime */}
             <div className="grid lg:grid-cols-5 gap-8 sm:gap-12 items-center reveal-on-scroll">
               <div className="lg:col-span-3 space-y-4 sm:space-y-6 order-2 lg:order-1">
                 <div className="space-y-3 sm:space-y-4">
-                  <h3 className="text-2xl sm:text-3xl font-black">{t("projects.portfolio.title")}</h3>
+                  <h3 className="text-2xl sm:text-3xl font-black">{t("projects.muslimtime.title")}</h3>
                   <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
-                    {t("projects.portfolio.description")}
+                    {t("projects.muslimtime.description")}
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline" className="border-black text-black text-xs sm:text-sm">
-                    Next.js
-                  </Badge>
-                  <Badge variant="outline" className="border-black text-black text-xs sm:text-sm">
-                    TypeScript
-                  </Badge>
-                  <Badge variant="outline" className="border-black text-black text-xs sm:text-sm">
-                    Tailwind CSS
-                  </Badge>
-                  <Badge variant="outline" className="border-black text-black text-xs sm:text-sm">
-                    Framer Motion
-                  </Badge>
-                  <Badge variant="outline" className="border-black text-black text-xs sm:text-sm">
-                    Vercel
-                  </Badge>
+                  <Badge variant="outline" className="border-black text-black text-xs sm:text-sm">Next.js</Badge>
+                  <Badge variant="outline" className="border-black text-black text-xs sm:text-sm">TypeScript</Badge>
+                  <Badge variant="outline" className="border-black text-black text-xs sm:text-sm">Tailwind CSS</Badge>
+                  <Badge variant="outline" className="border-black text-black text-xs sm:text-sm">Shadcn UI</Badge>
+                  <Badge variant="outline" className="border-black text-black text-xs sm:text-sm">Firebase</Badge>
+                  <Badge variant="outline" className="border-black text-black text-xs sm:text-sm">Nodemailer</Badge>
                 </div>
                 <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
                   <Button asChild className="bg-black text-white hover:bg-gray-800 w-full sm:w-auto">
-                    <a href="https://hilmiportfoliodev.vercel.app/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://muslim-times.vercel.app/" target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="h-4 w-4 mr-2" />
                       {t("projects.demo")}
                     </a>
@@ -495,7 +486,7 @@ export default function Portfolio() {
                     variant="outline"
                     className="border-black text-black hover:bg-black hover:text-white bg-transparent w-full sm:w-auto"
                   >
-                    <a href="https://github.com/Budibudian17/portfoliov2" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/Budibudian17/MuslimTime" target="_blank" rel="noopener noreferrer">
                       <Github className="h-4 w-4 mr-2" />
                       {t("projects.code")}
                     </a>
@@ -506,18 +497,18 @@ export default function Portfolio() {
                 <div className="absolute inset-0 bg-black rounded-lg sm:rounded-xl transform rotate-1 sm:rotate-2 group-hover:rotate-2 sm:group-hover:rotate-3 transition-transform duration-300"></div>
                 {/* Mobile image */}
                 <OptimizedImage
-                  src="/img/portfolio-mobile.webp"
-                  fallback="/img/portfolio-mobile.png"
-                  alt="Personal Portfolio Website Mobile"
+                  src="/img/MuslimTime.webp"
+                  fallback="/img/MuslimTime.png"
+                  alt="MuslimTime Mobile"
                   width={350}
                   height={200}
                   className="relative rounded-lg sm:rounded-xl shadow-xl group-hover:scale-105 transition-transform duration-300 w-full h-32 sm:h-40 md:h-48 lg:h-auto object-cover block sm:hidden"
                 />
                 {/* Desktop image */}
                 <OptimizedImage
-                  src="/img/portfolio-desktop.webp"
-                  fallback="/img/portfolio-desktop.jpeg"
-                  alt="Personal Portfolio Website"
+                  src="/img/MuslimTime1.webp"
+                  fallback="/img/MuslimTime1.png"
+                  alt="MuslimTime"
                   width={350}
                   height={200}
                   className="relative rounded-lg sm:rounded-xl shadow-xl group-hover:scale-105 transition-transform duration-300 w-full h-32 sm:h-40 md:h-48 lg:h-auto object-cover hidden sm:block"

@@ -107,9 +107,9 @@ const translations = {
     "projects.erp.title": "Enterprise Resource Planning System",
     "projects.erp.description":
       "A robust ERP system designed to streamline business operations for companies. Includes modules for inventory management, financial tracking, human resources, and comprehensive reporting tools.",
-    "projects.portfolio.title": "Personal Portfolio Website",
-    "projects.portfolio.description":
-      "A modern, responsive portfolio website showcasing my skills, projects, and passion in web development and digital design. Built with cutting-edge technologies and optimized for performance.",
+    "projects.muslimtime.title": "MuslimTime",
+    "projects.muslimtime.description":
+      "An Islamic-themed web app to read the Qur'an, listen to recitations, track prayer times, and handle authentication with email verification and OTP. Calm blue palette, Islamic accents, and light/dark theme support.",
 
     // Skills Section
     "skills.title": "MY",
@@ -390,9 +390,9 @@ const translations = {
     "projects.erp.title": "Sistem Enterprise Resource Planning",
     "projects.erp.description":
       "Sistem ERP yang robust dirancang untuk merampingkan operasi bisnis perusahaan. Termasuk modul manajemen inventori, pelacakan keuangan, sumber daya manusia, dan alat pelaporan komprehensif.",
-    "projects.portfolio.title": "Website Portfolio Pribadi",
-    "projects.portfolio.description":
-      "Website portfolio modern dan responsif yang menampilkan keahlian, proyek, dan passion saya dalam pengembangan web dan desain digital. Dibangun dengan teknologi terdepan dan dioptimalkan untuk performa.",
+    "projects.muslimtime.title": "MuslimTime",
+    "projects.muslimtime.description":
+      "Aplikasi web bertema Islami untuk membaca Al‑Qur'an, mendengar murottal, melihat jadwal shalat (auto geolocation), serta autentikasi dengan verifikasi email dan OTP. Tema biru yang tenang dengan dukungan light/dark.",
 
     // Skills Section
     "skills.title": "KEAHLIAN",
@@ -672,9 +672,9 @@ const translations = {
     "projects.erp.title": "企業資源計画システム",
     "projects.erp.description":
       "企業の業務運営を合理化するために設計された堅牢なERPシステム。在庫管理、財務追跡、人事、包括的なレポートツールのモジュールが含まれています。",
-    "projects.portfolio.title": "個人ポートフォリオウェブサイト",
-    "projects.portfolio.description":
-      "Web開発とデジタルデザインにおける私のスキル、プロジェクト、情熱を紹介するモダンでレスポンシブなポートフォリオウェブサイト。最先端技術で構築され、パフォーマンスが最適化されています。",
+    "projects.muslimtime.title": "MuslimTime",
+    "projects.muslimtime.description":
+      "クルアーンの読書と音声再生、礼拝時間の表示、メール認証＋OTPに対応したイスラムテーマのWebアプリ。落ち着いたブルー配色でライト/ダークテーマに対応。",
 
     // Skills Section
     "skills.title": "私の",
