@@ -165,7 +165,7 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
               <div className="text-xs text-gray-500 uppercase tracking-wider">Projects</div>
             </div>
             <div className="space-y-1">
-              <div className="text-lg font-bold text-white">2+</div>
+              <div className="text-lg font-bold text-white">~2</div>
               <div className="text-xs text-gray-500 uppercase tracking-wider">Years</div>
             </div>
             <div className="space-y-1">
