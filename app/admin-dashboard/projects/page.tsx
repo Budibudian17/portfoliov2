@@ -21,19 +21,23 @@ interface Project {
   title: string;
   description: string;
   image?: string;
+  videoUrl?: string;
   projectLink?: string;
   githubLink?: string;
   status: "published" | "in-progress" | "planned";
   createdAt?: any;
   pinned?: boolean;
   projectType?: "individual" | "collaboration";
+  category?: "web" | "game" | "editing";
 }
 
 export default function AdminProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [form, setForm] = useState<Partial<Project>>({
     status: "published",
-    projectType: "individual"
+    projectType: "individual",
+    category: "web",
+    videoUrl: ""
   });
   const [editingId, setEditingId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -110,6 +114,10 @@ export default function AdminProjectsPage() {
       setError("Link project wajib diisi untuk project yang sudah publish.");
       return;
     }
+    if (form.category === "editing" && !form.videoUrl) {
+      setError("Untuk kategori Editing, link video wajib diisi (MP4/WebM). ");
+      return;
+    }
     setLoading(true);
     try {
       // Convert image URL to WebP if it's Imgur
@@ -129,7 +137,7 @@ export default function AdminProjectsPage() {
           createdAt: serverTimestamp(),
         });
       }
-      setForm({ status: "published", projectType: "individual" });
+      setForm({ status: "published", projectType: "individual", category: "web", videoUrl: "" });
     } catch (err) {
       setError("Gagal menyimpan project.");
     }
@@ -143,10 +151,12 @@ export default function AdminProjectsPage() {
       title: project.title,
       description: project.description,
       image: project.image || "",
+      videoUrl: project.videoUrl || "",
       projectLink: project.projectLink || "",
       githubLink: project.githubLink || "",
       status: project.status || "published",
       projectType: project.projectType || "individual",
+      category: project.category || "web",
     });
   };
 
@@ -165,7 +175,7 @@ export default function AdminProjectsPage() {
   // Handle cancel
   const handleCancel = () => {
     setEditingId(null);
-    setForm({ status: "published", projectType: "individual" });
+    setForm({ status: "published", projectType: "individual", category: "web", videoUrl: "" });
     setError(null);
   };
 
@@ -230,6 +240,25 @@ export default function AdminProjectsPage() {
             <img src={form.image} alt="preview" className="w-full max-w-xs rounded-lg mt-2 border border-gray-700" />
           )}
         </div>
+        {/* Conditional Video field for Editing category */}
+        {form.category === "editing" && (
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-bold text-gray-200">Link Video (MP4 / WebM)</label>
+            <input
+              type="url"
+              name="videoUrl"
+              className="bg-gray-800 rounded-lg px-4 py-2 text-white focus:outline-none"
+              placeholder="https://cdn.example.com/video.mp4"
+              value={form.videoUrl || ""}
+              onChange={handleChange}
+              required={form.category === "editing"}
+            />
+            <div className="text-xs text-gray-500 mt-1">Wajib untuk kategori Editing. Format disarankan: MP4 atau WebM.</div>
+            {form.videoUrl && (
+              <video src={form.videoUrl} controls className="w-full max-w-md rounded-lg mt-2 border border-gray-700" />
+            )}
+          </div>
+        )}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col gap-2">
             <label className="text-sm font-bold text-gray-200">Status Project</label>
@@ -254,6 +283,19 @@ export default function AdminProjectsPage() {
             >
               <option value="individual">Individual (Proyek Sendiri)</option>
               <option value="collaboration">Contributions (Kontribusi)</option>
+            </select>
+          </div>
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-bold text-gray-200">Kategori</label>
+            <select
+              name="category"
+              className="bg-gray-800 rounded-lg px-4 py-2 text-white focus:outline-none"
+              value={form.category || "web"}
+              onChange={handleChange}
+            >
+              <option value="web">Web Development</option>
+              <option value="game">Game Development</option>
+              <option value="editing">Editing / Post-Production</option>
             </select>
           </div>
         </div>

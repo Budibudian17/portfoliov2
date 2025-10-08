@@ -22,6 +22,7 @@ interface Project {
   content?: string;
   pinned?: boolean;
   projectType?: "individual" | "collaboration";
+  category?: "web" | "game" | "editing";
 }
 
 export default function ProjectsPage() {
@@ -29,6 +30,7 @@ export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([])
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState<"all" | "individual" | "collaboration">("all");
+  const [activeCategory, setActiveCategory] = useState<"all" | "web" | "game" | "editing">("all");
 
   useEffect(() => {
     const q = query(collection(db, "projects"), orderBy("createdAt", "desc"));
@@ -58,8 +60,9 @@ export default function ProjectsPage() {
 
   // Filter projects based on active filter
   const filteredProjects = sortedProjects.filter(project => {
-    if (activeFilter === "all") return true;
-    return project.projectType === activeFilter;
+    const typeOk = activeFilter === "all" ? true : project.projectType === activeFilter;
+    const catOk = activeCategory === "all" ? true : project.category === activeCategory;
+    return typeOk && catOk;
   });
 
   return (
@@ -93,7 +96,8 @@ export default function ProjectsPage() {
         
         {/* Filter Buttons */}
         <div className="flex justify-center mb-8">
-          <div className="flex bg-gray-900 border border-gray-800 rounded-full p-1">
+          <div className="flex flex-col md:flex-row items-center gap-3 md:gap-4">
+            <div className="flex bg-gray-900 border border-gray-800 rounded-full p-1">
             <button
               onClick={() => setActiveFilter("all")}
               className={`px-6 py-2 rounded-full text-sm font-semibold transition-all ${
@@ -124,6 +128,21 @@ export default function ProjectsPage() {
             >
               {t("projects.filter.collaboration")}
             </button>
+            </div>
+            {/* Category Select */}
+            <div className="flex items-center gap-2">
+              <label className="text-sm text-gray-400">{t("projects.category.filterLabel")}:</label>
+              <select
+                value={activeCategory}
+                onChange={(e) => setActiveCategory(e.target.value as any)}
+                className="bg-gray-900 border border-gray-800 rounded-full px-4 py-2 text-sm text-white focus:outline-none"
+              >
+                <option value="all">{t("projects.category.all")}</option>
+                <option value="web">{t("projects.category.web")}</option>
+                <option value="game">{t("projects.category.game")}</option>
+                <option value="editing">{t("projects.category.editing")}</option>
+              </select>
+            </div>
           </div>
         </div>
 
@@ -169,19 +188,28 @@ export default function ProjectsPage() {
                     {project.projectType === "individual" ? t("projects.type.individual") : t("projects.type.collaboration")}
                   </span>
                 )}
+                {/* Category Badge moved to meta row below */}
               </div>
               <div className="p-5 flex-1 flex flex-col justify-between">
                 <div>
                   <h3 className="text-lg font-bold mb-2 text-white line-clamp-2">{project.title}</h3>
                   <p className="text-sm text-gray-300 mb-4 line-clamp-3">{project.description?.slice(0, 120)}{project.description && project.description.length > 120 ? '...' : ''}</p>
                 </div>
-                <div className="flex items-center gap-2 mt-auto mb-2">
+                <div className="flex items-center gap-2 mt-auto mb-2 flex-wrap">
                   <OptimizedImage src="/img/avatar.webp" fallback="/img/avatar.png" alt="Admin" width={28} height={28} className="w-7 h-7 rounded-full border border-gray-700" />
                   <span className="text-xs text-gray-400">Hilmi</span>
                   {project.createdAt && (
                     <>
                       <span className="text-xs text-gray-400">•</span>
-                    <span className="text-xs text-gray-400">{typeof project.createdAt.toDate === "function" ? new Date(project.createdAt.toDate()).toLocaleDateString() : ""}</span>
+                      <span className="text-xs text-gray-400">{typeof project.createdAt.toDate === "function" ? new Date(project.createdAt.toDate()).toLocaleDateString() : ""}</span>
+                    </>
+                  )}
+                  {project.category && (
+                    <>
+                      <span className="text-xs text-gray-400">•</span>
+                      <span className="text-xs font-semibold px-2 py-1 rounded-full bg-blue-600/20 text-blue-300 border border-blue-700/40">
+                        {project.category === "web" ? t("projects.category.web") : project.category === "game" ? t("projects.category.game") : t("projects.category.editing")}
+                      </span>
                     </>
                   )}
                 </div>

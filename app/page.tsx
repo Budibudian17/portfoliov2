@@ -218,6 +218,8 @@ export default function Portfolio() {
                 {t("hero.subtitle")}
                 <br className="hidden sm:block" />
                 {t("hero.subtitle2")}
+                <br />
+                <span className="text-sm sm:text-base text-gray-400/80">{t("hero.founder")}</span>
               </p>
             </div>
 
@@ -541,6 +543,36 @@ export default function Portfolio() {
           </div>
 
           <div className="space-y-8 sm:space-y-12">
+            {/* Experience - Ngide Interactive (Founder) */}
+            <div className="relative reveal-on-scroll">
+              <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">
+                <div className="lg:w-1/3">
+                  <div className="flex items-center space-x-3 mb-4">
+                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center overflow-hidden">
+                      <OptimizedImage src="/img/ngideinteractive.webp" fallback="/img/ngideinteractive.png" alt="Ngide Interactive" width={48} height={48} className="w-full h-full object-cover rounded-full" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-black">{t("experience.ngide.title")}</h3>
+                      <p className="text-gray-600 font-medium">{t("experience.ngide.company")}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-2 text-gray-500 mb-4 lg:mb-0">
+                    <Calendar className="h-4 w-4" />
+                    <span className="text-sm">{t("experience.ngide.period")}</span>
+                  </div>
+                </div>
+                <div className="lg:w-2/3">
+                  <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+                    {t("experience.ngide.description")}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    <Badge variant="outline" className="border-black text-black text-xs">Game Dev</Badge>
+                    <Badge variant="outline" className="border-black text-black text-xs">Unity/Unreal</Badge>
+                    <Badge variant="outline" className="border-black text-black text-xs">Studio Ops</Badge>
+                  </div>
+                </div>
+              </div>
+            </div>
             {/* Experience 1 - Fulltime */}
             <div className="relative reveal-on-scroll">
               <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">

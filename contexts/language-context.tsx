@@ -33,6 +33,7 @@ const translations = {
     "hero.subtitle2": "Where code meets creativity, magic happens.",
     "hero.cta.work": "View My Work",
     "hero.cta.cv": "Download CV",
+    "hero.founder": "Founder of Ngide Interactive",
 
     // About Section
     "about.title": "ABOUT",
@@ -52,6 +53,10 @@ const translations = {
     "experience.title2": "EXPERIENCE",
     "experience.subtitle": "My professional journey and the companies I've worked with",
     "experience.present": "Present",
+    "experience.ngide.title": "Founder",
+    "experience.ngide.company": "Ngide Interactive",
+    "experience.ngide.period": "May 2025 - Present",
+    "experience.ngide.description": "Ngide Interactive is an independent game development studio focused on creating innovative and meaningful interactive experiences. We believe every idea, no matter how small can grow into something extraordinary through creativity, technology, and collaboration. We use Unity as our core development platform to craft cross-platform projects that combine striking visuals, immersive gameplay, and imagination-sparking stories.",
     "experience.ciptalifeintern.title": "Frontend Developer Intern",
     "experience.ciptalifeintern.company": "PT. Ciptadra SoftIndo",
     "experience.ciptalifeintern.period": "January 2025 - April 2025",
@@ -260,6 +265,12 @@ const translations = {
     "projects.page.noProjects": "No projects yet.",
     "projects.page.loading": "Loading projects...",
     "projects.page.noProjectsInCategory": "No projects in this category yet.",
+    // Project Categories
+    "projects.category.filterLabel": "Category",
+    "projects.category.all": "All Categories",
+    "projects.category.web": "Web Development",
+    "projects.category.game": "Game Development",
+    "projects.category.editing": "Editing / Post-Production",
     
     // Project Filters
     "projects.filter.all": "All",
@@ -316,6 +327,7 @@ const translations = {
     "hero.subtitle2": "Di mana kode bertemu kreativitas, keajaiban terjadi.",
     "hero.cta.work": "Lihat Karya Saya",
     "hero.cta.cv": "Unduh CV",
+    "hero.founder": "Founder Ngide Interactive",
 
     // About Section
     "about.title": "TENTANG",
@@ -335,6 +347,10 @@ const translations = {
     "experience.title2": "KERJA",
     "experience.subtitle": "Perjalanan profesional saya dan perusahaan tempat saya bekerja",
     "experience.present": "Sekarang",
+    "experience.ngide.title": "Founder",
+    "experience.ngide.company": "Ngide Interactive",
+    "experience.ngide.period": "Mei 2025 - Saat Ini",
+    "experience.ngide.description": "Ngide Interactive adalah studio pengembangan game independen yang berfokus menciptakan pengalaman interaktif yang inovatif dan bermakna. Kami percaya setiap ide, sekecil apa pun bisa tumbuh menjadi sesuatu yang luar biasa melalui kreativitas, teknologi, dan kolaborasi. Kami menggunakan Unity sebagai platform inti untuk membangun proyek lintas platform dengan visual yang kuat, gameplay imersif, dan cerita yang membangkitkan imajinasi.",
     "experience.ciptalifeintern.title": "Frontend Developer Intern",
     "experience.ciptalifeintern.company": "PT. Ciptadra SoftIndo",
     "experience.ciptalifeintern.period": "Januari 2025 - April 2025",
@@ -542,6 +558,12 @@ const translations = {
     "projects.page.noProjects": "Belum ada proyek.",
     "projects.page.loading": "Memuat proyek...",
     "projects.page.noProjectsInCategory": "Belum ada proyek di kategori ini.",
+    // Project Categories
+    "projects.category.filterLabel": "Kategori",
+    "projects.category.all": "Semua Kategori",
+    "projects.category.web": "Web Development",
+    "projects.category.game": "Game Development",
+    "projects.category.editing": "Editing / Post-Production",
     
     // Project Filters
     "projects.filter.all": "Semua",
@@ -598,6 +620,7 @@ const translations = {
     "hero.subtitle2": "コードと創造性が出会う場所で、魔法が起こります。",
     "hero.cta.work": "作品を見る",
     "hero.cta.cv": "履歴書をダウンロード",
+    "hero.founder": "Ngide Interactive 創業者",
 
     // About Section
     "about.title": "私に",
@@ -617,6 +640,10 @@ const translations = {
     "experience.title2": "経験",
     "experience.subtitle": "私の専門的な歩みと働いた会社",
     "experience.present": "現在",
+    "experience.ngide.title": "創業者",
+    "experience.ngide.company": "Ngide Interactive",
+    "experience.ngide.period": "2025年5月 - 現在",
+    "experience.ngide.description": "Ngide Interactiveは、革新的で意味のあるインタラクティブ体験の創造に注力するインディーゲームスタジオです。小さなアイデアでも、創造性・テクノロジー・コラボレーションによって非凡なものへと成長できると信じています。Unityをコア開発基盤として採用し、印象的なビジュアル、没入感のあるゲームプレイ、想像力をかき立てる物語を兼ね備えたクロスプラットフォーム作品を制作しています。",
     "experience.ciptalifeintern.title": "フロントエンド開発インターン",
     "experience.ciptalifeintern.company": "PT. Ciptadra SoftIndo",
     "experience.ciptalifeintern.period": "2025年1月 - 2025年4月",
@@ -825,6 +852,12 @@ const translations = {
     "projects.page.noProjects": "まだプロジェクトがありません。",
     "projects.page.loading": "プロジェクトを読み込み中...",
     "projects.page.noProjectsInCategory": "まだこのカテゴリーのプロジェクトがありません。",
+    // Project Categories
+    "projects.category.filterLabel": "カテゴリ",
+    "projects.category.all": "すべてのカテゴリ",
+    "projects.category.web": "Web開発",
+    "projects.category.game": "ゲーム開発",
+    "projects.category.editing": "編集 / ポストプロダクション",
     
     // Project Filters
     "projects.filter.all": "すべて",

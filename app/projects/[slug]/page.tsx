@@ -15,12 +15,14 @@ interface Project {
   title: string;
   description: string;
   image?: string;
+  videoUrl?: string;
   projectLink?: string;
   githubLink?: string;
   status?: "published" | "in-progress" | "planned";
   createdAt?: any;
   content?: string;
   projectType?: "individual" | "collaboration";
+  category?: "web" | "game" | "editing";
 }
 
 export default function ProjectDetailPage() {
@@ -86,20 +88,32 @@ export default function ProjectDetailPage() {
           <span>{project.createdAt && typeof project.createdAt.toDate === "function" ? new Date(project.createdAt.toDate()).toLocaleDateString() : "No date"}</span>
         </div>
 
-        {project.image && (
-          <div className="relative w-full h-64 mb-8 rounded-2xl overflow-hidden">
-            {project.image.startsWith('/img/') ? (
-              <OptimizedImage 
-                src={project.image} 
-                fallback={project.image.replace('.webp', '.png')} 
-                alt={project.title} 
-                fill 
-                className="object-cover" 
-              />
-            ) : (
-              <Image src={project.image} alt={project.title} fill className="object-cover" />
-            )}
+        {/* Media: video for Editing category, else image */}
+        {project.category === "editing" && project.videoUrl ? (
+          <div className="w-full mb-8 rounded-2xl overflow-hidden border border-gray-800 bg-black">
+            <video
+              src={project.videoUrl}
+              controls
+              className="w-full h-auto"
+              poster={project.image}
+            />
           </div>
+        ) : (
+          project.image && (
+            <div className="relative w-full h-64 mb-8 rounded-2xl overflow-hidden">
+              {project.image.startsWith('/img/') ? (
+                <OptimizedImage 
+                  src={project.image} 
+                  fallback={project.image.replace('.webp', '.png')} 
+                  alt={project.title} 
+                  fill 
+                  className="object-cover" 
+                />
+              ) : (
+                <Image src={project.image} alt={project.title} fill className="object-cover" />
+              )}
+            </div>
+          )
         )}
 
         <div className="mb-8">
