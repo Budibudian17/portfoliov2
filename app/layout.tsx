@@ -6,6 +6,7 @@ import { LanguageProvider } from "@/contexts/language-context"
 import AppLoadingGate from "@/components/app-loading-gate"
 import ChatWidget from "@/components/chat-widget"
 import AudioPlayer from "@/components/audio-player"
+import { ErrorBoundary } from "@/components/error-boundary"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -23,13 +24,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-sans bg-black text-white">
-        <LanguageProvider>
-          <AppLoadingGate>
-            {children}
-            <AudioPlayer />
-            <ChatWidget />
-          </AppLoadingGate>
-        </LanguageProvider>
+        <ErrorBoundary>
+          <LanguageProvider>
+            <AppLoadingGate>
+              {children}
+              <AudioPlayer />
+              <ChatWidget />
+            </AppLoadingGate>
+          </LanguageProvider>
+        </ErrorBoundary>
       </body>
     </html>
   )
