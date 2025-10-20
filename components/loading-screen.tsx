@@ -24,12 +24,6 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
   ]
 
   useEffect(() => {
-    // Failsafe timeout to prevent infinite loading
-    const failsafeTimeout = setTimeout(() => {
-      console.log("Loading screen timeout - forcing completion")
-      onLoadingComplete()
-    }, 10000) // Max 10 seconds
-
     // Progress animation - LONGER duration (7-8 seconds)
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
@@ -52,7 +46,6 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
     }, 1000) // Slower text change (was 800ms)
 
     return () => {
-      clearTimeout(failsafeTimeout)
       clearInterval(progressInterval)
       clearInterval(textInterval)
     }

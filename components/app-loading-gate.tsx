@@ -9,14 +9,10 @@ const LoadingScreen = dynamic<LoadingScreenProps>(
 )
 
 export default function AppLoadingGate({ children }: { children: React.ReactNode }) {
-  const [isMounted, setIsMounted] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [showContent, setShowContent] = useState(false)
 
   useEffect(() => {
-    setIsMounted(true)
-    
-    // Check if user has visited before
     const hasVisited = sessionStorage.getItem("portfolio-visited")
     if (!hasVisited) {
       setIsLoading(true)
@@ -33,11 +29,6 @@ export default function AppLoadingGate({ children }: { children: React.ReactNode
     setTimeout(() => setShowContent(true), 300)
   }
 
-  // Prevent hydration mismatch by showing content only after mount
-  if (!isMounted) {
-    return <div className="min-h-screen bg-black" />
-  }
-
   if (isLoading) {
     return <LoadingScreen onLoadingComplete={handleLoadingComplete} />
   }
@@ -47,4 +38,4 @@ export default function AppLoadingGate({ children }: { children: React.ReactNode
       {children}
     </div>
   )
-}
+} 
