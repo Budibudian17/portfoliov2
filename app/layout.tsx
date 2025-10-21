@@ -6,6 +6,7 @@ import { LanguageProvider } from "@/contexts/language-context"
 import AppLoadingGate from "@/components/app-loading-gate"
 import ChatWidget from "@/components/chat-widget"
 import AudioPlayer from "@/components/audio-player"
+import { NavigationLoader } from "@/components/navigation-loader"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -24,6 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="font-sans bg-black text-white">
         <LanguageProvider>
+          <NavigationLoader />
           <AppLoadingGate>
             {children}
             <AudioPlayer />
