@@ -23,11 +23,23 @@ import Link from "next/link"
 import { useEffect, useState, useRef } from "react"
 import { useLanguage } from "@/contexts/language-context"
 import { LanguageSwitcher } from "@/components/language-switcher"
-import { GitHubContributions } from "@/components/github-contributions"
 import OptimizedImage from "@/components/optimized-image"
 import dynamic from "next/dynamic"
 import type { LoadingScreenProps } from "@/components/loading-screen"
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/navbar"
+import {
+  SiJavascript,
+  SiTypescript,
+  SiReact,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiVuedotjs,
+  SiNodedotjs,
+  SiMysql,
+  SiGo,
+  SiFigma,
+} from "react-icons/si"
+import { FaPencilRuler } from "react-icons/fa";
 const LoadingScreen = dynamic<LoadingScreenProps>(
   () => import("@/components/loading-screen").then(mod => mod.LoadingScreen),
   { ssr: false }
@@ -548,7 +560,7 @@ export default function Portfolio() {
               <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">
                 <div className="lg:w-1/3">
                   <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center overflow-hidden">
+                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
                       <OptimizedImage src="/img/ngideinteractive.webp" fallback="/img/ngideinteractive.png" alt="Ngide Interactive" width={48} height={48} className="w-full h-full object-cover rounded-full" />
                     </div>
                     <div>
@@ -578,7 +590,7 @@ export default function Portfolio() {
               <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">
                 <div className="lg:w-1/3">
                   <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center overflow-hidden">
+                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
                       <OptimizedImage src="/img/ciptadra.webp" fallback="/img/ciptadra.jpg" alt="PT. Ciptadra SoftIndo" width={48} height={48} className="w-full h-full object-cover rounded-full" />
                     </div>
                     <div>
@@ -612,7 +624,7 @@ export default function Portfolio() {
               <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">
                 <div className="lg:w-1/3">
                   <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center overflow-hidden">
+                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
                     <OptimizedImage src="/img/ciptadra.webp" fallback="/img/ciptadra.jpg" alt="PT. Ciptadra SoftIndo" width={48} height={48} className="w-full h-full object-cover rounded-full" />
                     </div>
                     <div>
@@ -638,6 +650,40 @@ export default function Portfolio() {
                     </Badge>
                     <Badge variant="outline" className="border-black text-black text-xs">
                       Golang
+                    </Badge>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Experience 3 - Class Industry */}
+            <div className="relative reveal-on-scroll-delay">
+              <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">
+                <div className="lg:w-1/3">
+                  <div className="flex items-center space-x-3 mb-4">
+                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
+                    <OptimizedImage src="/img/ciptadra.webp" fallback="/img/ciptadra.jpg" alt="PT. Ciptadra SoftIndo" width={48} height={48} className="w-full h-full object-cover rounded-full" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-black">{t("experience.ciptalifeclassindustry.title")}</h3>
+                      <p className="text-gray-600 font-medium">{t("experience.ciptalifeclassindustry.company")}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-2 text-gray-500 mb-4 lg:mb-0">
+                    <Calendar className="h-4 w-4" />
+                    <span className="text-sm">{t("experience.ciptalifeclassindustry.period")}</span>
+                  </div>
+                </div>
+                <div className="lg:w-2/3">
+                  <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+                    {t("experience.ciptalifeclassindustry.description")}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    <Badge variant="outline" className="border-black text-black text-xs">
+                      React
+                    </Badge>
+                    <Badge variant="outline" className="border-black text-black text-xs">
+                      Next.js
                     </Badge>
                   </div>
                 </div>
@@ -766,9 +812,6 @@ export default function Portfolio() {
                       </div>
                     ) : certifications.length > 0 ? (
                       <>
-                        <div className="col-span-2 text-xs text-gray-500 mb-2">
-                          Showing {certifications.length} certifications from database
-                        </div>
                         {certifications.slice(0, 4).map((cert) => (
                           <div
                             key={cert.id}
@@ -829,27 +872,6 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* GitHub Activity Section - More Compact */}
-      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8 sm:mb-12 reveal-on-scroll">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 sm:mb-6">
-              {t("github.title")}
-              <br />
-              <span className="text-gray-400">{t("github.title2")}</span>
-            </h2>
-            <div className="w-16 sm:w-20 h-1 bg-white mx-auto"></div>
-            <p className="text-base sm:text-lg text-gray-400 mt-4 sm:mt-6 max-w-2xl mx-auto px-4">
-              {t("github.subtitle")}
-            </p>
-          </div>
-
-          <div className="reveal-on-scroll">
-            <GitHubContributions t={t} />
-          </div>
-        </div>
-      </section>
-
       {/* Skills Section with Interactive Cards */}
       <section id="skills" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 bg-black relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
@@ -881,6 +903,9 @@ export default function Portfolio() {
                   </Badge>
                   <Badge variant="secondary" className="bg-gray-800 text-white text-xs">
                     TypeScript
+                  </Badge>
+                  <Badge variant="secondary" className="bg-gray-800 text-white text-xs">
+                    Vue
                   </Badge>
                 </div>
               </CardContent>
@@ -924,26 +949,48 @@ export default function Portfolio() {
           <div className="space-y-6 sm:space-y-8 reveal-on-scroll">
             <div className="flex animate-marquee-tech space-x-8 sm:space-x-12 whitespace-nowrap">
               {[
-                "JavaScript", "TypeScript", "React", "Next.js", "Node.js", "MySQL", "Golang", "Figma", "Balsamiq"
+                { name: "JavaScript", icon: SiJavascript },
+                { name: "TypeScript", icon: SiTypescript },
+                { name: "React", icon: SiReact },
+                { name: "Next.js", icon: SiNextdotjs },
+                { name: "Tailwind CSS", icon: SiTailwindcss },
+                { name: "Vue", icon: SiVuedotjs },
+                { name: "Node.js", icon: SiNodedotjs },
+                { name: "MySQL", icon: SiMysql },
+                { name: "Golang", icon: SiGo },
+                { name: "Figma", icon: SiFigma },
+                { name: "Balsamiq", icon: FaPencilRuler },
               ].map(
                 (tech, index) => (
                   <div
                     key={index}
-                    className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-800 hover:text-white transition-colors cursor-default"
+                    className="flex items-center gap-3 text-2xl sm:text-3xl lg:text-4xl font-black text-gray-800 hover:text-white transition-colors cursor-default"
                   >
-                    {tech}
+                    <tech.icon className="text-3xl sm:text-4xl lg:text-5xl" />
+                    <span>{tech.name}</span>
                   </div>
                 ),
               )}
               {[
-                "JavaScript", "TypeScript", "React", "Next.js", "Node.js", "MySQL", "Golang", "Figma", "Balsamiq"
+                { name: "JavaScript", icon: SiJavascript },
+                { name: "TypeScript", icon: SiTypescript },
+                { name: "React", icon: SiReact },
+                { name: "Next.js", icon: SiNextdotjs },
+                { name: "Tailwind CSS", icon: SiTailwindcss },
+                { name: "Vue", icon: SiVuedotjs },
+                { name: "Node.js", icon: SiNodedotjs },
+                { name: "MySQL", icon: SiMysql },
+                { name: "Golang", icon: SiGo },
+                { name: "Figma", icon: SiFigma },
+                { name: "Balsamiq", icon: FaPencilRuler },
               ].map(
                 (tech, index) => (
                   <div
                     key={`dup-${index}`}
-                    className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-800 hover:text-white transition-colors cursor-default"
+                    className="flex items-center gap-3 text-2xl sm:text-3xl lg:text-4xl font-black text-gray-800 hover:text-white transition-colors cursor-default"
                   >
-                    {tech}
+                    <tech.icon className="text-3xl sm:text-4xl lg:text-5xl" />
+                    <span>{tech.name}</span>
                   </div>
                 ),
               )}

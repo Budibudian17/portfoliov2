@@ -39,9 +39,9 @@ const translations = {
     "about.title": "ABOUT",
     "about.title2": "ME",
     "about.description1":
-      "Hi! I'm Hilmi Farrel Firjatullah, a fresh graduate from SMKN 01 Depok, majoring in Software and Game Development. I enjoy creating web applications and exploring game development.",
+      "Hi! I'm Hilmi Farrel Firjatullah, an enthusiastic software developer with ~2 years of experience building web applications using React, Next.js, and PHP Laravel. Actively follows the latest technology developments and works on personal projects to upgrade programming skills. Experienced in both collaborative and independent teams, with a focus on developing efficient and user-friendly digital solutions.",
     "about.description2":
-      "I've worked on projects like CiptaLife for the Depok Health Department, which helped me enhance my web development and teamwork skills.",
+      "I believe technology isn't just about writing code — it's about solving real-world problems and building meaningful digital solutions.",
     "about.location": "Depok, IDN",
     "about.stats.projects": "Projects Completed",
     "about.stats.experience": "Years Experience",
@@ -62,9 +62,14 @@ const translations = {
     "experience.ciptalifeintern.period": "January 2025 - April 2025",
     "experience.ciptalifeintern.description":
       "I developed the CiptaLife healthcare platform by building a responsive user interface using React and Next.js, while also fixing bugs and implementing new features to enhance functionality.",
+    "experience.ciptalifeclassindustry.title": "Frontend Developer Class Industry",
+    "experience.ciptalifeclassindustry.company": "PT. Ciptadra SoftIndo",
+    "experience.ciptalifeclassindustry.period": "December 2023 - December 2024",
+    "experience.ciptalifeclassindustry.description":
+      "Participated in an industry class program where I learned frontend development practices in a professional environment. Gained hands-on experience with React and Next.js while working on real-world projects and collaborating with experienced developers.",
     "experience.ciptalife.title": "Frontend Developer",
     "experience.ciptalife.company": "PT. Ciptadra SoftIndo",
-    "experience.ciptalife.period": "May 2025 - Present",
+    "experience.ciptalife.period": "May 2025 - October 2025",
     "experience.ciptalife.description":
       "I am responsible for developing and maintaining web applications using React and Next.js, collaborating with the team to implement new features and improvements, while ensuring responsive design and an optimal user experience.",
     "experience.frontend.title": "Frontend Developer",
@@ -333,9 +338,9 @@ const translations = {
     "about.title": "TENTANG",
     "about.title2": "SAYA",
     "about.description1":
-      "Halo! Saya Hilmi Farrel Firjatullah, fresh graduate dari SMKN 01 Depok, jurusan Pengembangan Perangkat Lunak dan Gim. Saya menikmati membuat aplikasi web dan mengeksplorasi pengembangan game.",
+      "Halo! Saya Hilmi Farrel Firjatullah, seorang software developer yang antusias dengan pengalaman ~2 tahun membangun aplikasi web menggunakan React, Next.js, dan PHP Laravel. Aktif mengikuti perkembangan teknologi terkini dan mengerjakan proyek pribadi untuk meningkatkan skill programming. Berpengalaman di tim kolaboratif maupun independen, dengan fokus mengembangkan solusi digital yang efisien dan user-friendly.",
     "about.description2":
-      "Saya pernah mengerjakan proyek seperti CiptaLife untuk Dinas Kesehatan Depok, yang sangat mengasah skill pengembangan web dan kerja tim saya.",
+      "Saya percaya teknologi bukan hanya soal menulis kode — tetapi tentang memecahkan masalah nyata dan membangun solusi digital yang bermakna.",
     "about.location": "Depok, IDN",
     "about.stats.projects": "Proyek Selesai",
     "about.stats.experience": "Tahun Pengalaman",
@@ -356,9 +361,14 @@ const translations = {
     "experience.ciptalifeintern.period": "Januari 2025 - April 2025",
     "experience.ciptalifeintern.description":
       "Saya mengembangkan platform kesehatan CiptaLife dengan membangun antarmuka pengguna responsif menggunakan React dan Next.js, serta memperbaiki bug dan menambahkan fitur baru untuk meningkatkan fungsionalitas.",
+    "experience.ciptalifeclassindustry.title": "Frontend Developer Kelas Industri",
+    "experience.ciptalifeclassindustry.company": "PT. Ciptadra SoftIndo",
+    "experience.ciptalifeclassindustry.period": "Desember 2023 - Desember 2024",
+    "experience.ciptalifeclassindustry.description":
+      "Mengikuti program kelas industri untuk mempelajari praktik pengembangan frontend dalam lingkungan profesional. Mendapatkan pengalaman langsung dengan React dan Next.js sambil mengerjakan proyek nyata dan berkolaborasi dengan developer berpengalaman.",
     "experience.ciptalife.title": "Frontend Developer",
     "experience.ciptalife.company": "PT. Ciptadra SoftIndo",
-    "experience.ciptalife.period": "Mei 2025 - Saat Ini",
+    "experience.ciptalife.period": "Mei 2025 - Oktober 2025",
     "experience.ciptalife.description":
       "Saya bertanggung jawab mengembangkan dan memelihara aplikasi web menggunakan React dan Next.js, berkolaborasi dengan tim untuk menambah fitur dan perbaikan baru, serta memastikan desain responsif dan pengalaman pengguna yang optimal.",
     "experience.frontend.title": "Frontend Developer",
@@ -626,9 +636,9 @@ const translations = {
     "about.title": "私に",
     "about.title2": "ついて",
     "about.description1":
-      "こんにちは！私はHilmi Farrel Firjatullahです。SMKN 01 Depokのソフトウェア＆ゲーム開発専攻を卒業したばかりです。Webアプリケーションの作成やゲーム開発の探求を楽しんでいます。",
+      "こんにちは！私はHilmi Farrel Firjatullahです。React、Next.js、PHP Laravelを使用したWebアプリケーション開発に約2年の経験を持つ、熱心なソフトウェア開発者です。最新の技術動向を積極的にフォローし、個人プロジェクトを通じてプログラミングスキルを向上させています。協調的および独立したチームの両方で経験があり、効率的でユーザーフレンドリーなデジタルソリューションの開発に注力しています。",
     "about.description2":
-      "Depok保健局向けのCiptaLifeなどのプロジェクトに携わり、Web開発やチームワークのスキルを向上させました。",
+      "テクノロジーは単にコードを書くことではなく、実際の問題を解決し、意味のあるデジタルソリューションを構築することだと信じています。",
     "about.location": "Depok, IDN",
     "about.stats.projects": "完了プロジェクト",
     "about.stats.experience": "年の経験",
@@ -649,9 +659,14 @@ const translations = {
     "experience.ciptalifeintern.period": "2025年1月 - 2025年4月",
     "experience.ciptalifeintern.description":
       "ReactとNext.jsを使ってレスポンシブなUIを構築し、バグ修正や新機能の実装を通じてCiptaLifeヘルスケアプラットフォームの開発に携わりました。",
+    "experience.ciptalifeclassindustry.title": "フロントエンド開発者インダストリークラス",
+    "experience.ciptalifeclassindustry.company": "PT. Ciptadra SoftIndo",
+    "experience.ciptalifeclassindustry.period": "2023年12月 - 2024年12月",
+    "experience.ciptalifeclassindustry.description":
+      "プロフェッショナル環境でフロントエンド開発の実践を学ぶインダストリークラスプログラムに参加。実際のプロジェクトに取り組み、経験豊富な開発者と協力しながら、ReactとNext.jsの実践的な経験を積みました。",
     "experience.ciptalife.title": "フロントエンド開発者",
     "experience.ciptalife.company": "PT. Ciptadra SoftIndo",
-    "experience.ciptalife.period": "2025年5月 - 現在",
+    "experience.ciptalife.period": "2025年5月 - 2025年10月",
     "experience.ciptalife.description":
       "ReactとNext.jsを用いてWebアプリケーションの開発・保守を担当し、チームと協力して新機能や改善を実装しながら、レスポンシブデザインと最適なユーザー体験を追求しています。",
     "experience.frontend.title": "フロントエンド開発者",

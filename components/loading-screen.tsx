@@ -161,7 +161,7 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
           {/* Loading Stats */}
           <div className="grid grid-cols-3 gap-6 text-center mt-8">
             <div className="space-y-1">
-              <div className="text-lg font-bold text-white">4+</div>
+              <div className="text-lg font-bold text-white">5</div>
               <div className="text-xs text-gray-500 uppercase tracking-wider">Projects</div>
             </div>
             <div className="space-y-1">
@@ -170,7 +170,7 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
             </div>
             <div className="space-y-1">
               <div className="text-lg font-bold text-white">20+</div>
-              <div className="text-xs text-gray-500 uppercase tracking-wider">People Collaborated</div>
+              <div className="text-xs text-gray-500 uppercase tracking-wider">Collaborated</div>
             </div>
           </div>
         </div>
@@ -195,7 +195,7 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
       {/* Bottom Branding with Animation */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
         <div className="space-y-2 animate-fade-in-up">
-          <p className="text-gray-600 text-xs tracking-[0.2em] font-light animate-pulse">CRAFTED WITH PASSION</p>
+          <p className="text-gray-600 text-xs tracking-[0.2em] font-light animate-pulse">HILMI FARREL FIRJATULLAH PRESENTED</p>
           <div className="flex items-center justify-center space-x-2">
             <div className="w-1 h-1 bg-gray-600 rounded-full animate-ping"></div>
             <div className="w-1 h-1 bg-gray-600 rounded-full animate-ping" style={{ animationDelay: "0.5s" }}></div>

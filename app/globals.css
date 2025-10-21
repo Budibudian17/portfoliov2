@@ -464,10 +464,6 @@ body {
   animation: marquee-tech 30s linear infinite;
 }
 
-.animate-marquee-tech:hover {
-  animation-play-state: paused;
-}
-
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
