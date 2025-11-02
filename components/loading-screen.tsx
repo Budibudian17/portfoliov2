@@ -10,6 +10,7 @@ export interface LoadingScreenProps {
 export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0)
   const [currentText, setCurrentText] = useState(0)
+  const [isLoadingComplete, setIsLoadingComplete] = useState(false)
   const { t } = useLanguage()
 
   const loadingTexts = [
@@ -29,9 +30,9 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(progressInterval)
-          // Longer delay before completing to show 100%
+          // Show button after loading completes
           setTimeout(() => {
-            onLoadingComplete()
+            setIsLoadingComplete(true)
           }, 1200)
           return 100
         }
@@ -49,7 +50,7 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
       clearInterval(progressInterval)
       clearInterval(textInterval)
     }
-  }, [onLoadingComplete])
+  }, [])
 
   return (
     <div className="fixed inset-0 bg-black z-50 flex items-center justify-center overflow-hidden">
@@ -173,6 +174,18 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
               <div className="text-xs text-gray-500 uppercase tracking-wider">Collaborated</div>
             </div>
           </div>
+
+          {/* Continue Button - Shows when loading is complete */}
+          {isLoadingComplete && (
+            <div className="mt-8 animate-fade-in-up">
+              <button
+                onClick={onLoadingComplete}
+                className="px-8 py-4 bg-white text-black hover:bg-gray-200 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg"
+              >
+                Continue →
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Enhanced Floating Elements */}
