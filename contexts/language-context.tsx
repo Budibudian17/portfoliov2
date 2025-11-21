@@ -57,6 +57,11 @@ const translations = {
     "experience.ngide.company": "Ngide Interactive",
     "experience.ngide.period": "May 2025 - Present",
     "experience.ngide.description": "Ngide Interactive is an independent game development studio focused on creating innovative and meaningful interactive experiences. We believe every idea, no matter how small can grow into something extraordinary through creativity, technology, and collaboration. We use Unity as our core development platform to craft cross-platform projects that combine striking visuals, immersive gameplay, and imagination-sparking stories.",
+    "experience.ybb.title": "Web Developer (Remote)",
+    "experience.ybb.company": "Youth Break the Boundaries (YBB)",
+    "experience.ybb.period": "November 2025 - Present",
+    "experience.ybb.description":
+      "Remote web developer at Youth Break the Boundaries (YBB), contributing to web platforms that support youth empowerment, international programs, and organizational initiatives using modern web technologies.",
     "experience.ciptalifeintern.title": "Frontend Developer Intern",
     "experience.ciptalifeintern.company": "PT. Ciptadra SoftIndo",
     "experience.ciptalifeintern.period": "January 2025 - April 2025",
@@ -356,6 +361,11 @@ const translations = {
     "experience.ngide.company": "Ngide Interactive",
     "experience.ngide.period": "Mei 2025 - Saat Ini",
     "experience.ngide.description": "Ngide Interactive adalah studio pengembangan game independen yang berfokus menciptakan pengalaman interaktif yang inovatif dan bermakna. Kami percaya setiap ide, sekecil apa pun bisa tumbuh menjadi sesuatu yang luar biasa melalui kreativitas, teknologi, dan kolaborasi. Kami menggunakan Unity sebagai platform inti untuk membangun proyek lintas platform dengan visual yang kuat, gameplay imersif, dan cerita yang membangkitkan imajinasi.",
+    "experience.ybb.title": "Web Developer (Remote)",
+    "experience.ybb.company": "Youth Break the Boundaries (YBB)",
+    "experience.ybb.period": "November 2025 - Sekarang",
+    "experience.ybb.description":
+      "Web developer remote di Youth Break the Boundaries (YBB), berkontribusi pada platform web yang mendukung pemberdayaan pemuda, program internasional, dan berbagai inisiatif organisasi dengan teknologi web modern.",
     "experience.ciptalifeintern.title": "Frontend Developer Intern",
     "experience.ciptalifeintern.company": "PT. Ciptadra SoftIndo",
     "experience.ciptalifeintern.period": "Januari 2025 - April 2025",

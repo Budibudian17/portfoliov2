@@ -3,57 +3,39 @@
 import { useState, useEffect } from "react"
 import dynamic from "next/dynamic"
 import type { LoadingScreenProps } from "@/components/loading-screen"
-import type { IntroVideoProps } from "@/components/intro-video"
 
 const LoadingScreen = dynamic<LoadingScreenProps>(
   () => import("@/components/loading-screen").then(mod => mod.LoadingScreen),
   { ssr: false }
 )
 
-const IntroVideo = dynamic<IntroVideoProps>(
-  () => import("@/components/intro-video").then(mod => mod.IntroVideo),
-  { ssr: false }
-)
-
 export default function AppLoadingGate({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true)
-  const [showVideo, setShowVideo] = useState(false)
   const [showContent, setShowContent] = useState(false)
 
   useEffect(() => {
     const hasVisited = sessionStorage.getItem("portfolio-visited")
+
     if (!hasVisited) {
+      // First visit: show loading screen, then main content
       setIsLoading(true)
-      setShowVideo(false)
       setShowContent(false)
       sessionStorage.setItem("portfolio-visited", "true")
     } else {
+      // Next visits: skip loading, langsung content
       setIsLoading(false)
-      setShowVideo(false)
       setShowContent(true)
     }
   }, [])
 
   const handleLoadingComplete = () => {
+    // Begitu loading screen selesai, langsung ke halaman utama
     setIsLoading(false)
-    // After user clicks continue, show video immediately
-    setShowVideo(true)
-  }
-
-  const handleVideoComplete = () => {
-    setShowVideo(false)
-    // After video completes, show main content
-    setTimeout(() => {
-      setShowContent(true)
-    }, 300)
+    setShowContent(true)
   }
 
   if (isLoading) {
     return <LoadingScreen onLoadingComplete={handleLoadingComplete} />
-  }
-
-  if (showVideo) {
-    return <IntroVideo onVideoComplete={handleVideoComplete} />
   }
 
   return (
@@ -61,4 +43,4 @@ export default function AppLoadingGate({ children }: { children: React.ReactNode
       {children}
     </div>
   )
-} 
+}
