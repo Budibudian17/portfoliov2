@@ -1055,12 +1055,15 @@ export default function Portfolio() {
                 <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mb-4 sm:mb-6">
                   <LayoutTemplate className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                 </div>
-                <div className="space-y-2 mb-4">
+                <div className="space-y-1 mb-4">
                   <h3 className="text-xl sm:text-2xl font-bold text-white">
                     {t("services.landing.title")}
                   </h3>
                   <p className="text-sm font-semibold text-gray-300 uppercase tracking-wide">
                     {t("services.landing.price")}
+                  </p>
+                  <p className="text-xs sm:text-sm text-gray-400">
+                    {t("services.landing.duration")}
                   </p>
                 </div>
                 <div className="space-y-2 mb-4 text-sm sm:text-base text-gray-300">
@@ -1100,12 +1103,15 @@ export default function Portfolio() {
                 <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mb-4 sm:mb-6">
                   <Building className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                 </div>
-                <div className="space-y-2 mb-4">
+                <div className="space-y-1 mb-4">
                   <h3 className="text-xl sm:text-2xl font-bold text-white">
                     {t("services.business.title")}
                   </h3>
                   <p className="text-sm font-semibold text-gray-300 uppercase tracking-wide">
                     {t("services.business.price")}
+                  </p>
+                  <p className="text-xs sm:text-sm text-gray-400">
+                    {t("services.business.duration")}
                   </p>
                 </div>
                 <div className="space-y-2 mb-4 text-sm sm:text-base text-gray-300">
@@ -1145,12 +1151,15 @@ export default function Portfolio() {
                 <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mb-4 sm:mb-6">
                   <ShieldCheck className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                 </div>
-                <div className="space-y-2 mb-4">
+                <div className="space-y-1 mb-4">
                   <h3 className="text-xl sm:text-2xl font-bold text-white">
                     {t("services.admin.title")}
                   </h3>
                   <p className="text-sm font-semibold text-gray-300 uppercase tracking-wide">
                     {t("services.admin.price")}
+                  </p>
+                  <p className="text-xs sm:text-sm text-gray-400">
+                    {t("services.admin.duration")}
                   </p>
                 </div>
                 <div className="space-y-2 mb-4 text-sm sm:text-base text-gray-300">
