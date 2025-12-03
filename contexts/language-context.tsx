@@ -141,6 +141,27 @@ const translations = {
     "skills.design.figma": "Figma",
     "skills.design.balsamiq": "Balsamiq",
 
+    // Services Section
+    "services.title": "Website Development Services",
+    "services.subtitle": "Choose the right website package for your business needs.",
+
+    "services.landing.title": "Landing Page",
+    "services.landing.price": "IDR 700K - 1.5M",
+    "services.landing.features": "1-page professional website, responsive design, contact integration, basic SEO, 1-2 minor revisions",
+    "services.landing.suitable": "UMKM, small services, simple portfolio, personal branding",
+
+    "services.business.title": "Business Website",
+    "services.business.price": "IDR 1.5M - 2.5M",
+    "services.business.features": "3-6 pages, premium design with smooth animation, booking/inquiry form, on-page SEO, structured information, Google Maps & social media integration",
+    "services.business.suitable": "Small-medium companies, professional services, stores with many products",
+
+    "services.admin.title": "Website with Admin Panel",
+    "services.admin.price": "IDR 3M - 5M",
+    "services.admin.features": "Login & dashboard, content management (CRUD), real-time sync to main site, basic security, optional analytics dashboard, backend & database ready to scale",
+    "services.admin.suitable": "Businesses that need full control of content and data, SaaS-style products, startups",
+    "services.note2025": "Pricing range based on common web development rates in 2025.",
+    "services.suitableLabel": "Best for",
+
     // Contact Section
     "contact.title": "LET'S",
     "contact.title2": "WORK TOGETHER",
@@ -445,6 +466,27 @@ const translations = {
     "skills.design.figma": "Figma",
     "skills.design.balsamiq": "Balsamiq",
 
+    // Services Section
+    "services.title": "Layanan Pembuatan Website",
+    "services.subtitle": "Pilih paket website yang paling cocok untuk kebutuhan bisnismu.",
+
+    "services.landing.title": "Landing Page",
+    "services.landing.price": "700 ribu - 1,5 juta",
+    "services.landing.features": "1 halaman website profesional, desain responsif, integrasi kontak/WhatsApp, SEO basic, 1–2 revisi kecil",
+    "services.landing.suitable": "UMKM, jasa kecil, personal branding, portfolio singkat",
+
+    "services.business.title": "Website Bisnis",
+    "services.business.price": "1,5 juta - 2,5 juta",
+    "services.business.features": "3–6 halaman, desain premium dengan animasi halus, form pemesanan/booking, SEO on-page, struktur informasi rapi, integrasi Google Maps & media sosial",
+    "services.business.suitable": "Perusahaan kecil–menengah, jasa profesional, bisnis dengan banyak produk",
+
+    "services.admin.title": "Website dengan Admin Panel",
+    "services.admin.price": "3 - 5 juta",
+    "services.admin.features": "Login & dashboard admin, kelola konten (CRUD), sinkron real-time ke website utama, keamanan dasar, dashboard data opsional, backend & database siap dikembangkan",
+    "services.admin.suitable": "Bisnis yang butuh kontrol penuh konten & data, produk berbasis sistem, startup",
+    "services.note2025": "Rentang harga mengacu pada kisaran jasa web developer di tahun 2025.",
+    "services.suitableLabel": "Cocok untuk",
+
     // Contact Section
     "contact.title": "MARI",
     "contact.title2": "BEKERJA SAMA",
@@ -742,6 +784,27 @@ const translations = {
     "skills.backend.golang": "Golang",
     "skills.design.figma": "Figma",
     "skills.design.balsamiq": "Balsamiq",
+
+    // Services Section
+    "services.title": "Webサイト制作サービス",
+    "services.subtitle": "ビジネスニーズに合ったWebサイトプランをお選びください。",
+
+    "services.landing.title": "ランディングページ",
+    "services.landing.price": "70万ルピア - 150万ルピア",
+    "services.landing.features": "1ページのプロフェッショナルなWebサイト, レスポンシブデザイン, 問い合わせ／WhatsApp連携, 基本的なSEO, 1〜2回の軽微な修正",
+    "services.landing.suitable": "UMKM, 小規模サービス, シンプルなポートフォリオ, パーソナルブランディング",
+
+    "services.business.title": "ビジネスWebサイト",
+    "services.business.price": "150万ルピア - 250万ルピア",
+    "services.business.features": "3〜6ページ構成, プレミアムデザインとスムーズなアニメーション, 予約／問い合わせフォーム, オンページSEO, 分かりやすい情報構造, GoogleマップとSNS連携",
+    "services.business.suitable": "中小企業, プロフェッショナルサービス, 多くの商品を扱う店舗",
+
+    "services.admin.title": "管理画面付きWebサイト",
+    "services.admin.price": "300万ルピア - 500万ルピア",
+    "services.admin.features": "ログイン＆ダッシュボード, コンテンツ管理（CRUD）, メインサイトへのリアルタイム反映, 基本的なセキュリティ, オプションのデータダッシュボード, 将来スケール可能なバックエンド＆データベース",
+    "services.admin.suitable": "コンテンツやデータを自社で管理したいビジネス, SaaS系プロダクト, スタートアップ",
+    "services.note2025": "2025年時点の一般的なWeb開発料金帯を参考にした価格レンジです。",
+    "services.suitableLabel": "おすすめ対象",
 
     // Contact Section
     "contact.title": "一緒に",

@@ -17,6 +17,9 @@ import {
   Calendar,
   Building,
   Award,
+  LayoutTemplate,
+  ShieldCheck,
+  Check,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -261,6 +264,8 @@ export default function Portfolio() {
           </div>
         </div>
       </section>
+
+      
 
       {/* About Section with Reveal Animation */}
       <section id="about" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 bg-white text-black relative">
@@ -1026,6 +1031,163 @@ export default function Portfolio() {
               )}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 bg-black text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900"></div>
+        <div className="relative max-w-7xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16 reveal-on-scroll">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 sm:mb-6">
+              {t("services.title")}
+            </h2>
+            <div className="w-16 sm:w-20 h-1 bg-white mx-auto"></div>
+            <p className="text-base sm:text-lg text-gray-400 mt-4 sm:mt-6 max-w-2xl mx-auto px-4">
+              {t("services.subtitle")}
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:gap-8 lg:gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Landing Page */}
+            <Card className="bg-gray-900 border-gray-800 shadow-sm hover:shadow-xl transition-all duration-300 reveal-on-scroll">
+              <CardContent className="p-6 sm:p-8 flex flex-col h-full">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mb-4 sm:mb-6">
+                  <LayoutTemplate className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                </div>
+                <div className="space-y-2 mb-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white">
+                    {t("services.landing.title")}
+                  </h3>
+                  <p className="text-sm font-semibold text-gray-300 uppercase tracking-wide">
+                    {t("services.landing.price")}
+                  </p>
+                </div>
+                <div className="space-y-2 mb-4 text-sm sm:text-base text-gray-300">
+                  {t("services.landing.features")
+                    .split(",")
+                    .map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-2">
+                        <Check className="h-4 w-4 mt-0.5 text-white flex-shrink-0" />
+                        <span>{item.trim()}</span>
+                      </div>
+                    ))}
+                </div>
+                <div className="mt-auto pt-4 border-t border-gray-800">
+                  <p className="text-xs font-medium text-gray-400 mb-2">
+                    {t("services.suitableLabel")}:
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {t("services.landing.suitable")
+                      .split(",")
+                      .map((item, idx) => (
+                        <Badge
+                          key={idx}
+                          variant="outline"
+                          className="border-gray-700 text-gray-200 text-xs"
+                        >
+                          {item.trim()}
+                        </Badge>
+                      ))}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Business Website */}
+            <Card className="bg-gray-900 border-gray-800 shadow-sm hover:shadow-xl transition-all duration-300 reveal-on-scroll-delay">
+              <CardContent className="p-6 sm:p-8 flex flex-col h-full">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mb-4 sm:mb-6">
+                  <Building className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                </div>
+                <div className="space-y-2 mb-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white">
+                    {t("services.business.title")}
+                  </h3>
+                  <p className="text-sm font-semibold text-gray-300 uppercase tracking-wide">
+                    {t("services.business.price")}
+                  </p>
+                </div>
+                <div className="space-y-2 mb-4 text-sm sm:text-base text-gray-300">
+                  {t("services.business.features")
+                    .split(",")
+                    .map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-2">
+                        <Check className="h-4 w-4 mt-0.5 text-white flex-shrink-0" />
+                        <span>{item.trim()}</span>
+                      </div>
+                    ))}
+                </div>
+                <div className="mt-auto pt-4 border-t border-gray-800">
+                  <p className="text-xs font-medium text-gray-400 mb-2">
+                    {t("services.suitableLabel")}:
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {t("services.business.suitable")
+                      .split(",")
+                      .map((item, idx) => (
+                        <Badge
+                          key={idx}
+                          variant="outline"
+                          className="border-gray-700 text-gray-200 text-xs"
+                        >
+                          {item.trim()}
+                        </Badge>
+                      ))}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Website with Admin Panel */}
+            <Card className="bg-gray-900 border-gray-800 shadow-sm hover:shadow-xl transition-all duration-300 reveal-on-scroll-delay-2">
+              <CardContent className="p-6 sm:p-8 flex flex-col h-full">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mb-4 sm:mb-6">
+                  <ShieldCheck className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                </div>
+                <div className="space-y-2 mb-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white">
+                    {t("services.admin.title")}
+                  </h3>
+                  <p className="text-sm font-semibold text-gray-300 uppercase tracking-wide">
+                    {t("services.admin.price")}
+                  </p>
+                </div>
+                <div className="space-y-2 mb-4 text-sm sm:text-base text-gray-300">
+                  {t("services.admin.features")
+                    .split(",")
+                    .map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-2">
+                        <Check className="h-4 w-4 mt-0.5 text-white flex-shrink-0" />
+                        <span>{item.trim()}</span>
+                      </div>
+                    ))}
+                </div>
+                <div className="mt-auto pt-4 border-t border-gray-800">
+                  <p className="text-xs font-medium text-gray-400 mb-2">
+                    {t("services.suitableLabel")}:
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {t("services.admin.suitable")
+                      .split(",")
+                      .map((item, idx) => (
+                        <Badge
+                          key={idx}
+                          variant="outline"
+                          className="border-gray-700 text-gray-200 text-xs"
+                        >
+                          {item.trim()}
+                        </Badge>
+                      ))}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <p className="mt-10 text-center text-xs sm:text-sm text-gray-500">
+            {t("services.note2025")}
+          </p>
         </div>
       </section>
 
