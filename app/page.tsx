@@ -55,6 +55,7 @@ export default function Portfolio() {
   // Certifications state
   const [certifications, setCertifications] = useState<any[]>([])
   const [certificationsLoading, setCertificationsLoading] = useState(true)
+  const [projectCount, setProjectCount] = useState<number | null>(null)
 
   // Fungsi untuk menentukan file CV sesuai bahasa
   const getCVUrl = () => {
@@ -111,6 +112,22 @@ export default function Portfolio() {
     }
 
     fetchCertifications()
+  }, [])
+
+  useEffect(() => {
+    const fetchProjectsCount = async () => {
+      try {
+        const { collection, getDocs } = await import('firebase/firestore')
+        const { db } = await import('@/lib/firebase')
+
+        const snapshot = await getDocs(collection(db, 'projects'))
+        setProjectCount(snapshot.size)
+      } catch (error) {
+        console.error('Error fetching projects count:', error)
+      }
+    }
+
+    fetchProjectsCount()
   }, [])
 
   return (
@@ -315,7 +332,7 @@ export default function Portfolio() {
             <div className="relative reveal-on-scroll-delay">
               <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
                 <div className="space-y-3 sm:space-y-4 text-center p-4 sm:p-6 lg:p-8 bg-gray-50 rounded-xl sm:rounded-2xl hover:bg-gray-100 transition-colors">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-black">5</div>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-black">{projectCount ?? 0}</div>
                   <div className="text-xs sm:text-sm lg:text-base text-gray-600 font-medium">
                     {t("about.stats.projects")}
                   </div>

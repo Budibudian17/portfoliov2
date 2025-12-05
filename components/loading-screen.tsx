@@ -11,6 +11,7 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0)
   const [currentText, setCurrentText] = useState(0)
   const { t } = useLanguage()
+  const [projectCount, setProjectCount] = useState<number | null>(null)
 
   const loadingTexts = [
     "Initializing System...",
@@ -50,6 +51,22 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
       clearInterval(textInterval)
     }
   }, [onLoadingComplete])
+
+  useEffect(() => {
+    const fetchProjectsCount = async () => {
+      try {
+        const { collection, getDocs } = await import('firebase/firestore')
+        const { db } = await import('@/lib/firebase')
+
+        const snapshot = await getDocs(collection(db, 'projects'))
+        setProjectCount(snapshot.size)
+      } catch (error) {
+        console.error('Error fetching projects count in loading screen:', error)
+      }
+    }
+
+    fetchProjectsCount()
+  }, [])
 
   return (
     <div className="fixed inset-0 bg-black z-50 flex items-center justify-center overflow-hidden">
@@ -161,7 +178,7 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
           {/* Loading Stats */}
           <div className="grid grid-cols-3 gap-6 text-center mt-8">
             <div className="space-y-1">
-              <div className="text-lg font-bold text-white">5</div>
+              <div className="text-lg font-bold text-white">{projectCount ?? 0}</div>
               <div className="text-xs text-gray-500 uppercase tracking-wider">Projects</div>
             </div>
             <div className="space-y-1">

@@ -31,6 +31,33 @@ interface Project {
   category?: "web" | "game" | "editing";
 }
 
+const getPlayableVideoUrl = (videoUrl?: string) => {
+  if (!videoUrl) return "";
+
+  if (videoUrl.includes("drive.google.com")) {
+    try {
+      let fileId = "";
+
+      if (videoUrl.includes("/file/d/")) {
+        const parts = videoUrl.split("/file/d/")[1];
+        fileId = parts.split("/")[0].split("?")[0];
+      } else if (videoUrl.includes("id=")) {
+        const urlObj = new URL(videoUrl);
+        const idParam = urlObj.searchParams.get("id");
+        if (idParam) fileId = idParam;
+      }
+
+      if (fileId) {
+        return `https://drive.google.com/uc?export=download&id=${fileId}`;
+      }
+    } catch (e) {
+      console.error("Failed to parse Google Drive URL", e);
+    }
+  }
+
+  return videoUrl;
+};
+
 export default function AdminProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [form, setForm] = useState<Partial<Project>>({
@@ -255,7 +282,7 @@ export default function AdminProjectsPage() {
             />
             <div className="text-xs text-gray-500 mt-1">Wajib untuk kategori Editing. Format disarankan: MP4 atau WebM.</div>
             {form.videoUrl && (
-              <video src={form.videoUrl} controls className="w-full max-w-md rounded-lg mt-2 border border-gray-700" />
+              <video src={getPlayableVideoUrl(form.videoUrl)} controls className="w-full max-w-md rounded-lg mt-2 border border-gray-700" />
             )}
           </div>
         )}
