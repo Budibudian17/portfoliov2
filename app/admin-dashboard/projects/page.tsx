@@ -48,7 +48,8 @@ const getPlayableVideoUrl = (videoUrl?: string) => {
       }
 
       if (fileId) {
-        return `https://drive.google.com/uc?export=download&id=${fileId}`;
+        // Use Google Drive preview URL (embed player) instead of direct download to avoid 403
+        return `https://drive.google.com/file/d/${fileId}/preview`;
       }
     } catch (e) {
       console.error("Failed to parse Google Drive URL", e);
@@ -141,7 +142,7 @@ export default function AdminProjectsPage() {
       setError("Link project wajib diisi untuk project yang sudah publish.");
       return;
     }
-    if (form.category === "editing" && !form.videoUrl) {
+    if (form.category && form.category.toLowerCase() === "editing" && !form.videoUrl) {
       setError("Untuk kategori Editing, link video wajib diisi (MP4/WebM). ");
       return;
     }
@@ -268,7 +269,7 @@ export default function AdminProjectsPage() {
           )}
         </div>
         {/* Conditional Video field for Editing category */}
-        {form.category === "editing" && (
+        {form.category && form.category.toLowerCase() === "editing" && (
           <div className="flex flex-col gap-2">
             <label className="text-sm font-bold text-gray-200">Link Video (MP4 / WebM)</label>
             <input
@@ -280,9 +281,16 @@ export default function AdminProjectsPage() {
               onChange={handleChange}
               required={form.category === "editing"}
             />
-            <div className="text-xs text-gray-500 mt-1">Wajib untuk kategori Editing. Format disarankan: MP4 atau WebM.</div>
+            <div className="text-xs text-gray-500 mt-1">Wajib untuk kategori Editing. Bisa pakai link Google Drive (public) atau file MP4/WebM.</div>
             {form.videoUrl && (
-              <video src={getPlayableVideoUrl(form.videoUrl)} controls className="w-full max-w-md rounded-lg mt-2 border border-gray-700" />
+              <div className="w-full max-w-md rounded-lg mt-2 border border-gray-700 overflow-hidden aspect-video">
+                <iframe
+                  src={getPlayableVideoUrl(form.videoUrl)}
+                  className="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
             )}
           </div>
         )}

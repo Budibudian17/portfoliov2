@@ -42,7 +42,8 @@ const getPlayableVideoUrl = (videoUrl?: string) => {
       }
 
       if (fileId) {
-        return `https://drive.google.com/uc?export=download&id=${fileId}`;
+        // Use Google Drive preview URL (embed player) instead of direct download to avoid 403
+        return `https://drive.google.com/file/d/${fileId}/preview`;
       }
     } catch (e) {
       console.error("Failed to parse Google Drive URL", e);
@@ -115,14 +116,14 @@ export default function ProjectDetailPage() {
           <span>{project.createdAt && typeof project.createdAt.toDate === "function" ? new Date(project.createdAt.toDate()).toLocaleDateString() : "No date"}</span>
         </div>
 
-        {/* Media: video for Editing category, else image */}
-        {project.category === "editing" && project.videoUrl ? (
-          <div className="w-full mb-8 rounded-2xl overflow-hidden border border-gray-800 bg-black">
-            <video
+        {/* Media: video for Editing category (Google Drive preview/embed), else image */}
+        {project.category && project.category.toLowerCase() === "editing" && project.videoUrl ? (
+          <div className="w-full mb-8 rounded-2xl overflow-hidden border border-gray-800 bg-black aspect-video">
+            <iframe
               src={getPlayableVideoUrl(project.videoUrl)}
-              controls
-              className="w-full h-auto"
-              poster={project.image}
+              className="w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
             />
           </div>
         ) : (
