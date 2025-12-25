@@ -138,10 +138,6 @@ export default function AdminProjectsPage() {
       setError("Judul dan deskripsi wajib diisi.");
       return;
     }
-    if (form.status === "published" && !form.projectLink) {
-      setError("Link project wajib diisi untuk project yang sudah publish.");
-      return;
-    }
     if (form.category && form.category.toLowerCase() === "editing" && !form.videoUrl) {
       setError("Untuk kategori Editing, link video wajib diisi (MP4/WebM). ");
       return;
@@ -336,16 +332,15 @@ export default function AdminProjectsPage() {
         </div>
         <div className="flex flex-col gap-2">
           <label className="text-sm font-bold text-gray-200">
-            Link Project {form.status === "published" ? "(wajib)" : "(opsional)"}
+            Link Project (opsional)
           </label>
           <input
             type="url"
             name="projectLink"
             className="bg-gray-800 rounded-lg px-4 py-2 text-white focus:outline-none"
-            placeholder={form.status === "published" ? "https://project-demo.com" : "https://project-demo.com (opsional)"}
+            placeholder="https://project-demo.com (opsional)"
             value={form.projectLink || ""}
             onChange={handleChange}
-            required={form.status === "published"}
           />
         </div>
         <div className="flex flex-col gap-2">
