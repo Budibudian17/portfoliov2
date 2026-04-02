@@ -108,7 +108,7 @@ const translations = {
     "github.contributionsCount": "contributions in",
 
     // Projects Section
-    "projects.title": "FEATURED",
+    "projects.title": "TOP",
     "projects.title2": "PROJECTS",
     "projects.subtitle": "Here are some of my recent projects that showcase my skills and creativity",
     "projects.demo": "Website",
@@ -437,7 +437,7 @@ const translations = {
 
     // Projects Section
     "projects.title": "PROYEK",
-    "projects.title2": "UNGGULAN",
+    "projects.title2": "TERATAS",
     "projects.subtitle": "Berikut adalah beberapa proyek terbaru saya yang menunjukkan keahlian dan kreativitas",
     "projects.demo": "Website",
     "projects.code": "Lihat Kode",
@@ -712,6 +712,11 @@ const translations = {
     "experience.ngide.company": "Ngide Interactive",
     "experience.ngide.period": "2025年5月 - 現在",
     "experience.ngide.description": "Ngide Interactiveは、革新的で意味のあるインタラクティブ体験の創造に注力するインディーゲームスタジオです。小さなアイデアでも、創造性・テクノロジー・コラボレーションによって非凡なものへと成長できると信じています。Unityをコア開発基盤として採用し、印象的なビジュアル、没入感のあるゲームプレイ、想像力をかき立てる物語を兼ね備えたクロスプラットフォーム作品を制作しています。",
+    "experience.ybb.title": "Web開発者（リモート）",
+    "experience.ybb.company": "Youth Break the Boundaries (YBB)",
+    "experience.ybb.period": "2025年11月 - 現在",
+    "experience.ybb.description":
+      "Youth Break the Boundaries (YBB)のリモートWeb開発者として、若者のエンパワーメント、国際プログラム、組織のイニシアチブを支援するWebプラットフォームに現代のWeb技術で貢献しています。",
     "experience.ciptalifeintern.title": "フロントエンド開発インターン",
     "experience.ciptalifeintern.company": "PT. Ciptadra SoftIndo",
     "experience.ciptalifeintern.period": "2025年1月 - 2025年4月",
@@ -758,7 +763,7 @@ const translations = {
     "github.contributionsCount": "の貢献数",
 
     // Projects Section
-    "projects.title": "注目の",
+    "projects.title": "トップ",
     "projects.title2": "プロジェクト",
     "projects.subtitle": "私のスキルと創造性を示す最近のプロジェクトをご紹介します",
     "projects.demo": "ウェブサイト",
