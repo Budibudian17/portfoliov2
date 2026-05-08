@@ -20,7 +20,7 @@ export async function POST(req: Request) {
   }
 
   const maxAgeSeconds = 60 * 60 * 12;
-  const token = signAdminSession({ secret: adminAuthSecret, maxAgeSeconds });
+  const token = await signAdminSession({ secret: adminAuthSecret, maxAgeSeconds });
 
   const res = NextResponse.json({ ok: true });
   res.cookies.set({

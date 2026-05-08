@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { verifyAdminSession } from "@/lib/admin-auth";
 
-export function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   if (pathname.startsWith("/admin-login") || pathname.startsWith("/api/admin")) {
@@ -19,7 +19,7 @@ export function middleware(req: NextRequest) {
       return NextResponse.redirect(url);
     }
 
-    const verified = verifyAdminSession({ secret, token });
+    const verified = await verifyAdminSession({ secret, token });
     if (!verified.ok) {
       const url = req.nextUrl.clone();
       url.pathname = "/admin-login";
