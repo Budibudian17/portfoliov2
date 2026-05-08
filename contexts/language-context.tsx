@@ -12,7 +12,7 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
-const translations = {
+const translations: Record<Language, Record<string, string>> = {
   en: {
     // Navigation
     "nav.about": "About",
@@ -1013,7 +1013,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }
 
   const t = (key: string): string => {
-    return translations[language][key as keyof (typeof translations)[typeof language]] || key
+    return translations[language][key] || key
   }
 
   return (
