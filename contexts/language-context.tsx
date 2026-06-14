@@ -158,7 +158,7 @@ const translations: Record<Language, Record<string, string>> = {
     "services.business.duration": "Estimated 5–10 working days (depending on number of pages and design revisions).",
 
     "services.admin.title": "Website with Admin Panel",
-    "services.admin.price": "IDR 3M - 5M",
+    "services.admin.price": "IDR 3M - 5M or Custom",
     "services.admin.features": "Login & dashboard, content management (CRUD), real-time sync to main site, basic security, optional analytics dashboard, backend & database ready to scale",
     "services.admin.suitable": "Businesses that need full control of content and data, SaaS-style products, startups",
     "services.admin.duration": "Estimated 10–20 working days (depending on feature complexity and modules).",
