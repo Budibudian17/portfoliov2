@@ -39,9 +39,9 @@ const translations: Record<Language, Record<string, string>> = {
     "about.title": "ABOUT",
     "about.title2": "ME",
     "about.description1":
-      "Hi! I'm Hilmi Farrel Firjatullah, an enthusiastic software developer with ~2 years of experience building web applications using React, Next.js, and PHP Laravel. Actively follows the latest technology developments and works on personal projects to upgrade programming skills. Experienced in both collaborative and independent teams, with a focus on developing efficient and user-friendly digital solutions.",
+      "Hi! I'm Hilmi Farrel Firjatullah, an enthusiastic software developer with 2.5+ years of experience building web applications using React, Next.js, and PHP Laravel. Actively follows the latest technology developments and works on personal projects to upgrade programming skills. Experienced in both collaborative and independent teams, with a focus on developing efficient and user-friendly digital solutions.",
     "about.description2":
-      "I believe technology isn't just about writing code — it's about solving real-world problems and building meaningful digital solutions.",
+      "I believe technology isn't just about writing code, it's about solving real-world problems and building meaningful digital solutions.",
     "about.location": "Depok, IDN",
     "about.stats.projects": "Projects Completed",
     "about.stats.experience": "Years Experience",
@@ -367,9 +367,9 @@ const translations: Record<Language, Record<string, string>> = {
     "about.title": "TENTANG",
     "about.title2": "SAYA",
     "about.description1":
-      "Halo! Saya Hilmi Farrel Firjatullah, seorang software developer yang antusias dengan pengalaman ~2 tahun membangun aplikasi web menggunakan React, Next.js, dan PHP Laravel. Aktif mengikuti perkembangan teknologi terkini dan mengerjakan proyek pribadi untuk meningkatkan skill programming. Berpengalaman di tim kolaboratif maupun independen, dengan fokus mengembangkan solusi digital yang efisien dan user-friendly.",
+      "Halo! Saya Hilmi Farrel Firjatullah, seorang software developer yang antusias dengan pengalaman 2.5+ tahun membangun aplikasi web menggunakan React, Next.js, dan PHP Laravel. Aktif mengikuti perkembangan teknologi terkini dan mengerjakan proyek pribadi untuk meningkatkan skill programming. Berpengalaman di tim kolaboratif maupun independen, dengan fokus mengembangkan solusi digital yang efisien dan user-friendly.",
     "about.description2":
-      "Saya percaya teknologi bukan hanya soal menulis kode — tetapi tentang memecahkan masalah nyata dan membangun solusi digital yang bermakna.",
+      "Saya percaya teknologi bukan hanya soal menulis kode, tetapi tentang memecahkan masalah nyata dan membangun solusi digital yang bermakna.",
     "about.location": "Depok, IDN",
     "about.stats.projects": "Proyek Selesai",
     "about.stats.experience": "Tahun Pengalaman",

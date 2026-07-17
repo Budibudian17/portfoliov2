@@ -57,11 +57,9 @@ export default function Portfolio() {
   const [certificationsLoading, setCertificationsLoading] = useState(true)
   const [projectCount, setProjectCount] = useState<number | null>(null)
 
-  // Fungsi untuk menentukan file CV sesuai bahasa
+  // Fungsi untuk menentukan file CV
   const getCVUrl = () => {
-    if (language === "en") return "/cv-en.pdf"
-    if (language === "jp") return "/cv-jp.pdf"
-    return "/cv.pdf"
+    return "/CV_HILMI_FARREL_FIRJATULLAH.pdf"
   }
 
   useEffect(() => {
@@ -338,7 +336,7 @@ export default function Portfolio() {
                   </div>
                 </div>
                 <div className="space-y-3 sm:space-y-4 text-center p-4 sm:p-6 lg:p-8 bg-gray-50 rounded-xl sm:rounded-2xl hover:bg-gray-100 transition-colors">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-black">~2</div>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-black">2.5+</div>
                   <div className="text-xs sm:text-sm lg:text-base text-gray-600 font-medium">
                     {t("about.stats.experience")}
                   </div>
@@ -576,167 +574,211 @@ export default function Portfolio() {
             </p>
           </div>
 
-          <div className="space-y-8 sm:space-y-12">
-            {/* Experience - Ngide Interactive (Founder) */}
-            <div className="relative reveal-on-scroll">
-              <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">
-                <div className="lg:w-1/3">
-                  <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
-                      <OptimizedImage src="/img/ngideinteractive.webp" fallback="/img/ngideinteractive.png" alt="Ngide Interactive" width={48} height={48} className="w-full h-full object-cover rounded-full" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-black">{t("experience.ngide.title")}</h3>
-                      <p className="text-gray-600 font-medium">{t("experience.ngide.company")}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-2 text-gray-500 mb-4 lg:mb-0">
-                    <Calendar className="h-4 w-4" />
-                    <span className="text-sm">{t("experience.ngide.period")}</span>
-                  </div>
-                </div>
-                <div className="lg:w-2/3">
-                  <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                    {t("experience.ngide.description")}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    <Badge variant="outline" className="border-black text-black text-xs">Game Dev</Badge>
-                    <Badge variant="outline" className="border-black text-black text-xs">Unity/Unreal</Badge>
-                    <Badge variant="outline" className="border-black text-black text-xs">Studio Ops</Badge>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Experience - YBB Web Developer (Remote) */}
-            <div className="relative reveal-on-scroll">
-              <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">
-                <div className="lg:w-1/3">
-                  <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
-                      <OptimizedImage src="/img/logoYBB.webp" fallback="/img/logoYBB.webp" alt="Youth Break the Boundaries" width={48} height={48} className="w-full h-full object-cover rounded-full" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-black">{t("experience.ybb.title")}</h3>
-                      <p className="text-gray-600 font-medium">{t("experience.ybb.company")}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-2 text-gray-500 mb-4 lg:mb-0">
-                    <Calendar className="h-4 w-4" />
-                    <span className="text-sm">{t("experience.ybb.period")}</span>
-                  </div>
-                </div>
-                <div className="lg:w-2/3">
-                  <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                    {t("experience.ybb.description")}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    <Badge variant="outline" className="border-black text-black text-xs">Web Development</Badge>
-                    <Badge variant="outline" className="border-black text-black text-xs">React/Next.js</Badge>
-                    <Badge variant="outline" className="border-black text-black text-xs">Remote</Badge>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Experience 1 - Fulltime */}
-            <div className="relative reveal-on-scroll">
-              <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">
-                <div className="lg:w-1/3">
-                  <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
-                      <OptimizedImage src="/img/ciptadra.webp" fallback="/img/ciptadra.jpg" alt="PT. Ciptadra SoftIndo" width={48} height={48} className="w-full h-full object-cover rounded-full" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-black">{t("experience.ciptalife.title")}</h3>
-                      <p className="text-gray-600 font-medium">{t("experience.ciptalife.company")}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-2 text-gray-500 mb-4 lg:mb-0">
-                    <Calendar className="h-4 w-4" />
-                    <span className="text-sm">{t("experience.ciptalife.period")}</span>
-                  </div>
-                </div>
-                <div className="lg:w-2/3">
-                  <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                    {t("experience.ciptalife.description")}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    <Badge variant="outline" className="border-black text-black text-xs">
-                      React
-                    </Badge>
-                    <Badge variant="outline" className="border-black text-black text-xs">
-                      Next.js
-                    </Badge>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* Timeline Container */}
+          <div className="relative">
+            {/* Vertical Timeline Line */}
+            <div className="absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-black via-gray-300 to-gray-400"></div>
 
-            {/* Experience 2 - Intern */}
-            <div className="relative reveal-on-scroll-delay">
-              <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">
-                <div className="lg:w-1/3">
-                  <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
-                    <OptimizedImage src="/img/ciptadra.webp" fallback="/img/ciptadra.jpg" alt="PT. Ciptadra SoftIndo" width={48} height={48} className="w-full h-full object-cover rounded-full" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-black">{t("experience.ciptalifeintern.title")}</h3>
-                      <p className="text-gray-600 font-medium">{t("experience.ciptalifeintern.company")}</p>
+            <div className="space-y-8 sm:space-y-12">
+              {/* Experience - Ngide Interactive (Founder) */}
+              <div className="relative reveal-on-scroll">
+                <div className="flex flex-col sm:flex-row items-start gap-6 sm:gap-8">
+                  {/* Timeline Dot */}
+                  <div className="absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2 w-4 h-4 bg-black rounded-full border-4 border-white shadow-lg z-10"></div>
+                  
+                  {/* Left Side - Date (Mobile: Top, Desktop: Left) */}
+                  <div className="w-full sm:w-1/2 sm:pr-8 sm:text-right pl-8 sm:pl-0">
+                    <div className="inline-flex items-center space-x-2 text-gray-600 font-medium mb-2">
+                      <Calendar className="h-4 w-4" />
+                      <span className="text-sm">{t("experience.ngide.period")}</span>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-2 text-gray-500 mb-4 lg:mb-0">
-                    <Calendar className="h-4 w-4" />
-                    <span className="text-sm">{t("experience.ciptalifeintern.period")}</span>
-                  </div>
-                </div>
-                <div className="lg:w-2/3">
-                  <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                    {t("experience.ciptalifeintern.description")}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    <Badge variant="outline" className="border-black text-black text-xs">
-                      React
-                    </Badge>
-                    <Badge variant="outline" className="border-black text-black text-xs">
-                      Next.js
-                    </Badge>
-                    <Badge variant="outline" className="border-black text-black text-xs">
-                      Golang
-                    </Badge>
+
+                  {/* Right Side - Content */}
+                  <div className="w-full sm:w-1/2 sm:pl-8 pl-8">
+                    <Card className="bg-white border-2 border-black shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4 mb-4">
+                          <div className="w-14 h-14 bg-black rounded-xl flex items-center justify-center overflow-hidden flex-shrink-0">
+                            <OptimizedImage src="/img/ngideinteractive.webp" fallback="/img/ngideinteractive.png" alt="Ngide Interactive" width={56} height={56} className="w-full h-full object-cover" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl sm:text-2xl font-black">{t("experience.ngide.title")}</h3>
+                            <p className="text-gray-600 font-medium">{t("experience.ngide.company")}</p>
+                          </div>
+                        </div>
+                        <p className="text-base text-gray-700 leading-relaxed mb-4">
+                          {t("experience.ngide.description")}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          <Badge variant="outline" className="border-black text-black text-xs">Game Dev</Badge>
+                          <Badge variant="outline" className="border-black text-black text-xs">Unity/Unreal</Badge>
+                          <Badge variant="outline" className="border-black text-black text-xs">Studio Ops</Badge>
+                        </div>
+                      </CardContent>
+                    </Card>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Experience 3 - Class Industry */}
-            <div className="relative reveal-on-scroll-delay">
-              <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">
-                <div className="lg:w-1/3">
-                  <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
-                    <OptimizedImage src="/img/ciptadra.webp" fallback="/img/ciptadra.jpg" alt="PT. Ciptadra SoftIndo" width={48} height={48} className="w-full h-full object-cover rounded-full" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-black">{t("experience.ciptalifeclassindustry.title")}</h3>
-                      <p className="text-gray-600 font-medium">{t("experience.ciptalifeclassindustry.company")}</p>
-                    </div>
+              {/* Experience - YBB Web Developer (Remote) */}
+              <div className="relative reveal-on-scroll">
+                <div className="flex flex-col sm:flex-row items-start gap-6 sm:gap-8">
+                  {/* Timeline Dot */}
+                  <div className="absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2 w-4 h-4 bg-black rounded-full border-4 border-white shadow-lg z-10"></div>
+                  
+                  {/* Left Side - Content (Reversed for alternating layout) */}
+                  <div className="w-full sm:w-1/2 sm:pr-8 sm:text-right pl-8 sm:pl-0 order-2 sm:order-1">
+                    <Card className="bg-white border-2 border-black shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4 mb-4 sm:flex-row-reverse">
+                          <div className="w-14 h-14 bg-black rounded-xl flex items-center justify-center overflow-hidden flex-shrink-0">
+                            <OptimizedImage src="/img/logoYBB.webp" fallback="/img/logoYBB.webp" alt="Youth Break the Boundaries" width={56} height={56} className="w-full h-full object-cover" />
+                          </div>
+                          <div className="sm:text-right">
+                            <h3 className="text-xl sm:text-2xl font-black">{t("experience.ybb.title")}</h3>
+                            <p className="text-gray-600 font-medium">{t("experience.ybb.company")}</p>
+                          </div>
+                        </div>
+                        <p className="text-base text-gray-700 leading-relaxed mb-4">
+                          {t("experience.ybb.description")}
+                        </p>
+                        <div className="flex flex-wrap gap-2 sm:justify-end">
+                          <Badge variant="outline" className="border-black text-black text-xs">Web Development</Badge>
+                          <Badge variant="outline" className="border-black text-black text-xs">React/Next.js</Badge>
+                          <Badge variant="outline" className="border-black text-black text-xs">Remote</Badge>
+                        </div>
+                      </CardContent>
+                    </Card>
                   </div>
-                  <div className="flex items-center space-x-2 text-gray-500 mb-4 lg:mb-0">
-                    <Calendar className="h-4 w-4" />
-                    <span className="text-sm">{t("experience.ciptalifeclassindustry.period")}</span>
+
+                  {/* Right Side - Date */}
+                  <div className="w-full sm:w-1/2 sm:pl-8 pl-8 order-1 sm:order-2">
+                    <div className="inline-flex items-center space-x-2 text-gray-600 font-medium mb-2">
+                      <Calendar className="h-4 w-4" />
+                      <span className="text-sm">{t("experience.ybb.period")}</span>
+                    </div>
                   </div>
                 </div>
-                <div className="lg:w-2/3">
-                  <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                    {t("experience.ciptalifeclassindustry.description")}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    <Badge variant="outline" className="border-black text-black text-xs">
-                      React
-                    </Badge>
-                    <Badge variant="outline" className="border-black text-black text-xs">
-                      Next.js
-                    </Badge>
+              </div>
+
+              {/* Experience - CiptaLife Fulltime */}
+              <div className="relative reveal-on-scroll">
+                <div className="flex flex-col sm:flex-row items-start gap-6 sm:gap-8">
+                  {/* Timeline Dot */}
+                  <div className="absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2 w-4 h-4 bg-black rounded-full border-4 border-white shadow-lg z-10"></div>
+                  
+                  {/* Left Side - Date */}
+                  <div className="w-full sm:w-1/2 sm:pr-8 sm:text-right pl-8 sm:pl-0">
+                    <div className="inline-flex items-center space-x-2 text-gray-600 font-medium mb-2">
+                      <Calendar className="h-4 w-4" />
+                      <span className="text-sm">{t("experience.ciptalife.period")}</span>
+                    </div>
+                  </div>
+
+                  {/* Right Side - Content */}
+                  <div className="w-full sm:w-1/2 sm:pl-8 pl-8">
+                    <Card className="bg-white border-2 border-black shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4 mb-4">
+                          <div className="w-14 h-14 bg-black rounded-xl flex items-center justify-center overflow-hidden flex-shrink-0">
+                            <OptimizedImage src="/img/ciptadra.webp" fallback="/img/ciptadra.jpg" alt="PT. Ciptadra SoftIndo" width={56} height={56} className="w-full h-full object-cover" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl sm:text-2xl font-black">{t("experience.ciptalife.title")}</h3>
+                            <p className="text-gray-600 font-medium">{t("experience.ciptalife.company")}</p>
+                          </div>
+                        </div>
+                        <p className="text-base text-gray-700 leading-relaxed mb-4">
+                          {t("experience.ciptalife.description")}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          <Badge variant="outline" className="border-black text-black text-xs">React</Badge>
+                          <Badge variant="outline" className="border-black text-black text-xs">Next.js</Badge>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+              </div>
+
+              {/* Experience - CiptaLife Intern */}
+              <div className="relative reveal-on-scroll-delay">
+                <div className="flex flex-col sm:flex-row items-start gap-6 sm:gap-8">
+                  {/* Timeline Dot */}
+                  <div className="absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2 w-4 h-4 bg-black rounded-full border-4 border-white shadow-lg z-10"></div>
+                  
+                  {/* Left Side - Content (Reversed) */}
+                  <div className="w-full sm:w-1/2 sm:pr-8 sm:text-right pl-8 sm:pl-0 order-2 sm:order-1">
+                    <Card className="bg-white border-2 border-black shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4 mb-4 sm:flex-row-reverse">
+                          <div className="w-14 h-14 bg-black rounded-xl flex items-center justify-center overflow-hidden flex-shrink-0">
+                            <OptimizedImage src="/img/ciptadra.webp" fallback="/img/ciptadra.jpg" alt="PT. Ciptadra SoftIndo" width={56} height={56} className="w-full h-full object-cover" />
+                          </div>
+                          <div className="sm:text-right">
+                            <h3 className="text-xl sm:text-2xl font-black">{t("experience.ciptalifeintern.title")}</h3>
+                            <p className="text-gray-600 font-medium">{t("experience.ciptalifeintern.company")}</p>
+                          </div>
+                        </div>
+                        <p className="text-base text-gray-700 leading-relaxed mb-4">
+                          {t("experience.ciptalifeintern.description")}
+                        </p>
+                        <div className="flex flex-wrap gap-2 sm:justify-end">
+                          <Badge variant="outline" className="border-black text-black text-xs">React</Badge>
+                          <Badge variant="outline" className="border-black text-black text-xs">Next.js</Badge>
+                          <Badge variant="outline" className="border-black text-black text-xs">Golang</Badge>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+
+                  {/* Right Side - Date */}
+                  <div className="w-full sm:w-1/2 sm:pl-8 pl-8 order-1 sm:order-2">
+                    <div className="inline-flex items-center space-x-2 text-gray-600 font-medium mb-2">
+                      <Calendar className="h-4 w-4" />
+                      <span className="text-sm">{t("experience.ciptalifeintern.period")}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Experience - Class Industry */}
+              <div className="relative reveal-on-scroll-delay">
+                <div className="flex flex-col sm:flex-row items-start gap-6 sm:gap-8">
+                  {/* Timeline Dot */}
+                  <div className="absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2 w-4 h-4 bg-black rounded-full border-4 border-white shadow-lg z-10"></div>
+                  
+                  {/* Left Side - Date */}
+                  <div className="w-full sm:w-1/2 sm:pr-8 sm:text-right pl-8 sm:pl-0">
+                    <div className="inline-flex items-center space-x-2 text-gray-600 font-medium mb-2">
+                      <Calendar className="h-4 w-4" />
+                      <span className="text-sm">{t("experience.ciptalifeclassindustry.period")}</span>
+                    </div>
+                  </div>
+
+                  {/* Right Side - Content */}
+                  <div className="w-full sm:w-1/2 sm:pl-8 pl-8">
+                    <Card className="bg-white border-2 border-black shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4 mb-4">
+                          <div className="w-14 h-14 bg-black rounded-xl flex items-center justify-center overflow-hidden flex-shrink-0">
+                            <OptimizedImage src="/img/ciptadra.webp" fallback="/img/ciptadra.jpg" alt="PT. Ciptadra SoftIndo" width={56} height={56} className="w-full h-full object-cover" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl sm:text-2xl font-black">{t("experience.ciptalifeclassindustry.title")}</h3>
+                            <p className="text-gray-600 font-medium">{t("experience.ciptalifeclassindustry.company")}</p>
+                          </div>
+                        </div>
+                        <p className="text-base text-gray-700 leading-relaxed mb-4">
+                          {t("experience.ciptalifeclassindustry.description")}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          <Badge variant="outline" className="border-black text-black text-xs">React</Badge>
+                          <Badge variant="outline" className="border-black text-black text-xs">Next.js</Badge>
+                        </div>
+                      </CardContent>
+                    </Card>
                   </div>
                 </div>
               </div>

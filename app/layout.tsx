@@ -13,6 +13,9 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Hilmi Portfolio",
   description: "Hilmi Farrel Firjatullah Digital Portfolio",
+  icons: {
+    icon: "/logohilmi.ico",
+  },
     generator: 'v0.dev'
 }
 
